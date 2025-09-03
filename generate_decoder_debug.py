@@ -28,7 +28,9 @@ def make_blueprint(signal_list, indexes):
     y = 0
     bitshift = 0
     and_compare = 15
-
+    for i in range(indexes)-1:
+        signals = signals[i]+signal_list[i+1]
+    print(signals)
     for i in range(indexes)-1:
         blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,
@@ -41,7 +43,7 @@ def make_blueprint(signal_list, indexes):
                         {
                             "first_signal": {
                                 "type": "virtual",
-                                "name": "signal-F"
+                                "name": 
                             },
                             "constant": entity_number,
                             "comparator": "="
@@ -123,14 +125,12 @@ def make_blueprint(signal_list, indexes):
         print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: generate_decoder.py <json_path> <index> <top_or_bottom>?  ")
+    if len(sys.argv) != 2:
+        print("Usage: generate_decoder.py <json_path>  ")
     else:
         json_path = str((sys.argv[1]))
-        index = int(sys.argv[2])
-        top_or_bottom = (sys.argv[3])
 
         with open(json_path, 'r') as file:
             signal_list = json.load(file)
 
-        make_blueprint(signal_list,top_or_bottom)
+        make_blueprint(signal_list)
