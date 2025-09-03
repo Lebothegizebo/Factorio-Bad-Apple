@@ -1,0 +1,39 @@
+{
+  "blueprint": {
+    "icons": [
+      {
+        "signal": {
+          "name": "arithmetic-combinator"
+        },
+        "index": 1
+      }
+    ],
+    "entities": [
+      {
+        "entity_number": 1,
+        "name": "arithmetic-combinator",
+        "position": {
+          "x": 747.5,
+          "y": -94
+        },
+        "direction": 8,
+        "control_behavior": {
+          "arithmetic_conditions": {
+            "first_signal": {
+              "type": "virtual",
+              "name": "signal-each"
+            },
+            "second_constant": 1,
+            "operation": "AND",
+            "output_signal": {
+              "type": "virtual",
+              "name": "signal-each"
+            }
+          }
+        }
+      }
+    ],
+    "item": "blueprint",
+    "version": 562949957353472
+  }
+}
