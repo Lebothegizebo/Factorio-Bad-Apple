@@ -8,7 +8,7 @@ import cv2
 wire_copper = 1
 wire_red = 2
 wire_green = 3
-signals = {}
+signals = []
 
 def blueprint_to_json(string): #Thx Doshdoshington
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -28,7 +28,7 @@ def list_to_32bit_int(lst): #Thanks @artucuno for this function
         result -= 0x100000000  # Convert to negative value
     return result
 
-def process(cap, frame_number): #Processes video for each frame
+def process(cap, frame_number): #Processes video for each frame, where
     # Thanks @artucuno for teaching me OpenCV2
 
     factorio_signal_data = [] # Represents all the data created by this function and returns it as a list of signals with vaules
@@ -36,10 +36,11 @@ def process(cap, frame_number): #Processes video for each frame
     cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number) 
     ret, frame = cap.read()
     if ret:
+        splits = 2 # number of horizontal splits
+        split_size = 48//splits #Binary Split Size  
         #initilizes video processing enviroment
         frame = cv2.resize(frame, (64, 48), interpolation=cv2.INTER_AREA)
         height, width, _ = frame.shape
-        split_size = 48//splits #Binary Split Size  
 
         #converts video into a greyscale frame
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -48,6 +49,17 @@ def process(cap, frame_number): #Processes video for each frame
         for row in gray_frame:
             l.append([0 if pixel < 100 else 1 for pixel in row])
 
+
+
+        # Left in for debugging purposes, does nothing on its own (to see frame before processing is done)
+        # cv2.imshow("frame", frame)
+        # for z in range(splits):
+        #     globals()["split_framedata_"+str(z)] = frame[split_pixel_count:(height*(z+1))//splits, 0:width] #Frame Data
+        #     split_pixel_count += split_size
+        # for z in range(splits):
+        #     cv2.imshow("split-"+str(z)+":", globals()["split_framedata_"+str(z)])
+        #     cv2.waitKey(0)
+        
         #Turns framedata into a list
         split_pixel_count = 0
         for z in range(splits):
@@ -58,9 +70,16 @@ def process(cap, frame_number): #Processes video for each frame
         for z in range(splits):
             globals()["split_"+str(z)] = [[row[i] for row in (globals()["split_framedata_"+str(z)])] for i in range(width)]
 
+        #bottom_half_split = [[row[i] for row in bottom_half] for i in range(width)]
         # Flip all video lists
         for z in range(splits):
             globals()["split_"+str(z)] = [list(reversed(row)) for row in globals()["split_"+str(z)]]
+        #[list(reversed(row)) for row in bottom_half_split]
+
+        #cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        
+
 
         #Enumerate through video data (the lists) and assigns each list a 32 bit number and assigns that to a Factorio Signal
         k = 0
@@ -70,7 +89,7 @@ def process(cap, frame_number): #Processes video for each frame
                 factorio_signal_data.append({
                 "signal": {
                 "type": "virtual",
-                "name": signals["combined"][k],
+                "name": signals[z][i],
                 },
                 "copy_count_from_input": False,
                 "constant": data
@@ -170,11 +189,14 @@ if __name__ == "__main__":
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
         json_path = str(sys.argv[1])
         video_data_path = str(sys.argv[2])
+        frame_count = 100
         frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
-        splits = 2
         max_combinators = 225 if len(sys.argv) < 4 else int(sys.argv[3])
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
-        signals["combined"] = raw_signals["signals"]["top"] + raw_signals["signals"]["bottom"]
-
+        splits = len(raw_signals["signals"])
+        for z in range(splits):
+            print(str(z)+": ", raw_signals["signals"]["split-"+str(z)])
+            signals.append(raw_signals["signals"]["split-"+str(z)])
+        print(signals[0])
         make_blueprint(blueprint,signals,video_data_path,frame_count,max_combinators)

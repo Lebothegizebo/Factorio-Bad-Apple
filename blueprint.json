@@ -13,8 +13,8 @@
         "entity_number": 1,
         "name": "arithmetic-combinator",
         "position": {
-          "x": 747.5,
-          "y": -94
+          "x": 884.5,
+          "y": 4
         },
         "direction": 8,
         "control_behavior": {
@@ -23,12 +23,8 @@
               "type": "virtual",
               "name": "signal-each"
             },
-            "second_constant": 1,
-            "operation": "AND",
-            "output_signal": {
-              "type": "virtual",
-              "name": "signal-each"
-            }
+            "second_constant": 0,
+            "operation": "*"
           }
         }
       }
