@@ -7,7 +7,7 @@ import pyperclip
 wire_copper = 1
 wire_red = 2
 wire_green = 3
-signals = {}
+
 
 def blueprint_to_json(string):
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -19,6 +19,8 @@ def json_to_blueprint(json_data):
 
 def make_blueprint(signal_list, indexes):
     blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
+    entity_number=1
+    signals = []
     combinator_count = 1
     column_count = 1
     max_combinators_per_column_chunk =13
@@ -28,10 +30,13 @@ def make_blueprint(signal_list, indexes):
     y = 0
     bitshift = 0
     and_compare = 15
-    for i in range(indexes)-1:
-        signals = signals[i]+signal_list[i+1]
+    print("debug")
+    print(len(signal_list["signals"]))
+    for i, key in enumerate(list(signal_list["signals"].keys())):
+        if i != 0:
+            signals.extend(signal_list["signals"][key])
     print(signals)
-    for i in range(indexes)-1:
+    for i in range(len(signals)):
         blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,
             "name": "arithmetic-combinator",
@@ -43,7 +48,7 @@ def make_blueprint(signal_list, indexes):
                         {
                             "first_signal": {
                                 "type": "virtual",
-                                "name": 
+                                "name": signals[i]
                             },
                             "constant": entity_number,
                             "comparator": "="
@@ -53,8 +58,8 @@ def make_blueprint(signal_list, indexes):
             }
         })
         signal_data = []
-        signal_data = process(cap, frame_number)
-        blueprint["blueprint"]["entities"][j]["control_behavior"]["decider_conditions"]["outputs"] = signal_data
+        #signal_data = process(cap, frame_number)
+        # blueprint["blueprint"]["entities"][j]["control_behavior"]["decider_conditions"]["outputs"] = signal_data
         if entity_number != 1:
             blueprint["blueprint"]["wires"].append([
                 entity_number-1,
@@ -91,46 +96,47 @@ def make_blueprint(signal_list, indexes):
                 y -= 2
 
 
-    for i, entity in enumerate(blueprint['blueprint']['entities']):
-        if entity['name'] == "arithmetic-combinator":
-            if "first_signal" not in entity['control_behavior']['arithmetic_conditions']:
-                if top_or_bottom == "bottom":
-                    k=k-1
-                else:
-                    k=k+1
-                if len(signal_list["signals"]["decoder"]) > k:
-                    if signal_list["signals"]["decoder"][k] == 0:
+    # for i, entity in enumerate(blueprint['blueprint']['entities']):
+    #     if entity['name'] == "arithmetic-combinator":
+    #         if "first_signal" not in entity['control_behavior']['arithmetic_conditions']:
+    #             if top_or_bottom == "bottom":
+    #                 k=k-1
+    #             else:
+    #                 k=k+1
+    #             if len(signal_list["signals"]["decoder"]) > k:
+    #                 if signal_list["signals"]["decoder"][k] == 0:
 
-                        entity['control_behavior']['arithmetic_conditions']['first_signal'] = {
-                            "constant": 0
-                        }
-                        entity['control_behavior']['arithmetic_conditions']['output_signal'] = {
-                            "constant": 0
-                    }
-                    else:  
-                        entity['control_behavior']['arithmetic_conditions']['first_signal'] = {
-                            "type": "virtual",
-                            "name": signal_list["signals"][top_or_bottom][index]
-                        }
-                        entity['control_behavior']['arithmetic_conditions']['output_signal'] = {
-                        "type": "virtual",
-                        "name": signal_list["signals"]["decoder"][k]
-                        }
-                    j=j+1
-            else:
-                j=j+1
+    #                     entity['control_behavior']['arithmetic_conditions']['first_signal'] = {
+    #                         "constant": 0
+    #                     }
+    #                     entity['control_behavior']['arithmetic_conditions']['output_signal'] = {
+    #                         "constant": 0
+    #                 }
+    #                 else:  
+    #                     entity['control_behavior']['arithmetic_conditions']['first_signal'] = {
+    #                         "type": "virtual",
+    #                         "name": signal_list["signals"][top_or_bottom][index]
+    #                     }
+    #                     entity['control_behavior']['arithmetic_conditions']['output_signal'] = {
+    #                     "type": "virtual",
+    #                     "name": signal_list["signals"]["decoder"][k]
+    #                     }
+    #                 j=j+1
+    #         else:
+    #             j=j+1
     else:
         new_blueprint = json_to_blueprint(blueprint)
         pyperclip.copy(new_blueprint)
         print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    if len(sys.argv) != 3:
         print("Usage: generate_decoder.py <json_path>  ")
     else:
         json_path = str((sys.argv[1]))
+        indexes = int((sys.argv[2]))
 
         with open(json_path, 'r') as file:
             signal_list = json.load(file)
 
-        make_blueprint(signal_list)
+        make_blueprint(signal_list, indexes)

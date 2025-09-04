@@ -53,7 +53,7 @@ def process(cap, frame_number): # Thanks @artucuno for teaching me OpenCV2 and c
         # Split the lists vertically for each pixel column
         top_half_split = [[row[i] for row in top_half] for i in range(width)]
         bottom_half_split = [[row[i] for row in bottom_half] for i in range(width)]
-
+        
         # Flip both lists
         top_half_split = [list(reversed(row)) for row in top_half_split]
         bottom_half_split = [list(reversed(row)) for row in bottom_half_split]

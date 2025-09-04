@@ -28,64 +28,76 @@ def list_to_32bit_int(lst): #Thanks @artucuno for this function
         result -= 0x100000000  # Convert to negative value
     return result
 
-def process(cap, frame_number): # Thanks @artucuno for teaching me OpenCV2 and contributing code
-    signal_data = []
-    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number)
+def process(cap, frame_number): #Processes video for each frame, where
+    # Thanks @artucuno for teaching me OpenCV2
+
+    factorio_signal_data = [] # Represents all the data created by this function and returns it as a list of signals with vaules
+    l = [] # List of pixel data for each frame
+    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number) 
     ret, frame = cap.read()
     if ret:
+        splits = 2 # number of horizontal splits
+        split_size = 48//splits #Binary Split Size  
+        #initilizes video processing enviroment
         frame = cv2.resize(frame, (64, 48), interpolation=cv2.INTER_AREA)
-        # split frame into 2 on the horizontal axis
         height, width, _ = frame.shape
-        top_half = frame[0:height//2, 0:width]
-        bottom_half = frame[height//2:height, 0:width]
+
+        #converts video into a greyscale frame
         gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        l = []
+
+        #converts greyscale frame into a list
         for row in gray_frame:
             l.append([0 if pixel < 100 else 1 for pixel in row])
 
-        # Split the list into two 2 halves
-        top_half = l[0:height//2]
-        bottom_half = l[height//2:height]
+        # Splits video into video splits for processing to be done and turns video data into pixel data lists
+        cv2.imshow("frame", frame)
+        split_pixel_count = 0
+
+        # Left in for debugging purposes, does nothing on its own (to see frame before processing is done)
+        # for z in range(splits):
+        #     globals()["split_framedata_"+str(z)] = frame[split_pixel_count:(height*(z+1))//splits, 0:width] #Frame Data
+        #     split_pixel_count += split_size
+        # for z in range(splits):
+        #     cv2.imshow("split-"+str(z)+":", globals()["split_framedata_"+str(z)])
+        #     cv2.waitKey(0)
+        
+        #Turns framedata into a list
+        split_pixel_count = 0
+        for z in range(splits):
+            globals()["split_framedata_"+str(z)] = l[split_pixel_count:(height*(z+1))//splits]
+            split_pixel_count += split_size
 
         # Split the lists vertically for each pixel column
-        top_half_split = [[row[i] for row in top_half] for i in range(width)]
-        bottom_half_split = [[row[i] for row in bottom_half] for i in range(width)]
+        for z in range(splits):
+            globals()["split_"+str(z)] = [[row[i] for row in (globals()["split_framedata_"+str(z)])] for i in range(width)]
 
-        # Flip both lists
-        top_half_split = [list(reversed(row)) for row in top_half_split]
-        bottom_half_split = [list(reversed(row)) for row in bottom_half_split]
+        #bottom_half_split = [[row[i] for row in bottom_half] for i in range(width)]
+        # Flip all video lists
+        for z in range(splits):
+            globals()["split_"+str(z)] = [list(reversed(row)) for row in globals()["split_"+str(z)]]
+        #[list(reversed(row)) for row in bottom_half_split]
 
-        #enumerate through video data
+        #cv2.waitKey(0)
+        cv2.destroyAllWindows()
+        
+
+
+        #Enumerate through video data (the lists) and assigns each list a 32 bit number and assigns that to a Factorio Signal
         k = 0
-        for i, lst in enumerate(top_half_split):
-            k = i+1
-            data = list_to_32bit_int(lst)
-            signal_data.append({
-            "signal": {
-            "type": "virtual",
-            "name": signals["combined"][k-1],
-            },
-            "copy_count_from_input": False,
-            "constant": data
-            })
-        for i, lst in enumerate(bottom_half_split):
-
-            data = list_to_32bit_int(lst)
-            signal_data.append({
-            "signal": {
-            "type": "virtual",
-            "name": signals["combined"][k+i],
-            },
-            "copy_count_from_input": False,
-            "constant": data
-            })
-        return signal_data
+        for z in range(splits):
+            for i, lst in enumerate(globals()["split_"+str(z)]):
+                data = list_to_32bit_int(lst)
+                factorio_signal_data.append({
+                "signal": {
+                "type": "virtual",
+                "name": signals["combined"][k],
+                },
+                "copy_count_from_input": False,
+                "constant": data
+                })
+                k += 1 
+        return factorio_signal_data
     
-         
-
-
-
-
 def make_blueprint(blueprint, signals, video_path, frame_count, max_combinators):
     cap = cv2.VideoCapture(video_path)
     entity_number = 1
@@ -119,9 +131,8 @@ def make_blueprint(blueprint, signals, video_path, frame_count, max_combinators)
                 }
             })
             frame_number += 1
-            signal_data = []
-            signal_data = process(cap, frame_number)
-            blueprint["blueprint"]["entities"][j]["control_behavior"]["decider_conditions"]["outputs"] = signal_data
+            factorio_signal_data = process(cap, frame_number)
+            blueprint["blueprint"]["entities"][j]["control_behavior"]["decider_conditions"]["outputs"] = factorio_signal_data
             if entity_number != 1:
                 blueprint["blueprint"]["wires"].append([
                     entity_number-1,
@@ -179,8 +190,9 @@ if __name__ == "__main__":
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
         json_path = str(sys.argv[1])
         video_data_path = str(sys.argv[2])
-        frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
-        
+        frame_count = 100
+        #frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
+        splits = 2
         max_combinators = 225 if len(sys.argv) < 4 else int(sys.argv[3])
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
