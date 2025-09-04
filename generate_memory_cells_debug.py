@@ -49,11 +49,10 @@ def process(cap, frame_number): #Processes video for each frame, where
         for row in gray_frame:
             l.append([0 if pixel < 100 else 1 for pixel in row])
 
-        # Splits video into video splits for processing to be done and turns video data into pixel data lists
-        cv2.imshow("frame", frame)
-        split_pixel_count = 0
+
 
         # Left in for debugging purposes, does nothing on its own (to see frame before processing is done)
+        cv2.imshow("frame", frame)
         # for z in range(splits):
         #     globals()["split_framedata_"+str(z)] = frame[split_pixel_count:(height*(z+1))//splits, 0:width] #Frame Data
         #     split_pixel_count += split_size
@@ -85,7 +84,7 @@ def process(cap, frame_number): #Processes video for each frame, where
         #Enumerate through video data (the lists) and assigns each list a 32 bit number and assigns that to a Factorio Signal
         k = 0
         for z in range(splits):
-            for i, lst in enumerate(globals()["split_"+str(z)]):
+            for empty, lst in enumerate(globals()["split_"+str(z)]):
                 data = list_to_32bit_int(lst)
                 factorio_signal_data.append({
                 "signal": {
@@ -192,10 +191,12 @@ if __name__ == "__main__":
         video_data_path = str(sys.argv[2])
         frame_count = 100
         #frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
+
         splits = 2
         max_combinators = 225 if len(sys.argv) < 4 else int(sys.argv[3])
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
+
         signals["combined"] = raw_signals["signals"]["top"] + raw_signals["signals"]["bottom"]
 
         make_blueprint(blueprint,signals,video_data_path,frame_count,max_combinators)
