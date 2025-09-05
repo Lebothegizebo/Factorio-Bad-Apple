@@ -23,6 +23,7 @@ def list_to_32bit_int(lst): #Thanks @artucuno for this function
     result = 0
     for bit in lst:
         result = (result << 1) | bit
+    result = result << 0  # Add 8 trailing zeros
     if result >= 0x80000000:  # If the sign bit is set
         result -= 0x100000000  # Convert to negative value
     return result
@@ -188,13 +189,12 @@ if __name__ == "__main__":
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
         json_path = str(sys.argv[1])
         video_data_path = str(sys.argv[2])
+        frame_count = 100
         frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
         max_combinators = 225 if len(sys.argv) < 4 else int(sys.argv[3])
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
         splits = len(raw_signals["signals"])
         for z in range(splits):
-            print(str(z)+": ", raw_signals["signals"]["split-"+str(z)])
             signals.append(raw_signals["signals"]["split-"+str(z)])
-        print(signals[0])
         make_blueprint(blueprint,signals,video_data_path,frame_count,max_combinators)

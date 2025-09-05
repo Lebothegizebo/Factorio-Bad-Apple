@@ -24,9 +24,6 @@ def json_to_blueprint(json_data):
     compressed = zlib.compress(json.dumps(json_data).encode('utf-8'), level=9)
     return '0' + base64.b64encode(compressed).decode('utf-8')
 
-def process():
-    None
-
 def make_blueprint():
     blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
     entity_number=1
@@ -37,61 +34,68 @@ def make_blueprint():
     x = 0
     y = 0
     bit = 0
-    signals
     bit_step = bit_max/bit_size
     and_constant = 1 if bit_size != 1 else (bit_max*bit_size)-1
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
-    for i, key in enumerate(list(raw_signals["signals"].keys())):
+    for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder.extend(raw_signals["decoder"][key])
-    for i in range(len(raw_signals["signals"]["split-0"])):
-        y = 0
-        column_count = 1
-        entity_number_track_top.append(entity_number)
-        for j in range(len(decoder)):
-            if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
-                column_count = 1
-                y += 2          
-            column_count += 1
-            blueprint["blueprint"]["entities"].append({
-                "entity_number": entity_number,
-                "name": "arithmetic-combinator",
-                "position": {"x": x, "y": y},
-                "direction": 8,
-                "control_behavior": {
-                    "arithmetic_conditions": {
-                                "first_signal": {
-                                    "type": "virtual",
-                                    "name": decoder[j]
-                                },
-                                "second_constant": bit,
-                                "operation": ">>",
-                                "output_signal": {
-                                    "type": "virtual",
-                                    "name": signals[i]
+    signal_id=-1
+    y_start = 0
+
+    for z in range(splits):
+        x=0
+        for i in range(len(raw_signals["signals"]["split-0"])):
+            y = y_start
+            column_count = 1
+            entity_number_track_top.append(entity_number)
+            for j in range(len(raw_signals["decoder"]["split-0"])):
+                if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+                    column_count = 1
+                    y += 2          
+                column_count += 1
+                print("Sgnals: ", str(i)+": ",raw_signals["signals"]["split-"+str(z)][i])
+                print("Decoder: ", str(j)+": ",raw_signals["decoder"]["split-"+str(z)][j])
+                blueprint["blueprint"]["entities"].append({
+                    "entity_number": entity_number,
+                    "name": "arithmetic-combinator",
+                    "position": {"x": x, "y": y},
+                    "direction": 8,
+                    "control_behavior": {
+                        "arithmetic_conditions": {
+                                    "first_signal": {
+                                        "type": "virtual",
+                                        "name": raw_signals["signals"]["split-"+str(z)][i]
+                                    },
+                                    "second_constant": bit,
+                                    "operation": ">>",
+                                    "output_signal": {
+                                        "type": "virtual",
+                                        "name": raw_signals["decoder"]["split-"+str(z)][j]
+                            }
                         }
                     }
-                }
-            })
-            blueprint["blueprint"]["wires"].append([
-                entity_number,
-                wire_green,
-                entity_number+1,
-                wire_green
-            ])
-            blueprint["blueprint"]["wires"].append([
-                entity_number,
-                wire_red,
-                entity_number+1,
-                wire_red
-            ])
-            entity_number += 1
-            bit += bit_step
-            if bit == 24:
-                bit = 8
-            y += 2
-        entity_number_track_bottom.append(entity_number)
-        x+=1
+                })
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    wire_green,
+                    entity_number+1,
+                    wire_green
+                ])
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    wire_red,
+                    entity_number+1,
+                    wire_red
+                ])
+                entity_number += 1
+                bit += bit_step
+                if bit == 24:
+                    bit = 0
+                y += 2
+            entity_number_track_bottom.append(entity_number)
+            x+=1
+        print("before:", y_start)
     x=0
     y +=2
     for i in range(len(raw_signals["signals"]["split-0"])):
@@ -119,7 +123,7 @@ def make_blueprint():
                 entity_number_track_bottom[i]-1,
                 wire_green,
                 entity_number,
-                wire_green
+                2
             ])
         entity_number += 1
         x += 1
