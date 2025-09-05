@@ -23,7 +23,7 @@ def list_to_32bit_int(lst): #Thanks @artucuno for this function
     result = 0
     for bit in lst:
         result = (result << 1) | bit
-    result = result << 8  # Add 8 trailing zeros
+    result = result << 0  # Add 8 trailing zeros
     if result >= 0x80000000:  # If the sign bit is set
         result -= 0x100000000  # Convert to negative value
     return result
@@ -196,7 +196,5 @@ if __name__ == "__main__":
             raw_signals = json.load(file)
         splits = len(raw_signals["signals"])
         for z in range(splits):
-            print(str(z)+": ", raw_signals["signals"]["split-"+str(z)])
             signals.append(raw_signals["signals"]["split-"+str(z)])
-        print(signals[0])
         make_blueprint(blueprint,signals,video_data_path,frame_count,max_combinators)
