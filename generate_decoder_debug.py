@@ -39,20 +39,16 @@ def make_blueprint():
         signals.extend(raw_signals["signals"][key])
     for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder.extend(raw_signals["decoder"][key])
-    print(decoder)
-    print("decoder length:", len(decoder)/splits)
     y_start = 0
     each_combinator_track = []
     entity_number_track_top = []
     entity_number_track_bottom = []
-    print("length",len(signals))
     x=0
     signal_id = 0
     for i in range(round(video_width)):
         entity_number_track_top.append(entity_number)
         y = y_start
         column_count = 1
-        print("Signal ID:", signal_id)
         for j in range(round(len(decoder))):
             if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
                 column_count = 1
@@ -64,8 +60,6 @@ def make_blueprint():
             if j >= round(len(decoder)/splits) and offset_needed:
                 offset_needed=False
                 signal_id_offset = round(len(signals)/splits)
-                print(round(len(signals)/splits))
-            print("EFFECTIVE SIGNAL ID:",(signal_id+signal_id_offset))
             blueprint["blueprint"]["entities"].append({
                 "entity_number": entity_number,
                 "name": "arithmetic-combinator",
@@ -135,8 +129,6 @@ def make_blueprint():
         entity_number += 1
         x += 1
     for i in range(len(each_combinator_track)):
-        print("DEBUG_EACH: ", each_combinator_track[i])
-        print("DEBUG_BOTTOM:", entity_number_track_bottom[i])
         blueprint["blueprint"]["wires"].append([
                     entity_number_track_bottom[i],
                     4,
