@@ -3,7 +3,7 @@
     "icons": [
       {
         "signal": {
-          "name": "arithmetic-combinator"
+          "name": "constant-combinator"
         },
         "index": 1
       }
@@ -11,58 +11,491 @@
     "entities": [
       {
         "entity_number": 1,
-        "name": "arithmetic-combinator",
+        "name": "constant-combinator",
         "position": {
-          "x": 1152.5,
-          "y": -341
+          "x": 623.5,
+          "y": -128.5
         },
-        "direction": 8,
         "control_behavior": {
-          "arithmetic_conditions": {
-            "first_signal": {
-              "type": "virtual",
-              "name": "signal-0"
-            },
-            "second_constant": 23,
-            "operation": ">>",
-            "output_signal": {
-              "type": "virtual",
-              "name": "signal-alert"
-            }
-          }
-        }
-      },
-      {
-        "entity_number": 2,
-        "name": "arithmetic-combinator",
-        "position": {
-          "x": 1152.5,
-          "y": -337
-        },
-        "direction": 8,
-        "control_behavior": {
-          "arithmetic_conditions": {
-            "first_signal": {
-              "type": "virtual",
-              "name": "signal-each"
-            },
-            "second_constant": 1,
-            "operation": "AND",
-            "output_signal": {
-              "type": "virtual",
-              "name": "signal-each"
-            }
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "virtual",
+                    "name": "signal-recycle",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 2,
+                    "type": "virtual",
+                    "name": "signal-trash-bin",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 3,
+                    "type": "virtual",
+                    "name": "signal-science-pack",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 4,
+                    "type": "virtual",
+                    "name": "signal-map-marker",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 5,
+                    "type": "virtual",
+                    "name": "signal-white-flag",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 6,
+                    "type": "virtual",
+                    "name": "signal-lock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 7,
+                    "type": "virtual",
+                    "name": "signal-unlock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 8,
+                    "type": "virtual",
+                    "name": "signal-speed",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 9,
+                    "type": "virtual",
+                    "name": "signal-clock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 10,
+                    "type": "virtual",
+                    "name": "signal-hourglass",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 11,
+                    "type": "virtual",
+                    "name": "signal-alarm",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 12,
+                    "type": "virtual",
+                    "name": "signal-sun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 13,
+                    "type": "virtual",
+                    "name": "signal-moon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 14,
+                    "type": "virtual",
+                    "name": "signal-mining",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 15,
+                    "type": "virtual",
+                    "name": "signal-skull",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 16,
+                    "type": "virtual",
+                    "name": "signal-damage",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 17,
+                    "type": "virtual",
+                    "name": "signal-weapon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 18,
+                    "type": "virtual",
+                    "name": "signal-ghost",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 19,
+                    "name": "wooden-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 20,
+                    "name": "iron-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 21,
+                    "name": "steel-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 22,
+                    "name": "storage-tank",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 23,
+                    "name": "transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 24,
+                    "name": "fast-transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 25,
+                    "name": "express-transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 26,
+                    "name": "turbo-transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 27,
+                    "name": "underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 28,
+                    "name": "fast-underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 29,
+                    "name": "express-underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 30,
+                    "name": "turbo-underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 31,
+                    "name": "splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 32,
+                    "name": "fast-splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 33,
+                    "name": "express-splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 34,
+                    "name": "turbo-splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 35,
+                    "name": "burner-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 36,
+                    "name": "inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 37,
+                    "name": "long-handed-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 38,
+                    "name": "fast-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 39,
+                    "name": "bulk-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 40,
+                    "name": "stack-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 41,
+                    "name": "small-electric-pole",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 42,
+                    "name": "medium-electric-pole",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 43,
+                    "name": "big-electric-pole",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 44,
+                    "name": "substation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 45,
+                    "name": "pipe",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 46,
+                    "name": "pipe-to-ground",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 47,
+                    "type": "recipe",
+                    "name": "casting-pipe",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 48,
+                    "type": "recipe",
+                    "name": "casting-pipe-to-ground",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 49,
+                    "name": "pump",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 50,
+                    "name": "rail",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 51,
+                    "name": "rail-ramp",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 52,
+                    "name": "rail-support",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 53,
+                    "name": "train-stop",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 54,
+                    "name": "rail-signal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 55,
+                    "name": "rail-chain-signal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 56,
+                    "name": "locomotive",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 57,
+                    "name": "cargo-wagon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 58,
+                    "name": "fluid-wagon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 59,
+                    "name": "artillery-wagon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 60,
+                    "name": "car",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 61,
+                    "name": "tank",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 62,
+                    "name": "spidertron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 63,
+                    "name": "logistic-robot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 64,
+                    "name": "construction-robot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
           }
         }
       }
-    ],
-    "wires": [
-      [
-        1,
-        4,
-        2,
-        2
-      ]
     ],
     "item": "blueprint",
     "version": 562949957353472

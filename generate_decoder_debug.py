@@ -9,7 +9,9 @@ wire_red = 1
 wire_green = 4
 bit_max = 32
 signals = []
+signals_type = []
 decoder = []
+decoder_type = []
 colour_mode = "2 bit" # "256 bit", "2 bit"
 
 if colour_mode == "256 bit":
@@ -37,8 +39,12 @@ def make_blueprint():
     and_constant = 1 if bit_size != 1 else (bit_max*bit_size)-1
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
+    for i, key in enumerate(list(raw_signals["signals-type"].keys())):
+        signals_type.extend(raw_signals["signals-type"][key])
     for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder.extend(raw_signals["decoder"][key])
+    for i, key in enumerate(list(raw_signals["decoder-type"].keys())):
+        decoder_type.extend(raw_signals["decoder-type"][key])
     y_start = 0
     each_combinator_track = []
     entity_number_track_top = []
@@ -60,26 +66,90 @@ def make_blueprint():
             if j >= round(len(decoder)/splits) and offset_needed:
                 offset_needed=False
                 signal_id_offset = round(len(signals)/splits)
-            blueprint["blueprint"]["entities"].append({
-                "entity_number": entity_number,
-                "name": "arithmetic-combinator",
-                "position": {"x": x, "y": y},
-                "direction": 8,
-                "control_behavior": {
-                    "arithmetic_conditions": {
-                                "first_signal": {
-                                    "type": "virtual",
-                                    "name": signals[(signal_id+signal_id_offset)]
-                                },
-                                "second_constant": bit,
-                                "operation": ">>",
-                                "output_signal": {
-                                    "type": "virtual",
-                                    "name": decoder[j]
+            if signals_type[(signal_id+signal_id_offset)] != "Null":
+                if decoder_type[j] != None:
+                    blueprint["blueprint"]["entities"].append({
+                        "entity_number": entity_number,
+                        "name": "arithmetic-combinator",
+                        "position": {"x": x, "y": y},
+                        "direction": 8,
+                        "control_behavior": {
+                            "arithmetic_conditions": {
+                                        "first_signal": {
+                                            "type" : signals_type[(signal_id+signal_id_offset)],
+                                            "name": signals[(signal_id+signal_id_offset)]
+                                        },
+                                        "second_constant": bit,
+                                        "operation": ">>",
+                                        "output_signal": {
+                                            "type": decoder_type[j],
+                                            "name": decoder[j]
+                                }
+                            }
                         }
-                    }
-                }
-            })
+                    })
+                else:
+                    blueprint["blueprint"]["entities"].append({
+                        "entity_number": entity_number,
+                        "name": "arithmetic-combinator",
+                        "position": {"x": x, "y": y},
+                        "direction": 8,
+                        "control_behavior": {
+                            "arithmetic_conditions": {
+                                        "first_signal": {
+                                            "type" : signals_type[(signal_id+signal_id_offset)],
+                                            "name": signals[(signal_id+signal_id_offset)]
+                                        },
+                                        "second_constant": bit,
+                                        "operation": ">>",
+                                        "output_signal": {
+                                            "name": decoder[j]
+                                }
+                            }
+                        }
+                    })
+            else:
+                if decoder_type[j] != None:
+                    blueprint["blueprint"]["entities"].append({
+                        "entity_number": entity_number,
+                        "name": "arithmetic-combinator",
+                        "position": {"x": x, "y": y},
+                        "direction": 8,
+                        "control_behavior": {
+                            "arithmetic_conditions": {
+                                        "first_signal": {
+                                            "name": signals[(signal_id+signal_id_offset)]
+                                        },
+                                        "second_constant": bit,
+                                        "operation": ">>",
+                                        "output_signal": {
+                                            "type": decoder_type[j],
+                                            "name": decoder[j]
+                                }
+                            }
+                        }
+                    })
+                else:
+                    blueprint["blueprint"]["entities"].append({
+                        "entity_number": entity_number,
+                        "name": "arithmetic-combinator",
+                        "position": {"x": x, "y": y},
+                        "direction": 8,
+                        "control_behavior": {
+                            "arithmetic_conditions": {
+                                        "first_signal": {
+                                            "name": signals[(signal_id+signal_id_offset)]
+                                        },
+                                        "second_constant": bit,
+                                        "operation": ">>",
+                                        "output_signal": {
+                                            "name": decoder[j]
+                                }
+                            }
+                        }
+                    })
+        
+
             blueprint["blueprint"]["wires"].append([
                 entity_number,
                 wire_green,
