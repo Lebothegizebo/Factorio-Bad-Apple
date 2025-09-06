@@ -25,7 +25,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 2,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -48,7 +48,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 3,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -71,7 +71,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 4,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -94,7 +94,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 5,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -117,7 +117,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 6,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -140,7 +140,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 7,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -163,7 +163,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 8,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -186,7 +186,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 9,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -209,7 +209,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 10,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -232,7 +232,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 11,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -255,7 +255,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 12,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -278,7 +278,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 13,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -301,7 +301,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 14,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -324,7 +324,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 15,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -347,7 +347,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 16,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -370,7 +370,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 17,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -393,7 +393,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 18,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -416,7 +416,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 19,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -439,7 +439,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 20,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -462,7 +462,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 21,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -485,7 +485,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 22,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -508,7 +508,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 23,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -531,7 +531,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 24,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -554,7 +554,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 25,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -577,7 +577,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 26,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -600,7 +600,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 27,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -623,7 +623,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 28,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -646,7 +646,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 29,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -669,7 +669,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 30,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -692,7 +692,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 31,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -715,7 +715,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 32,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -738,7 +738,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 33,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -761,7 +761,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 34,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -784,7 +784,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 35,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -807,7 +807,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 36,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -830,7 +830,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 37,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -853,7 +853,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 38,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -876,7 +876,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 39,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -899,7 +899,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 40,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -922,7 +922,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 41,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -945,7 +945,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 42,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -968,7 +968,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 43,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -991,7 +991,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 44,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -1014,7 +1014,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 45,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -1037,7 +1037,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 46,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -1060,7 +1060,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 47,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -1083,7 +1083,7 @@
                 "always_on": true
             },
             {
-                "entity_number": 1,
+                "entity_number": 48,
                 "name": "small-lamp",
                 "position": {
                     "x": 0,
@@ -1104,1113 +1104,298 @@
                     "a": 1
                 },
                 "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 48
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-star"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 49
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-info"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 50
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-vertical"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 51
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-horizontal"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 52
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-curve"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 53
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-curve-2"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 54
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-corner"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 55
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-corner-2"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 56
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-t"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 57
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-t-2"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 58
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-cross"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 59
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-diagonal-cross"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 60
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-diagonal"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 61
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-diagonal-2"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 62
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-curve-3"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 63
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-curve-4"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 64
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-corner-4"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 65
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-corner-3"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 66
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-t-4"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 67
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-t-3"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 68
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "shape-circle"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 69
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-dot"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 70
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "up-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 71
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "up-right-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 72
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "right-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 73
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "down-right-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 74
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "down-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 75
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "down-left-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 76
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "left-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 77
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "up-left-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 78
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-rightwards-leftwards-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 79
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-upwards-downwards-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 80
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-shuffle"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 81
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-left-right-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 82
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-up-down-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 83
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-clockwise-circle-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 84
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-anticlockwise-circle-arrow"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 85
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-input"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 86
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-output"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 87
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-fuel"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 88
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-lightning"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 89
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-battery-low"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 90
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-battery-mid-level"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 91
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-battery-full"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 92
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-radioactivity"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 93
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-thermometer-blue"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 94
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-thermometer-red"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
-            },
-            {
-                "entity_number": 1,
-                "name": "small-lamp",
-                "position": {
-                    "x": 0,
-                    "y": 95
-                },
-                "control_behavior": {
-                    "use_colors": true,
-                    "rgb_signal": {
-                        "type": "virtual",
-                        "name": "signal-fire"
-                    },
-                    "color_mode": 2
-                },
-                "color": {
-                    "r": 1,
-                    "g": 1,
-                    "b": 1,
-                    "a": 1
-                },
-                "always_on": true
             }
         ],
-        "wires": [],
+        "wires": [
+            [
+                1,
+                2,
+                2,
+                2
+            ],
+            [
+                2,
+                2,
+                3,
+                2
+            ],
+            [
+                3,
+                2,
+                4,
+                2
+            ],
+            [
+                4,
+                2,
+                5,
+                2
+            ],
+            [
+                5,
+                2,
+                6,
+                2
+            ],
+            [
+                6,
+                2,
+                7,
+                2
+            ],
+            [
+                7,
+                2,
+                8,
+                2
+            ],
+            [
+                8,
+                2,
+                9,
+                2
+            ],
+            [
+                9,
+                2,
+                10,
+                2
+            ],
+            [
+                10,
+                2,
+                11,
+                2
+            ],
+            [
+                11,
+                2,
+                12,
+                2
+            ],
+            [
+                12,
+                2,
+                13,
+                2
+            ],
+            [
+                13,
+                2,
+                14,
+                2
+            ],
+            [
+                14,
+                2,
+                15,
+                2
+            ],
+            [
+                15,
+                2,
+                16,
+                2
+            ],
+            [
+                16,
+                2,
+                17,
+                2
+            ],
+            [
+                17,
+                2,
+                18,
+                2
+            ],
+            [
+                18,
+                2,
+                19,
+                2
+            ],
+            [
+                19,
+                2,
+                20,
+                2
+            ],
+            [
+                20,
+                2,
+                21,
+                2
+            ],
+            [
+                21,
+                2,
+                22,
+                2
+            ],
+            [
+                22,
+                2,
+                23,
+                2
+            ],
+            [
+                23,
+                2,
+                24,
+                2
+            ],
+            [
+                24,
+                2,
+                25,
+                2
+            ],
+            [
+                25,
+                2,
+                26,
+                2
+            ],
+            [
+                26,
+                2,
+                27,
+                2
+            ],
+            [
+                27,
+                2,
+                28,
+                2
+            ],
+            [
+                28,
+                2,
+                29,
+                2
+            ],
+            [
+                29,
+                2,
+                30,
+                2
+            ],
+            [
+                30,
+                2,
+                31,
+                2
+            ],
+            [
+                31,
+                2,
+                32,
+                2
+            ],
+            [
+                32,
+                2,
+                33,
+                2
+            ],
+            [
+                33,
+                2,
+                34,
+                2
+            ],
+            [
+                34,
+                2,
+                35,
+                2
+            ],
+            [
+                35,
+                2,
+                36,
+                2
+            ],
+            [
+                36,
+                2,
+                37,
+                2
+            ],
+            [
+                37,
+                2,
+                38,
+                2
+            ],
+            [
+                38,
+                2,
+                39,
+                2
+            ],
+            [
+                39,
+                2,
+                40,
+                2
+            ],
+            [
+                40,
+                2,
+                41,
+                2
+            ],
+            [
+                41,
+                2,
+                42,
+                2
+            ],
+            [
+                42,
+                2,
+                43,
+                2
+            ],
+            [
+                43,
+                2,
+                44,
+                2
+            ],
+            [
+                44,
+                2,
+                45,
+                2
+            ],
+            [
+                45,
+                2,
+                46,
+                2
+            ],
+            [
+                46,
+                2,
+                47,
+                2
+            ],
+            [
+                47,
+                2,
+                48,
+                2
+            ],
+            [
+                48,
+                2,
+                49,
+                2
+            ]
+        ],
         "item": "blueprint",
         "version": 562949957353472
     }

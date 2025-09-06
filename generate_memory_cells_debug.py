@@ -189,8 +189,8 @@ if __name__ == "__main__":
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
         json_path = str(sys.argv[1])
         video_data_path = str(sys.argv[2])
-        frame_count = 100
-        frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
+        frame_count = 1000
+        #frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
         max_combinators = 225 if len(sys.argv) < 4 else int(sys.argv[3])
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)

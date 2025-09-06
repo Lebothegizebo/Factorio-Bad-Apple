@@ -4,8 +4,8 @@ import json
 import zlib
 import pyperclip
 
-wire_red = 1
-wire_green = 4
+wire_red = 2
+wire_green = 2
 bit_max = 32
 signals = []
 decoder = []
@@ -33,7 +33,7 @@ def make_blueprint():
         decoder.extend(raw_signals["decoder"][key])
     for i in range(len(decoder)):
         blueprint["blueprint"]["entities"].append({
-            "entity_number": 1,
+            "entity_number": entity_number,
             "name": "small-lamp",
             "position": {
             "x": x,
@@ -56,6 +56,12 @@ def make_blueprint():
             "always_on": True
 
         })
+        blueprint["blueprint"]["wires"].append([
+            entity_number,
+            wire_green,
+            entity_number+1,
+            wire_green
+        ])
         entity_number += 1
         y += 1
     else:
