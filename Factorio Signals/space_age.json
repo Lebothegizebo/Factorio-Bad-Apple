@@ -1,0 +1,4825 @@
+{
+  "blueprint": {
+    "icons": [
+      {
+        "signal": {
+          "name": "constant-combinator"
+        },
+        "index": 1
+      }
+    ],
+    "entities": [
+      {
+        "entity_number": 1,
+        "name": "constant-combinator",
+        "position": {
+          "x": 462.5,
+          "y": -360.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "type": "virtual",
+                    "name": "signal-0",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 2,
+                    "type": "virtual",
+                    "name": "signal-1",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 3,
+                    "type": "virtual",
+                    "name": "signal-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 4,
+                    "type": "virtual",
+                    "name": "signal-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 5,
+                    "type": "virtual",
+                    "name": "signal-4",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 6,
+                    "type": "virtual",
+                    "name": "signal-5",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 7,
+                    "type": "virtual",
+                    "name": "signal-6",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 8,
+                    "type": "virtual",
+                    "name": "signal-7",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 9,
+                    "type": "virtual",
+                    "name": "signal-8",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 10,
+                    "type": "virtual",
+                    "name": "signal-9",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 11,
+                    "type": "virtual",
+                    "name": "signal-A",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 12,
+                    "type": "virtual",
+                    "name": "signal-B",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 13,
+                    "type": "virtual",
+                    "name": "signal-C",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 14,
+                    "type": "virtual",
+                    "name": "signal-D",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 15,
+                    "type": "virtual",
+                    "name": "signal-E",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 16,
+                    "type": "virtual",
+                    "name": "signal-F",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 17,
+                    "type": "virtual",
+                    "name": "signal-G",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 18,
+                    "type": "virtual",
+                    "name": "signal-H",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 19,
+                    "type": "virtual",
+                    "name": "signal-I",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 20,
+                    "type": "virtual",
+                    "name": "signal-J",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 21,
+                    "type": "virtual",
+                    "name": "signal-K",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 22,
+                    "type": "virtual",
+                    "name": "signal-L",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 23,
+                    "type": "virtual",
+                    "name": "signal-M",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 24,
+                    "type": "virtual",
+                    "name": "signal-N",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 25,
+                    "type": "virtual",
+                    "name": "signal-O",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 26,
+                    "type": "virtual",
+                    "name": "signal-P",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 27,
+                    "type": "virtual",
+                    "name": "signal-Q",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 28,
+                    "type": "virtual",
+                    "name": "signal-R",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 29,
+                    "type": "virtual",
+                    "name": "signal-S",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 30,
+                    "type": "virtual",
+                    "name": "signal-T",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 31,
+                    "type": "virtual",
+                    "name": "signal-U",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 32,
+                    "type": "virtual",
+                    "name": "signal-V",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 33,
+                    "type": "virtual",
+                    "name": "signal-W",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 34,
+                    "type": "virtual",
+                    "name": "signal-X",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 35,
+                    "type": "virtual",
+                    "name": "signal-Y",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 36,
+                    "type": "virtual",
+                    "name": "signal-Z",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 37,
+                    "type": "virtual",
+                    "name": "signal-comma",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 38,
+                    "type": "virtual",
+                    "name": "signal-letter-dot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 39,
+                    "type": "virtual",
+                    "name": "signal-exclamation-mark",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 40,
+                    "type": "virtual",
+                    "name": "signal-question-mark",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 41,
+                    "type": "virtual",
+                    "name": "signal-colon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 42,
+                    "type": "virtual",
+                    "name": "signal-slash",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 43,
+                    "type": "virtual",
+                    "name": "signal-apostrophe",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 44,
+                    "type": "virtual",
+                    "name": "signal-quotation-mark",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 45,
+                    "type": "virtual",
+                    "name": "signal-ampersand",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 46,
+                    "type": "virtual",
+                    "name": "signal-circumflex-accent",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 47,
+                    "type": "virtual",
+                    "name": "signal-number-sign",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 48,
+                    "type": "virtual",
+                    "name": "signal-percent",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 49,
+                    "type": "virtual",
+                    "name": "signal-plus",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 50,
+                    "type": "virtual",
+                    "name": "signal-minus",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 51,
+                    "type": "virtual",
+                    "name": "signal-multiplication",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 52,
+                    "type": "virtual",
+                    "name": "signal-division",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 53,
+                    "type": "virtual",
+                    "name": "signal-equal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 54,
+                    "type": "virtual",
+                    "name": "signal-not-equal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 55,
+                    "type": "virtual",
+                    "name": "signal-less-than",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 56,
+                    "type": "virtual",
+                    "name": "signal-greater-than",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 57,
+                    "type": "virtual",
+                    "name": "signal-less-than-or-equal-to",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 58,
+                    "type": "virtual",
+                    "name": "signal-greater-than-or-equal-to",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 59,
+                    "type": "virtual",
+                    "name": "signal-left-parenthesis",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 60,
+                    "type": "virtual",
+                    "name": "signal-right-parenthesis",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 61,
+                    "type": "virtual",
+                    "name": "signal-left-square-bracket",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 62,
+                    "type": "virtual",
+                    "name": "signal-right-square-bracket",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 63,
+                    "type": "virtual",
+                    "name": "signal-red",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 64,
+                    "type": "virtual",
+                    "name": "signal-green",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 65,
+                    "type": "virtual",
+                    "name": "signal-blue",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 66,
+                    "type": "virtual",
+                    "name": "signal-cyan",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 67,
+                    "type": "virtual",
+                    "name": "signal-pink",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 68,
+                    "type": "virtual",
+                    "name": "signal-yellow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 69,
+                    "type": "virtual",
+                    "name": "signal-white",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 70,
+                    "type": "virtual",
+                    "name": "signal-grey",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 71,
+                    "type": "virtual",
+                    "name": "signal-black",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 72,
+                    "type": "virtual",
+                    "name": "signal-check",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 73,
+                    "type": "virtual",
+                    "name": "signal-deny",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 74,
+                    "type": "virtual",
+                    "name": "signal-no-entry",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 75,
+                    "type": "virtual",
+                    "name": "signal-heart",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 76,
+                    "type": "virtual",
+                    "name": "signal-alert",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 77,
+                    "type": "virtual",
+                    "name": "signal-star",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 78,
+                    "type": "virtual",
+                    "name": "signal-info",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 79,
+                    "type": "virtual",
+                    "name": "shape-vertical",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 80,
+                    "type": "virtual",
+                    "name": "shape-horizontal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 81,
+                    "type": "virtual",
+                    "name": "shape-curve",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 82,
+                    "type": "virtual",
+                    "name": "shape-curve-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 83,
+                    "type": "virtual",
+                    "name": "shape-corner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 84,
+                    "type": "virtual",
+                    "name": "shape-corner-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 85,
+                    "type": "virtual",
+                    "name": "shape-t",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 86,
+                    "type": "virtual",
+                    "name": "shape-t-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 87,
+                    "type": "virtual",
+                    "name": "shape-cross",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 88,
+                    "type": "virtual",
+                    "name": "shape-diagonal-cross",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 89,
+                    "type": "virtual",
+                    "name": "shape-diagonal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 90,
+                    "type": "virtual",
+                    "name": "shape-diagonal-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 91,
+                    "type": "virtual",
+                    "name": "shape-curve-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 92,
+                    "type": "virtual",
+                    "name": "shape-curve-4",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 93,
+                    "type": "virtual",
+                    "name": "shape-corner-4",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 94,
+                    "type": "virtual",
+                    "name": "shape-corner-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 95,
+                    "type": "virtual",
+                    "name": "shape-t-4",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 96,
+                    "type": "virtual",
+                    "name": "shape-t-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 97,
+                    "type": "virtual",
+                    "name": "shape-circle",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 98,
+                    "type": "virtual",
+                    "name": "signal-dot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 99,
+                    "type": "virtual",
+                    "name": "up-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 100,
+                    "type": "virtual",
+                    "name": "up-right-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 101,
+                    "type": "virtual",
+                    "name": "right-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 102,
+                    "type": "virtual",
+                    "name": "down-right-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 103,
+                    "type": "virtual",
+                    "name": "down-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 104,
+                    "type": "virtual",
+                    "name": "down-left-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 105,
+                    "type": "virtual",
+                    "name": "left-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 106,
+                    "type": "virtual",
+                    "name": "up-left-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 107,
+                    "type": "virtual",
+                    "name": "signal-rightwards-leftwards-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 108,
+                    "type": "virtual",
+                    "name": "signal-upwards-downwards-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 109,
+                    "type": "virtual",
+                    "name": "signal-shuffle",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 110,
+                    "type": "virtual",
+                    "name": "signal-left-right-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 111,
+                    "type": "virtual",
+                    "name": "signal-up-down-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 112,
+                    "type": "virtual",
+                    "name": "signal-clockwise-circle-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 113,
+                    "type": "virtual",
+                    "name": "signal-anticlockwise-circle-arrow",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 114,
+                    "type": "virtual",
+                    "name": "signal-input",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 115,
+                    "type": "virtual",
+                    "name": "signal-output",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 116,
+                    "type": "virtual",
+                    "name": "signal-fuel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 117,
+                    "type": "virtual",
+                    "name": "signal-lightning",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 118,
+                    "type": "virtual",
+                    "name": "signal-battery-low",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 119,
+                    "type": "virtual",
+                    "name": "signal-battery-mid-level",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 120,
+                    "type": "virtual",
+                    "name": "signal-battery-full",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 121,
+                    "type": "virtual",
+                    "name": "signal-radioactivity",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 122,
+                    "type": "virtual",
+                    "name": "signal-thermometer-blue",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 123,
+                    "type": "virtual",
+                    "name": "signal-thermometer-red",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 124,
+                    "type": "virtual",
+                    "name": "signal-fire",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 125,
+                    "type": "virtual",
+                    "name": "signal-snowflake",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 126,
+                    "type": "virtual",
+                    "name": "signal-explosion",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 127,
+                    "type": "virtual",
+                    "name": "signal-liquid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 128,
+                    "type": "virtual",
+                    "name": "signal-stack-size",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 129,
+                    "type": "virtual",
+                    "name": "signal-recycle",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 130,
+                    "type": "virtual",
+                    "name": "signal-trash-bin",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 131,
+                    "type": "virtual",
+                    "name": "signal-science-pack",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 132,
+                    "type": "virtual",
+                    "name": "signal-map-marker",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 133,
+                    "type": "virtual",
+                    "name": "signal-white-flag",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 134,
+                    "type": "virtual",
+                    "name": "signal-lock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 135,
+                    "type": "virtual",
+                    "name": "signal-unlock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 136,
+                    "type": "virtual",
+                    "name": "signal-speed",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 137,
+                    "type": "virtual",
+                    "name": "signal-clock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 138,
+                    "type": "virtual",
+                    "name": "signal-hourglass",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 139,
+                    "type": "virtual",
+                    "name": "signal-alarm",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 140,
+                    "type": "virtual",
+                    "name": "signal-sun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 141,
+                    "type": "virtual",
+                    "name": "signal-moon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 142,
+                    "type": "virtual",
+                    "name": "signal-mining",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 143,
+                    "type": "virtual",
+                    "name": "signal-skull",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 144,
+                    "type": "virtual",
+                    "name": "signal-damage",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 145,
+                    "type": "virtual",
+                    "name": "signal-weapon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 146,
+                    "type": "virtual",
+                    "name": "signal-ghost",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 147,
+                    "name": "wooden-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 148,
+                    "name": "iron-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 149,
+                    "name": "steel-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 150,
+                    "name": "storage-tank",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 151,
+                    "name": "transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 152,
+                    "name": "fast-transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 153,
+                    "name": "express-transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 154,
+                    "name": "turbo-transport-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 155,
+                    "name": "underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 156,
+                    "name": "fast-underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 157,
+                    "name": "express-underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 158,
+                    "name": "turbo-underground-belt",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 159,
+                    "name": "splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 160,
+                    "name": "fast-splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 161,
+                    "name": "express-splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 162,
+                    "name": "turbo-splitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 163,
+                    "name": "burner-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 164,
+                    "name": "inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 165,
+                    "name": "long-handed-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 166,
+                    "name": "fast-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 167,
+                    "name": "bulk-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 168,
+                    "name": "stack-inserter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 169,
+                    "name": "small-electric-pole",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 170,
+                    "name": "medium-electric-pole",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 171,
+                    "name": "big-electric-pole",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 172,
+                    "name": "substation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 173,
+                    "name": "pipe",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 174,
+                    "name": "pipe-to-ground",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 175,
+                    "type": "recipe",
+                    "name": "casting-pipe",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 176,
+                    "type": "recipe",
+                    "name": "casting-pipe-to-ground",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 177,
+                    "name": "pump",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 178,
+                    "name": "rail",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 179,
+                    "name": "rail-ramp",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 180,
+                    "name": "rail-support",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 181,
+                    "name": "train-stop",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 182,
+                    "name": "rail-signal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 183,
+                    "name": "rail-chain-signal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 184,
+                    "name": "locomotive",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 185,
+                    "name": "cargo-wagon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 186,
+                    "name": "fluid-wagon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 187,
+                    "name": "artillery-wagon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 188,
+                    "name": "car",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 189,
+                    "name": "tank",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 190,
+                    "name": "spidertron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 191,
+                    "name": "logistic-robot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 192,
+                    "name": "construction-robot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 193,
+                    "name": "active-provider-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 194,
+                    "name": "passive-provider-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 195,
+                    "name": "storage-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 196,
+                    "name": "buffer-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 197,
+                    "name": "requester-chest",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 198,
+                    "name": "roboport",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 199,
+                    "name": "small-lamp",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 200,
+                    "name": "arithmetic-combinator",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 201,
+                    "name": "decider-combinator",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 202,
+                    "name": "selector-combinator",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 203,
+                    "name": "constant-combinator",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 204,
+                    "name": "power-switch",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 205,
+                    "name": "programmable-speaker",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 206,
+                    "name": "display-panel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 207,
+                    "name": "stone-brick",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 208,
+                    "name": "concrete",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 209,
+                    "name": "hazard-concrete",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 210,
+                    "name": "refined-concrete",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 211,
+                    "name": "refined-hazard-concrete",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 212,
+                    "name": "landfill",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 213,
+                    "name": "artificial-yumako-soil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 214,
+                    "name": "overgrowth-yumako-soil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 215,
+                    "name": "artificial-jellynut-soil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 216,
+                    "name": "overgrowth-jellynut-soil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 217,
+                    "name": "ice-platform",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 218,
+                    "name": "foundation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 219,
+                    "name": "cliff-explosives",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 220,
+                    "name": "repair-pack",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 221,
+                    "name": "blueprint",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 222,
+                    "name": "deconstruction-planner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 223,
+                    "name": "upgrade-planner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 224,
+                    "name": "blueprint-book",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 225,
+                    "name": "boiler",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 226,
+                    "name": "steam-engine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 227,
+                    "name": "solar-panel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 228,
+                    "name": "accumulator",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 229,
+                    "name": "nuclear-reactor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 230,
+                    "name": "heat-pipe",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 231,
+                    "name": "heat-exchanger",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 232,
+                    "name": "steam-turbine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 233,
+                    "name": "fusion-reactor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 234,
+                    "name": "fusion-generator",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 235,
+                    "name": "burner-mining-drill",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 236,
+                    "name": "electric-mining-drill",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 237,
+                    "name": "big-mining-drill",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 238,
+                    "name": "offshore-pump",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 239,
+                    "name": "pumpjack",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 240,
+                    "name": "stone-furnace",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 241,
+                    "name": "steel-furnace",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 242,
+                    "name": "electric-furnace",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 243,
+                    "name": "foundry",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 244,
+                    "name": "recycler",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 245,
+                    "name": "agricultural-tower",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 246,
+                    "name": "biochamber",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 247,
+                    "name": "captive-biter-spawner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 248,
+                    "name": "assembling-machine-1",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 249,
+                    "name": "assembling-machine-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 250,
+                    "name": "assembling-machine-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 251,
+                    "name": "oil-refinery",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 252,
+                    "name": "chemical-plant",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 253,
+                    "name": "centrifuge",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 254,
+                    "name": "electromagnetic-plant",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 255,
+                    "name": "cryogenic-plant",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 256,
+                    "name": "lab",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 257,
+                    "name": "biolab",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 258,
+                    "name": "lightning-rod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 259,
+                    "name": "lightning-collector",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 260,
+                    "name": "heating-tower",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 261,
+                    "name": "beacon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 262,
+                    "name": "speed-module",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 263,
+                    "name": "speed-module-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 264,
+                    "name": "speed-module-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 265,
+                    "name": "efficiency-module",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 266,
+                    "name": "efficiency-module-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 267,
+                    "name": "efficiency-module-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 268,
+                    "name": "productivity-module",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 269,
+                    "name": "productivity-module-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 270,
+                    "name": "productivity-module-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 271,
+                    "name": "quality-module",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 272,
+                    "name": "quality-module-2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 273,
+                    "name": "quality-module-3",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 274,
+                    "type": "recipe",
+                    "name": "basic-oil-processing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 275,
+                    "type": "recipe",
+                    "name": "advanced-oil-processing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 276,
+                    "type": "recipe",
+                    "name": "simple-coal-liquefaction",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 277,
+                    "type": "recipe",
+                    "name": "coal-liquefaction",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 278,
+                    "type": "recipe",
+                    "name": "heavy-oil-cracking",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 279,
+                    "type": "recipe",
+                    "name": "light-oil-cracking",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 280,
+                    "type": "recipe",
+                    "name": "solid-fuel-from-petroleum-gas",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 281,
+                    "type": "recipe",
+                    "name": "solid-fuel-from-light-oil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 282,
+                    "type": "recipe",
+                    "name": "solid-fuel-from-heavy-oil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 283,
+                    "type": "recipe",
+                    "name": "acid-neutralisation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 284,
+                    "type": "recipe",
+                    "name": "steam-condensation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 285,
+                    "type": "recipe",
+                    "name": "ice-melting",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 286,
+                    "name": "wood",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 287,
+                    "name": "coal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 288,
+                    "name": "stone",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 289,
+                    "name": "iron-ore",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 290,
+                    "name": "copper-ore",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 291,
+                    "name": "uranium-ore",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 292,
+                    "name": "raw-fish",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 293,
+                    "name": "ice",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 294,
+                    "name": "iron-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 295,
+                    "name": "copper-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 296,
+                    "name": "steel-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 297,
+                    "name": "solid-fuel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 298,
+                    "name": "plastic-bar",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 299,
+                    "name": "sulfur",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 300,
+                    "name": "battery",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 301,
+                    "name": "explosives",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 302,
+                    "name": "carbon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 303,
+                    "type": "recipe",
+                    "name": "coal-synthesis",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 304,
+                    "name": "water-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 305,
+                    "name": "crude-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 306,
+                    "name": "petroleum-gas-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 307,
+                    "name": "light-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 308,
+                    "name": "heavy-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 309,
+                    "name": "lubricant-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 310,
+                    "name": "sulfuric-acid-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 311,
+                    "name": "fluoroketone-hot-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 312,
+                    "name": "fluoroketone-cold-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 313,
+                    "type": "recipe",
+                    "name": "water-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 314,
+                    "type": "recipe",
+                    "name": "crude-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 315,
+                    "type": "recipe",
+                    "name": "petroleum-gas-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 316,
+                    "type": "recipe",
+                    "name": "light-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 317,
+                    "type": "recipe",
+                    "name": "heavy-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 318,
+                    "type": "recipe",
+                    "name": "lubricant-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 319,
+                    "type": "recipe",
+                    "name": "sulfuric-acid-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 320,
+                    "type": "recipe",
+                    "name": "fluoroketone-hot-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 321,
+                    "type": "recipe",
+                    "name": "fluoroketone-cold-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 322,
+                    "type": "recipe",
+                    "name": "empty-water-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 323,
+                    "type": "recipe",
+                    "name": "empty-crude-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 324,
+                    "type": "recipe",
+                    "name": "empty-petroleum-gas-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 325,
+                    "type": "recipe",
+                    "name": "empty-light-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 326,
+                    "type": "recipe",
+                    "name": "empty-heavy-oil-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 327,
+                    "type": "recipe",
+                    "name": "empty-lubricant-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 328,
+                    "type": "recipe",
+                    "name": "empty-sulfuric-acid-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 329,
+                    "type": "recipe",
+                    "name": "empty-fluoroketone-hot-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 330,
+                    "type": "recipe",
+                    "name": "empty-fluoroketone-cold-barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 331,
+                    "name": "iron-gear-wheel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 332,
+                    "name": "iron-stick",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 333,
+                    "name": "copper-cable",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 334,
+                    "name": "barrel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 335,
+                    "name": "electronic-circuit",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 336,
+                    "name": "advanced-circuit",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 337,
+                    "name": "processing-unit",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 338,
+                    "name": "engine-unit",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 339,
+                    "name": "electric-engine-unit",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 340,
+                    "name": "flying-robot-frame",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 341,
+                    "name": "low-density-structure",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 342,
+                    "name": "rocket-fuel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 343,
+                    "type": "recipe",
+                    "name": "uranium-processing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 344,
+                    "name": "uranium-235",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 345,
+                    "name": "uranium-238",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 346,
+                    "name": "uranium-fuel-cell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 347,
+                    "name": "depleted-uranium-fuel-cell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 348,
+                    "type": "recipe",
+                    "name": "nuclear-fuel-reprocessing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 349,
+                    "type": "recipe",
+                    "name": "kovarex-enrichment-process",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 350,
+                    "name": "nuclear-fuel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 351,
+                    "name": "calcite",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 352,
+                    "type": "recipe",
+                    "name": "molten-iron-from-lava",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 353,
+                    "type": "recipe",
+                    "name": "molten-copper-from-lava",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 354,
+                    "type": "recipe",
+                    "name": "molten-iron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 355,
+                    "type": "recipe",
+                    "name": "molten-copper",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 356,
+                    "type": "recipe",
+                    "name": "casting-iron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 357,
+                    "type": "recipe",
+                    "name": "casting-copper",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 358,
+                    "type": "recipe",
+                    "name": "casting-steel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 359,
+                    "type": "recipe",
+                    "name": "casting-iron-gear-wheel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 360,
+                    "type": "recipe",
+                    "name": "casting-iron-stick",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 361,
+                    "type": "recipe",
+                    "name": "casting-low-density-structure",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 362,
+                    "type": "recipe",
+                    "name": "concrete-from-molten-iron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 363,
+                    "type": "recipe",
+                    "name": "casting-copper-cable",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 364,
+                    "name": "tungsten-ore",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 365,
+                    "name": "tungsten-carbide",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 366,
+                    "name": "tungsten-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 367,
+                    "name": "scrap",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 368,
+                    "type": "recipe",
+                    "name": "scrap-recycling",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 369,
+                    "name": "holmium-ore",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 370,
+                    "name": "holmium-plate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 371,
+                    "name": "superconductor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 372,
+                    "name": "supercapacitor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 373,
+                    "type": "recipe",
+                    "name": "yumako-processing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 374,
+                    "name": "yumako-seed",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 375,
+                    "type": "recipe",
+                    "name": "jellynut-processing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 376,
+                    "name": "jellynut-seed",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 377,
+                    "name": "yumako",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 378,
+                    "name": "jellynut",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 379,
+                    "name": "iron-bacteria",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 380,
+                    "type": "recipe",
+                    "name": "iron-bacteria-cultivation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 381,
+                    "name": "copper-bacteria",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 382,
+                    "type": "recipe",
+                    "name": "copper-bacteria-cultivation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 383,
+                    "name": "spoilage",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 384,
+                    "name": "nutrients",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 385,
+                    "type": "recipe",
+                    "name": "nutrients-from-spoilage",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 386,
+                    "type": "recipe",
+                    "name": "nutrients-from-yumako-mash",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 387,
+                    "type": "recipe",
+                    "name": "nutrients-from-bioflux",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 388,
+                    "name": "bioflux",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 389,
+                    "name": "yumako-mash",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 390,
+                    "name": "jelly",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 391,
+                    "type": "recipe",
+                    "name": "rocket-fuel-from-jelly",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 392,
+                    "type": "recipe",
+                    "name": "biolubricant",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 393,
+                    "type": "recipe",
+                    "name": "bioplastic",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 394,
+                    "type": "recipe",
+                    "name": "biosulfur",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 395,
+                    "name": "carbon-fiber",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 396,
+                    "type": "recipe",
+                    "name": "burnt-spoilage",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 397,
+                    "name": "biter-egg",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 398,
+                    "name": "pentapod-egg",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 399,
+                    "name": "rocket-silo",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 400,
+                    "type": "recipe",
+                    "name": "rocket-part",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 401,
+                    "name": "cargo-landing-pad",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 402,
+                    "type": "entity",
+                    "name": "cargo-pod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 403,
+                    "type": "entity",
+                    "name": "cargo-pod-container",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 404,
+                    "name": "space-platform-foundation",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 405,
+                    "name": "cargo-bay",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 406,
+                    "name": "asteroid-collector",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 407,
+                    "name": "crusher",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 408,
+                    "name": "thruster",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 409,
+                    "name": "space-platform-starter-pack",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 410,
+                    "type": "entity",
+                    "name": "small-metallic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 411,
+                    "type": "entity",
+                    "name": "medium-metallic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 412,
+                    "type": "entity",
+                    "name": "big-metallic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 413,
+                    "type": "entity",
+                    "name": "huge-metallic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 414,
+                    "type": "entity",
+                    "name": "small-carbonic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 415,
+                    "type": "entity",
+                    "name": "medium-carbonic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 416,
+                    "type": "entity",
+                    "name": "big-carbonic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 417,
+                    "type": "entity",
+                    "name": "huge-carbonic-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 418,
+                    "type": "entity",
+                    "name": "small-oxide-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 419,
+                    "type": "entity",
+                    "name": "medium-oxide-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 420,
+                    "type": "entity",
+                    "name": "big-oxide-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 421,
+                    "type": "entity",
+                    "name": "huge-oxide-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 422,
+                    "type": "entity",
+                    "name": "small-promethium-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 423,
+                    "type": "entity",
+                    "name": "medium-promethium-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 424,
+                    "type": "entity",
+                    "name": "big-promethium-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 425,
+                    "type": "entity",
+                    "name": "huge-promethium-asteroid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 426,
+                    "name": "metallic-asteroid-chunk",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 427,
+                    "name": "carbonic-asteroid-chunk",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 428,
+                    "name": "oxide-asteroid-chunk",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 429,
+                    "name": "promethium-asteroid-chunk",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 430,
+                    "type": "recipe",
+                    "name": "metallic-asteroid-crushing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 431,
+                    "type": "recipe",
+                    "name": "carbonic-asteroid-crushing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 432,
+                    "type": "recipe",
+                    "name": "oxide-asteroid-crushing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 433,
+                    "type": "recipe",
+                    "name": "metallic-asteroid-reprocessing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 434,
+                    "type": "recipe",
+                    "name": "carbonic-asteroid-reprocessing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 435,
+                    "type": "recipe",
+                    "name": "oxide-asteroid-reprocessing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 436,
+                    "type": "recipe",
+                    "name": "advanced-metallic-asteroid-crushing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 437,
+                    "type": "recipe",
+                    "name": "advanced-carbonic-asteroid-crushing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 438,
+                    "type": "recipe",
+                    "name": "advanced-oxide-asteroid-crushing",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 439,
+                    "type": "recipe",
+                    "name": "advanced-thruster-fuel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 440,
+                    "type": "recipe",
+                    "name": "advanced-thruster-oxidizer",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 441,
+                    "type": "space-location",
+                    "name": "nauvis",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 442,
+                    "type": "space-location",
+                    "name": "vulcanus",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 443,
+                    "type": "space-location",
+                    "name": "gleba",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 444,
+                    "type": "space-location",
+                    "name": "fulgora",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 445,
+                    "type": "space-location",
+                    "name": "aquilo",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 446,
+                    "type": "space-location",
+                    "name": "solar-system-edge",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 447,
+                    "type": "space-location",
+                    "name": "shattered-planet",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 448,
+                    "name": "pistol",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 449,
+                    "name": "submachine-gun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 450,
+                    "name": "railgun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 451,
+                    "name": "teslagun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 452,
+                    "name": "shotgun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 453,
+                    "name": "combat-shotgun",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 454,
+                    "name": "rocket-launcher",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 455,
+                    "name": "flamethrower",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 456,
+                    "name": "firearm-magazine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 457,
+                    "name": "piercing-rounds-magazine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 458,
+                    "name": "uranium-rounds-magazine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 459,
+                    "name": "shotgun-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 460,
+                    "name": "piercing-shotgun-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 461,
+                    "name": "cannon-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 462,
+                    "name": "explosive-cannon-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 463,
+                    "name": "uranium-cannon-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 464,
+                    "name": "explosive-uranium-cannon-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 465,
+                    "name": "artillery-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 466,
+                    "name": "rocket",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 467,
+                    "name": "explosive-rocket",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 468,
+                    "name": "atomic-bomb",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 469,
+                    "name": "capture-robot-rocket",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 470,
+                    "name": "flamethrower-ammo",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 471,
+                    "name": "railgun-ammo",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 472,
+                    "name": "tesla-ammo",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 473,
+                    "name": "grenade",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 474,
+                    "name": "cluster-grenade",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 475,
+                    "name": "poison-capsule",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 476,
+                    "name": "slowdown-capsule",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 477,
+                    "type": "entity",
+                    "name": "defender",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 478,
+                    "name": "defender-capsule",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 479,
+                    "type": "entity",
+                    "name": "distractor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 480,
+                    "name": "distractor-capsule",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 481,
+                    "type": "entity",
+                    "name": "destroyer",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 482,
+                    "name": "destroyer-capsule",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 483,
+                    "name": "light-armor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 484,
+                    "name": "heavy-armor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 485,
+                    "name": "modular-armor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 486,
+                    "name": "power-armor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 487,
+                    "name": "power-armor-mk2",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 488,
+                    "name": "mech-armor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 489,
+                    "name": "solar-panel-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 490,
+                    "name": "fission-reactor-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 491,
+                    "name": "fusion-reactor-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 492,
+                    "name": "battery-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 493,
+                    "name": "battery-mk2-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 494,
+                    "name": "battery-mk3-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 495,
+                    "name": "belt-immunity-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 496,
+                    "name": "exoskeleton-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 497,
+                    "name": "personal-roboport-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 498,
+                    "name": "personal-roboport-mk2-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 499,
+                    "name": "night-vision-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 500,
+                    "name": "toolbelt-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 501,
+                    "name": "energy-shield-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 502,
+                    "name": "energy-shield-mk2-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 503,
+                    "name": "personal-laser-defense-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 504,
+                    "name": "discharge-defense-equipment",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 505,
+                    "name": "stone-wall",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 506,
+                    "name": "gate",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 507,
+                    "name": "radar",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 508,
+                    "name": "land-mine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 509,
+                    "name": "gun-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 510,
+                    "name": "laser-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 511,
+                    "name": "flamethrower-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 512,
+                    "name": "artillery-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 513,
+                    "name": "rocket-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 514,
+                    "name": "tesla-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 515,
+                    "name": "railgun-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 516,
+                    "type": "fluid",
+                    "name": "water",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 517,
+                    "type": "fluid",
+                    "name": "steam",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 518,
+                    "type": "fluid",
+                    "name": "crude-oil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 519,
+                    "type": "fluid",
+                    "name": "petroleum-gas",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 520,
+                    "type": "fluid",
+                    "name": "light-oil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 521,
+                    "type": "fluid",
+                    "name": "heavy-oil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 522,
+                    "type": "fluid",
+                    "name": "lubricant",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 523,
+                    "type": "fluid",
+                    "name": "sulfuric-acid",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 524,
+                    "type": "fluid",
+                    "name": "thruster-fuel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 525,
+                    "type": "fluid",
+                    "name": "thruster-oxidizer",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 526,
+                    "type": "fluid",
+                    "name": "lava",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 527,
+                    "type": "fluid",
+                    "name": "molten-iron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 528,
+                    "type": "fluid",
+                    "name": "molten-copper",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 529,
+                    "type": "fluid",
+                    "name": "holmium-solution",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 530,
+                    "type": "fluid",
+                    "name": "electrolyte",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 531,
+                    "type": "fluid",
+                    "name": "ammoniacal-solution",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 532,
+                    "type": "fluid",
+                    "name": "ammonia",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 533,
+                    "type": "fluid",
+                    "name": "fluorine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 534,
+                    "type": "fluid",
+                    "name": "fluoroketone-hot",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 535,
+                    "type": "fluid",
+                    "name": "fluoroketone-cold",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 536,
+                    "type": "fluid",
+                    "name": "lithium-brine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 537,
+                    "type": "fluid",
+                    "name": "fusion-plasma",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 538,
+                    "type": "entity",
+                    "name": "small-biter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 539,
+                    "type": "entity",
+                    "name": "medium-biter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 540,
+                    "type": "entity",
+                    "name": "big-biter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 541,
+                    "type": "entity",
+                    "name": "behemoth-biter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 542,
+                    "type": "entity",
+                    "name": "small-spitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 543,
+                    "type": "entity",
+                    "name": "medium-spitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 544,
+                    "type": "entity",
+                    "name": "big-spitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 545,
+                    "type": "entity",
+                    "name": "behemoth-spitter",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 546,
+                    "type": "entity",
+                    "name": "small-worm-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 547,
+                    "type": "entity",
+                    "name": "medium-worm-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 548,
+                    "type": "entity",
+                    "name": "big-worm-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 549,
+                    "type": "entity",
+                    "name": "behemoth-worm-turret",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 550,
+                    "type": "entity",
+                    "name": "biter-spawner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 551,
+                    "type": "entity",
+                    "name": "spitter-spawner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 552,
+                    "type": "entity",
+                    "name": "small-wriggler-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 553,
+                    "type": "entity",
+                    "name": "small-wriggler-pentapod-premature",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 554,
+                    "type": "entity",
+                    "name": "medium-wriggler-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 555,
+                    "type": "entity",
+                    "name": "medium-wriggler-pentapod-premature",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 556,
+                    "type": "entity",
+                    "name": "big-wriggler-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 557,
+                    "type": "entity",
+                    "name": "big-wriggler-pentapod-premature",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 558,
+                    "type": "entity",
+                    "name": "small-strafer-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 559,
+                    "type": "entity",
+                    "name": "medium-strafer-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 560,
+                    "type": "entity",
+                    "name": "big-strafer-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 561,
+                    "type": "entity",
+                    "name": "small-stomper-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 562,
+                    "type": "entity",
+                    "name": "medium-stomper-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 563,
+                    "type": "entity",
+                    "name": "big-stomper-pentapod",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 564,
+                    "type": "entity",
+                    "name": "gleba-spawner",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 565,
+                    "type": "entity",
+                    "name": "gleba-spawner-small",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 566,
+                    "type": "entity",
+                    "name": "small-demolisher",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 567,
+                    "type": "entity",
+                    "name": "medium-demolisher",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 568,
+                    "type": "entity",
+                    "name": "big-demolisher",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 569,
+                    "type": "entity",
+                    "name": "cliff",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 570,
+                    "type": "entity",
+                    "name": "cliff-fulgora",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 571,
+                    "type": "entity",
+                    "name": "cliff-gleba",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 572,
+                    "type": "entity",
+                    "name": "cliff-vulcanus",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 573,
+                    "type": "entity",
+                    "name": "crater-cliff",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 574,
+                    "type": "entity",
+                    "name": "character",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 575,
+                    "type": "entity",
+                    "name": "slipstack",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 576,
+                    "type": "entity",
+                    "name": "funneltrunk",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 577,
+                    "type": "entity",
+                    "name": "hairyclubnub",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 578,
+                    "type": "entity",
+                    "name": "teflilly",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 579,
+                    "type": "entity",
+                    "name": "stingfrond",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 580,
+                    "type": "entity",
+                    "name": "boompuff",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 581,
+                    "type": "entity",
+                    "name": "cuttlepop",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 582,
+                    "type": "entity",
+                    "name": "big-sand-rock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 583,
+                    "type": "entity",
+                    "name": "huge-rock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 584,
+                    "type": "entity",
+                    "name": "big-volcanic-rock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 585,
+                    "type": "entity",
+                    "name": "huge-volcanic-rock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 586,
+                    "type": "entity",
+                    "name": "vulcanus-chimney-short",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 587,
+                    "type": "entity",
+                    "name": "vulcanus-chimney-truncated",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 588,
+                    "type": "entity",
+                    "name": "vulcanus-chimney",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 589,
+                    "type": "entity",
+                    "name": "vulcanus-chimney-cold",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 590,
+                    "type": "entity",
+                    "name": "vulcanus-chimney-faded",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 591,
+                    "type": "entity",
+                    "name": "small-demolisher-corpse",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 592,
+                    "type": "entity",
+                    "name": "medium-demolisher-corpse",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 593,
+                    "type": "entity",
+                    "name": "big-demolisher-corpse",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 594,
+                    "type": "entity",
+                    "name": "copper-stromatolite",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 595,
+                    "type": "entity",
+                    "name": "iron-stromatolite",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 596,
+                    "type": "entity",
+                    "name": "big-stomper-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 597,
+                    "type": "entity",
+                    "name": "medium-stomper-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 598,
+                    "type": "entity",
+                    "name": "small-stomper-shell",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 599,
+                    "type": "entity",
+                    "name": "big-fulgora-rock",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 600,
+                    "type": "entity",
+                    "name": "fulgurite-small",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 601,
+                    "type": "entity",
+                    "name": "fulgurite",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 602,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-attractor",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 603,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-small",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 604,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-medium",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 605,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-stonehenge",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 606,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-big",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 607,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-colossal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 608,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-huge",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 609,
+                    "type": "entity",
+                    "name": "fulgoran-ruin-vault",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 610,
+                    "type": "entity",
+                    "name": "lithium-iceberg-big",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 611,
+                    "type": "entity",
+                    "name": "lithium-iceberg-huge",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 612,
+                    "type": "entity",
+                    "name": "crude-oil",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 613,
+                    "type": "entity",
+                    "name": "sulfuric-acid-geyser",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 614,
+                    "type": "entity",
+                    "name": "lithium-brine",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 615,
+                    "type": "entity",
+                    "name": "fluorine-vent",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 616,
+                    "type": "entity",
+                    "name": "lightning",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 617,
+                    "type": "quality",
+                    "name": "normal",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 618,
+                    "type": "quality",
+                    "name": "uncommon",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 619,
+                    "type": "quality",
+                    "name": "rare",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 620,
+                    "type": "quality",
+                    "name": "epic",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 621,
+                    "type": "quality",
+                    "name": "legendary",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 622,
+                    "type": "virtual",
+                    "name": "signal-any-quality",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 623,
+                    "name": "copper-wire",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 624,
+                    "name": "green-wire",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 625,
+                    "name": "red-wire",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 626,
+                    "name": "spidertron-remote",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 627,
+                    "name": "discharge-defense-remote",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 628,
+                    "name": "artillery-targeting-remote",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 629,
+                    "type": "entity",
+                    "name": "entity-ghost",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 630,
+                    "type": "entity",
+                    "name": "item-on-ground",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 631,
+                    "type": "entity",
+                    "name": "item-request-proxy",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 632,
+                    "type": "entity",
+                    "name": "tile-ghost",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 633,
+                    "type": "entity",
+                    "name": "wube-logo-space-platform",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "item": "blueprint",
+    "version": 562949957353472
+  }
+}
