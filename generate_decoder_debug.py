@@ -214,8 +214,8 @@ def make_blueprint():
             wire_red
         ])
     else:
-        with open('debug.json', 'w+') as f:
-            json.dump(blueprint, f, indent=4)
+        # with open('debug.json', 'w+') as f:
+        #     json.dump(blueprint, f, indent=4)
         new_blueprint = json_to_blueprint(blueprint)
         pyperclip.copy(new_blueprint)
         print("Encoded Factorio Blueprint String has been copied to your clipboard!")
