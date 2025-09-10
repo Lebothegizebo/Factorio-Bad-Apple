@@ -4,7 +4,7 @@ import json
 import zlib
 import pyperclip
 
-video_width = 64
+video_width = 128
 wire_red = 1
 wire_green = 4
 bit_max = 32
@@ -51,6 +51,7 @@ def make_blueprint():
     entity_number_track_bottom = []
     x=0
     signal_id = 0
+    print(round(len(decoder)))
     for i in range(round(video_width)):
         entity_number_track_top.append(entity_number)
         y = y_start
@@ -228,5 +229,5 @@ if __name__ == "__main__":
 
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
-        splits = len(raw_signals["signals"])
+        splits = 3
         make_blueprint()

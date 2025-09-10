@@ -119,6 +119,13 @@ def factorio_signals_as_json():
             globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[i])
             globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[i])
             i += 1
+    for z in range(number_of_splits):
+        globals()["generated_signals"]["signals"]["split-"+str(z)] = []
+        globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
+        for i in range(video_width):
+            globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[i])
+            globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[i])
+            i += 1
         
 
 
