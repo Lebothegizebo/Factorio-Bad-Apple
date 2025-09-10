@@ -108,9 +108,7 @@ def generate_signal_lists_and_type():
 
 def factorio_signals_as_json():
     i = 0
-    print(splits_height)
     for z in range(number_of_splits):
-        print(i)
         globals()["generated_signals"]["decoder"]["split-"+str(z)] = []
         globals()["generated_signals"]["decoder-type"]["split-"+str(z)] = []
         globals()["generated_signals"]["signals"]["split-"+str(z)] = []
