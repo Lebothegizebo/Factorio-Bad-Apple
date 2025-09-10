@@ -51,7 +51,6 @@ def make_blueprint():
     entity_number_track_bottom = []
     x=0
     signal_id = 0
-    print(round(len(decoder)))
     for i in range(round(video_width)):
         entity_number_track_top.append(entity_number)
         y = y_start
