@@ -7,8 +7,8 @@ import pyperclip
 wire_red = 2
 wire_green = 2
 bit_max = 32
-signals = []
 decoder = []
+decoder_type = []
 colour_mode = "2 bit" # "256 bit", "2 bit"
 
 if colour_mode == "256 bit":
@@ -31,6 +31,9 @@ def make_blueprint():
     y = 0
     for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder.extend(raw_signals["decoder"][key])
+    for i, key in enumerate(list(raw_signals["decoder"].keys())):
+        decoder_type.extend(raw_signals["decoder-type"][key])
+
     for i in range(len(decoder)):
         blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,
@@ -42,7 +45,7 @@ def make_blueprint():
             "control_behavior": {
             "use_colors": True,
             "rgb_signal": {
-                "type": "virtual",
+                "type": decoder_type[i],
                 "name": decoder[i]
             },
             "color_mode": 2

@@ -1,0 +1,161 @@
+{
+  "blueprint": {
+    "icons": [
+      {
+        "signal": {
+          "name": "constant-combinator"
+        },
+        "index": 1
+      }
+    ],
+    "entities": [
+      {
+        "entity_number": 1,
+        "name": "constant-combinator",
+        "position": {
+          "x": 623.5,
+          "y": -388.5
+        },
+        "control_behavior": {
+          "sections": {
+            "sections": [
+              {
+                "index": 1,
+                "filters": [
+                  {
+                    "index": 1,
+                    "name": "textplate-small-concrete",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 2,
+                    "name": "textplate-large-concrete",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 3,
+                    "name": "textplate-small-copper",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 4,
+                    "name": "textplate-large-copper",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 5,
+                    "name": "textplate-small-glass",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 6,
+                    "name": "textplate-large-glass",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 7,
+                    "name": "textplate-small-gold",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 8,
+                    "name": "textplate-large-gold",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 9,
+                    "name": "textplate-small-iron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 10,
+                    "name": "textplate-large-iron",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 11,
+                    "name": "textplate-small-plastic",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 12,
+                    "name": "textplate-large-plastic",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 13,
+                    "name": "textplate-small-steel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 14,
+                    "name": "textplate-large-steel",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 15,
+                    "name": "textplate-small-stone",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 16,
+                    "name": "textplate-large-stone",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 17,
+                    "name": "textplate-small-uranium",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  },
+                  {
+                    "index": 18,
+                    "name": "textplate-large-uranium",
+                    "quality": "normal",
+                    "comparator": "=",
+                    "count": 1
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "item": "blueprint",
+    "version": 562949957746689
+  }
+}
