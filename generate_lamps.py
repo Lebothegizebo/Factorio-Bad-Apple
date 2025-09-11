@@ -34,6 +34,8 @@ def make_blueprint():
     for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder_type.extend(raw_signals["decoder-type"][key])
 
+    print(decoder)
+    print(len(decoder))
     for i in range(len(decoder)):
         blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,

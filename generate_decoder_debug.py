@@ -55,18 +55,17 @@ def make_blueprint():
         entity_number_track_top.append(entity_number)
         y = y_start
         column_count = 1
+        signal_id_offset = 0
+        signal_id_offset_tracker = 0
         for j in range(round(len(decoder))):
+            if signal_id_offset_tracker >= round(len(decoder)/splits):
+                signal_id_offset += round(len(signals)/splits)
+                signal_id_offset_tracker = 0
             if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
                 column_count = 1
                 y += 2          
             column_count += 1
-            if j < round(len(decoder)/splits):
-                signal_id_offset = 0
-                offset_needed=True
-            if j >= round(len(decoder)/splits) and offset_needed:
-                offset_needed=False
-                signal_id_offset = round(len(signals)/splits)
-            if signals_type[(signal_id+signal_id_offset)] != "Null":
+            if signals_type[(signal_id+signal_id_offset)] != None:
                 if decoder_type[j] != None:
                     blueprint["blueprint"]["entities"].append({
                         "entity_number": entity_number,
@@ -164,11 +163,13 @@ def make_blueprint():
             ])
             entity_number += 1
             bit += bit_step
-            if bit == 24:
+            if bit == bit_max:
                 bit = 0
             y += 2
+            signal_id_offset_tracker += 1 
+         
         x += 1
-        signal_id += 1           
+        signal_id += 1
         entity_number_track_bottom.append(entity_number-1)
     y_start = len(decoder)
     x = 0

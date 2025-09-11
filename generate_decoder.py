@@ -13,7 +13,7 @@ decoder = []
 colour_mode = "2 bit" # "256 bit", "2 bit"
 
 if colour_mode == "256 bit":
-    bit_size = 8 # 256 bit colour
+    bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit":
     bit_size = 32 # 2 bit colour
 
@@ -94,7 +94,7 @@ def make_blueprint():
             ])
             entity_number += 1
             bit += bit_step
-            if bit == 24:
+            if bit == bit_max:
                 bit = 0
             y += 2
         x += 1

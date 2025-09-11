@@ -107,25 +107,22 @@ def generate_signal_lists_and_type():
     return signals, signals_type
 
 def factorio_signals_as_json():
-    i = 0
+    k = 0
     for z in range(number_of_splits):
         globals()["generated_signals"]["decoder"]["split-"+str(z)] = []
         globals()["generated_signals"]["decoder-type"]["split-"+str(z)] = []
-        globals()["generated_signals"]["signals"]["split-"+str(z)] = []
-        globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
         for i in range(splits_height):
-            globals()["generated_signals"]["decoder"]["split-"+str(z)].append(signal[i])
-            globals()["generated_signals"]["decoder-type"]["split-"+str(z)].append(signal_type[i])
-            globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[i])
-            globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[i])
-            i += 1
+            globals()["generated_signals"]["decoder"]["split-"+str(z)].append(signal[k])
+            globals()["generated_signals"]["decoder-type"]["split-"+str(z)].append(signal_type[k])
+            k += 1
+    k = 0
     for z in range(number_of_splits):
         globals()["generated_signals"]["signals"]["split-"+str(z)] = []
         globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
         for i in range(video_width):
-            globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[i])
-            globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[i])
-            i += 1
+            globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[k])
+            globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[k])
+            k += 1
         
 
 
