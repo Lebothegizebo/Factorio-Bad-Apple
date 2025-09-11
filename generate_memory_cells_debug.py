@@ -64,7 +64,7 @@ def process(cap, frame_number): #Processes video for each frame, where
 
         #converts greyscale frame into a list
         for row in raw_frame_data:
-            l.append([0 if pixel < 100 else 1 for pixel in row])
+            l.append([0 if pixel < 128 else 1 for pixel in row])
 
         # Left in for debugging purposes, does nothing on its own (to see frame before processing is done)
 
