@@ -9,7 +9,8 @@ wire_green = 2
 bit_max = 32
 decoder = []
 decoder_type = []
-colour_mode = "2 bit" # "256 bit", "2 bit"
+decoder_quality = []
+colour_mode = "256 bit" # "256 bit", "2 bit"
 
 if colour_mode == "256 bit":
     bit_size = 8 # 256 bit colour
@@ -31,11 +32,10 @@ def make_blueprint():
     y = 0
     for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder.extend(raw_signals["decoder"][key])
-    for i, key in enumerate(list(raw_signals["decoder"].keys())):
+    for i, key in enumerate(list(raw_signals["decoder-type"].keys())):
         decoder_type.extend(raw_signals["decoder-type"][key])
-
-    print(decoder)
-    print(len(decoder))
+    for i, key in enumerate(list(raw_signals["decoder-quality"].keys())):
+        decoder_quality.extend(raw_signals["decoder-quality"][key])
     for i in range(len(decoder)):
         blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,
@@ -48,7 +48,8 @@ def make_blueprint():
             "use_colors": True,
             "rgb_signal": {
                 "type": decoder_type[i],
-                "name": decoder[i]
+                "name": decoder[i],
+                "quality": decoder_quality[i]
             },
             "color_mode": 2
             },
@@ -70,8 +71,6 @@ def make_blueprint():
         entity_number += 1
         y += 1
     else:
-        with open('debug.json', 'w+') as f:
-            json.dump(blueprint, f, indent=4)
         new_blueprint = json_to_blueprint(blueprint)
         pyperclip.copy(new_blueprint)
         print("Encoded Factorio Blueprint String has been copied to your clipboard!")

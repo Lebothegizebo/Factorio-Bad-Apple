@@ -11,15 +11,15 @@ def cls():
 use_vanilla_signals = True #Default True
 use_custom_signals = False #Default False
 use_space_age = True #Default False
-use_quality = False #Default False #NOT IMPLEMENTED
+use_quality = True #Default False #NOT IMPLEMENTED
 bypass_custom_signal_warning = False #Default False
 bypass_custom_and_vanilla_signal_warning = False #Default False #REMOVE WHEN DUPLICATE SIGNAL CHECKS HAVE BEEN MADE
 custom_signal_json_path = R"Custom Signals\custom_example.json" #Default: "Custom Signals\custom_example.json" # Use a decoded base64 json file of a constant combinator of all the signals you want. This uses the textplates mod as an example.
-
-colour_mode = "2 bit" # "256 bit", "2 bit"
+colour_mode = "256 bit" # "256 bit", "2 bit"
 video_height = 96 # Needs to be a divisor of 8 in 256 bit colour mode, or 32 in 2 bit colour mode
 video_width = 128 # Can be any width, but generally keep to video ratios
-generated_signals = {"decoder": {}, "decoder-type": {}, "signals": {}, "signals-type": {}} #Signal list that the program uses to generate memory and the decoder
+
+generated_signals = {"decoder": {}, "decoder-type": {}, "decoder-quality": {}, "signals": {}, "signals-type": {}, "signals-quality": {}} #Signal list that the program uses to generate memory and the decoder
 
 if colour_mode == "256 bit":
     bit_size = 4 # 256 bit colour
@@ -35,6 +35,11 @@ splits_height = round(video_height/number_of_splits) #Vertical Height of each sp
 def generate_signal_lists_and_type():
     signals = []
     signals_type = []
+    signals_quality = []
+    if globals()["use_quality"] == True:
+        quality_list = [{"normal"},{"uncommon"},{"rare"},{"epic"},{"legendary"}]
+    else:
+        quality_list = [{"normal"}]
     if globals()["use_vanilla_signals"] == False and globals()["use_custom_signals"] == False:
         sys.exit("ERROR: No signals have been defined, please either allow use of custom signals or the included factorio signals in config.ini")
     if globals()["use_custom_signals"]: #Warning about Custom Signals.
@@ -81,47 +86,49 @@ def generate_signal_lists_and_type():
         with open(globals()["custom_signal_json_path"], 'r') as file:
             raw_custom_signal_list = json.load(file)
 
+    #Generate Raw Signal Lists
     if globals()["use_vanilla_signals"]: #Included Signals
-        for i in range(len(raw_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"])):
-            signals.extend([raw_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["name"]])
-            try:
-                signals_type.extend([raw_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["type"]])
-            except:   
-                signals_type.extend([None])
+        for quality_index in range(len(quality_list)):
+            for i in range(len(raw_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"])):
+                signals.extend([raw_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["name"]])
+                signals_quality.extend(quality_list[quality_index])
+                try:
+                    signals_type.extend([raw_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["type"]])
+                except:   
+                    signals_type.extend([None])
 
     if globals()["use_custom_signals"] == True: #Custom Signals
-        for i in range(len(raw_custom_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"])):
-            signals.extend([raw_custom_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["name"]])
-            try:
-                signals_type.extend([raw_custom_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["type"]])
-            except:   
-                signals_type.extend([None])
-    
-    # print("signals: ", signals)
-    # print("\n")
-    # print("signals length: ", len(signals))
-    # print("\n")
-    # print("signals_type", signals_type)
-    # print("\n")
-    # print("signals_type length: ", len(signals_type))
-    return signals, signals_type
+        for quality_index in range(len(quality_list)):
+            for i in range(len(raw_custom_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"])):
+                signals.extend([raw_custom_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["name"]])
+                signals_quality.extend(quality_list[quality_index])
+                try:
+                    signals_type.extend([raw_custom_signal_list["blueprint"]["entities"][0]["control_behavior"]["sections"]["sections"][0]["filters"][i]["type"]])
+                except:   
+                    signals_type.extend([None])
+
+    return signals, signals_type, signals_quality
 
 def factorio_signals_as_json():
     k = 0
     for z in range(number_of_splits):
         globals()["generated_signals"]["decoder"]["split-"+str(z)] = []
         globals()["generated_signals"]["decoder-type"]["split-"+str(z)] = []
+        globals()["generated_signals"]["decoder-quality"]["split-"+str(z)] = []
         for i in range(splits_height):
             globals()["generated_signals"]["decoder"]["split-"+str(z)].append(signal[k])
             globals()["generated_signals"]["decoder-type"]["split-"+str(z)].append(signal_type[k])
+            globals()["generated_signals"]["decoder-quality"]["split-"+str(z)].append(signal_quality[k])
             k += 1
     k = 0
     for z in range(number_of_splits):
         globals()["generated_signals"]["signals"]["split-"+str(z)] = []
         globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
+        globals()["generated_signals"]["signals-quality"]["split-"+str(z)] = []
         for i in range(video_width):
             globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[k])
             globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[k])
+            globals()["generated_signals"]["signals-quality"]["split-"+str(z)].append(signal_quality[k])
             k += 1
         
 
@@ -135,7 +142,8 @@ if __name__ == "__main__":
         
         raw_data = generate_signal_lists_and_type()
         signal = raw_data[0]
-        signal_type = raw_data [1]
+        signal_type = raw_data[1]
+        signal_quality = raw_data[2]
         print("Generating Signal Lists...")
         factorio_signals_as_json()
 

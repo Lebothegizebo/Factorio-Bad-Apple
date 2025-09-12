@@ -10,14 +10,17 @@ wire_green = 4
 bit_max = 32
 signals = []
 signals_type = []
+signals_quality = []
 decoder = []
 decoder_type = []
-colour_mode = "2 bit" # "256 bit", "2 bit"
+decoder_quality = []
+colour_mode = "256 bit" # "256 bit", "2 bit"
 
 if colour_mode == "256 bit":
-    bit_size = 8 # 256 bit colour
+    bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit":
     bit_size = 32 # 2 bit colour
+
 
 def blueprint_to_json(string):
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -35,16 +38,22 @@ def make_blueprint():
     x = 0
     y = 0
     bit = 0
-    bit_step = bit_max/bit_size
-    and_constant = 1 if bit_size != 1 else (bit_max*bit_size)-1
+    bit_step = round(bit_max/bit_size)
+    print(bit_step)
+    and_constant = 1 if bit_size != 1 else round((bit_max*bit_step)-1)
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
     for i, key in enumerate(list(raw_signals["signals-type"].keys())):
         signals_type.extend(raw_signals["signals-type"][key])
+    for i, key in enumerate(list(raw_signals["signals-quality"].keys())):
+        signals_quality.extend(raw_signals["signals-quality"][key])
+
     for i, key in enumerate(list(raw_signals["decoder"].keys())):
         decoder.extend(raw_signals["decoder"][key])
     for i, key in enumerate(list(raw_signals["decoder-type"].keys())):
         decoder_type.extend(raw_signals["decoder-type"][key])
+    for i, key in enumerate(list(raw_signals["decoder-quality"].keys())):
+        decoder_quality.extend(raw_signals["decoder-quality"][key])
     y_start = 0
     each_combinator_track = []
     entity_number_track_top = []
@@ -76,13 +85,15 @@ def make_blueprint():
                             "arithmetic_conditions": {
                                         "first_signal": {
                                             "type" : signals_type[(signal_id+signal_id_offset)],
-                                            "name": signals[(signal_id+signal_id_offset)]
+                                            "name": signals[(signal_id+signal_id_offset)],
+                                            "quality": signals_quality[(signal_id+signal_id_offset)]
                                         },
                                         "second_constant": bit,
                                         "operation": ">>",
                                         "output_signal": {
                                             "type": decoder_type[j],
-                                            "name": decoder[j]
+                                            "name": decoder[j],
+                                            "quality": decoder_quality[j]
                                 }
                             }
                         }
@@ -97,12 +108,14 @@ def make_blueprint():
                             "arithmetic_conditions": {
                                         "first_signal": {
                                             "type" : signals_type[(signal_id+signal_id_offset)],
-                                            "name": signals[(signal_id+signal_id_offset)]
+                                            "name": signals[(signal_id+signal_id_offset)],
+                                            "quality": signals_quality[(signal_id+signal_id_offset)]
                                         },
                                         "second_constant": bit,
                                         "operation": ">>",
                                         "output_signal": {
-                                            "name": decoder[j]
+                                            "name": decoder[j],
+                                            "quality": decoder_quality[j]
                                 }
                             }
                         }
@@ -117,13 +130,15 @@ def make_blueprint():
                         "control_behavior": {
                             "arithmetic_conditions": {
                                         "first_signal": {
-                                            "name": signals[(signal_id+signal_id_offset)]
+                                            "name": signals[(signal_id+signal_id_offset)],
+                                            "quality": signals_quality[(signal_id+signal_id_offset)]
                                         },
                                         "second_constant": bit,
                                         "operation": ">>",
                                         "output_signal": {
                                             "type": decoder_type[j],
-                                            "name": decoder[j]
+                                            "name": decoder[j],
+                                            "quality": decoder_quality[j]
                                 }
                             }
                         }
@@ -137,12 +152,14 @@ def make_blueprint():
                         "control_behavior": {
                             "arithmetic_conditions": {
                                         "first_signal": {
-                                            "name": signals[(signal_id+signal_id_offset)]
+                                            "name": signals[(signal_id+signal_id_offset)],
+                                            "quality": signals_quality[(signal_id+signal_id_offset)]
                                         },
                                         "second_constant": bit,
                                         "operation": ">>",
                                         "output_signal": {
-                                            "name": decoder[j]
+                                            "name": decoder[j],
+                                            "quality": decoder_quality[j]
                                 }
                             }
                         }
@@ -229,5 +246,5 @@ if __name__ == "__main__":
 
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
-        splits = 3
+        splits = 24
         make_blueprint()

@@ -10,8 +10,9 @@ wire_red = 2
 wire_green = 3
 signals = []
 signals_type = []
+signals_quality = []
 
-colour_mode = "2 bit" # "256 bit", "2 bit"
+colour_mode = "256 bit" # "256 bit", "2 bit"
 video_height = 96 # Needs to be a divisor of 8 in 256 bit colour mode, or 32 in 2 bit colour mode
 video_width = 128 # Can be any width, but generally keep to video ratios
 bit_max = 32
@@ -108,6 +109,7 @@ def process(cap, frame_number): #Processes video for each frame, where
                     "signal": {
                     "type": signals_type[z][i],
                     "name": signals[z][i],
+                    "quality": signals_quality[z][i]
                     },
                     "copy_count_from_input": False,
                     "constant": data
@@ -116,6 +118,7 @@ def process(cap, frame_number): #Processes video for each frame, where
                     factorio_signal_data.append({
                     "signal": {
                     "name": signals[z][i],
+                    "quality": signals_quality[z][i]
                     },
                     "copy_count_from_input": False,
                     "constant": data
@@ -224,4 +227,6 @@ if __name__ == "__main__":
             signals.append(raw_signals["signals"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_type.append(raw_signals["signals-type"]["split-"+str(z)])
+        for z in range(number_of_splits):
+            signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
         make_blueprint(blueprint,video_data_path,frame_count,max_combinators)
