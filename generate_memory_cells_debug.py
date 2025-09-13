@@ -4,6 +4,40 @@ import json
 import zlib
 import pyperclip
 import cv2
+import os
+from configparser import ConfigParser
+
+def load_config():
+    config = ConfigParser()
+    config.read("config.ini")
+    if config.getboolean("VIDEO_PLAYER","use_default_settings") == True: #Load Default Settings
+        globals()["use_vanilla_signals"] = config.getboolean("DEFAULT","use_vanilla_signals")
+        globals()["use_custom_signals"] = config.getboolean("DEFAULT","use_custom_signals")
+        globals()["use_space_age"] = config.getboolean("DEFAULT","use_space_age")
+        globals()["use_quality"] = config.getboolean("DEFAULT","use_quality")
+        globals()["bypass_custom_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_signal_warning")
+        globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_and_vanilla_signal_warning")
+        globals()["custom_signal_json_path"] = config["DEFAULT"]["custom_signal_json_path"]
+        globals()["colour_mode"] = config.read_string("DEFAULT","colour_mode")
+        globals()["video_height"] = config.getint("DEFAULT", "video_height")
+        globals()["video_width"] = config.getint("DEFAULT", "video_width")
+        globals()["use_data_cache"] = config.getboolean("DEFAULT","use_data_cache")
+        globals()["substation_range"]  = config.getint("DEFAULT","substation_range")
+    else: #Load Custom Settings
+        globals()["use_vanilla_signals"] = config.getboolean("VIDEO_PLAYER","use_vanilla_signals")
+        globals()["use_custom_signals"] = config.getboolean("VIDEO_PLAYER","use_custom_signals")
+        globals()["use_space_age"] = config.getboolean("VIDEO_PLAYER","use_space_age")
+        globals()["use_quality"] = config.getboolean("VIDEO_PLAYER","use_quality")
+        globals()["bypass_custom_signal_warning"] = config.getboolean("VIDEO_PLAYER","bypass_custom_signal_warning")
+        globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("VIDEO_PLAYER","bypass_custom_and_vanilla_signal_warning")
+        globals()["custom_signal_json_path"] = config["VIDEO_PLAYER"]["custom_signal_json_path"]
+        globals()["colour_mode"] = config["VIDEO_PLAYER"]["colour_mode"]
+        globals()["video_height"] = config.getint("VIDEO_PLAYER", "video_height")
+        globals()["video_width"] = config.getint("VIDEO_PLAYER", "video_width")
+        globals()["use_data_cache"] = config.getboolean("VIDEO_PLAYER","use_data_cache")
+        globals()["substation_range"]  = config.getint("VIDEO_PLAYER","substation_range")
+
+load_config()
 
 wire_copper = 1
 wire_red = 2
@@ -11,25 +45,16 @@ wire_green = 3
 signals = []
 signals_type = []
 signals_quality = []
-
-colour_mode = "256 bit" # "256 bit", "2 bit"
-video_height = 96 # Needs to be a divisor of 8 in 256 bit colour mode, or 32 in 2 bit colour mode
-video_width = 128 # Can be any width, but generally keep to video ratios
 bit_max = 32
-
 if colour_mode == "256 bit":
     bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit":
     bit_size = 32 # 2 bit colour
-
 bit_step = round(bit_max/bit_size)
-print("Bit Step: ", bit_step)
 number_of_splits = round(video_height/bit_size)# Number of Horizontal splits to split the video into to fit all binary signals
 if number_of_splits <1:
     number_of_splits = 1
-
 splits_height = round(video_height/number_of_splits) #Vertical Height of each split, used for generating video
-
 
 def blueprint_to_json(string): #Thx Doshdoshington
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -85,7 +110,6 @@ def process(cap, frame_number): #Processes video for each frame, where
             globals()["split_framedata_"+str(z)] = l[split_pixel_count:(height*(z+1))//number_of_splits]
             split_pixel_count += splits_height
 
-        
         # Split the lists vertically for each pixel column
         for z in range(number_of_splits):
             globals()["split_"+str(z)] = [[row[i] for row in (globals()["split_framedata_"+str(z)])] for i in range(width)]
@@ -97,8 +121,6 @@ def process(cap, frame_number): #Processes video for each frame, where
         #cv2.waitKey(0)
         cv2.destroyAllWindows()
         
-
-
         #Enumerate through video data (the lists) and assigns each list a 32 bit number and assigns that to a Factorio Signal
         k = 0
         for z in range(number_of_splits):
@@ -126,12 +148,11 @@ def process(cap, frame_number): #Processes video for each frame, where
                 k += 1 
         return factorio_signal_data
     
-def make_blueprint(blueprint, video_path, frame_count, max_combinators):
-    cap = cv2.VideoCapture(video_path)
+def make_blueprint(blueprint, frame_count, max_combinators):
+    cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\video_output.gif")
     entity_number = 1
     combinator_count = 1
     column_count = 1 # Keeps track of how many combinators in each chunk of column for POWER
-    max_combinators_per_column_chunk =13
     signal_data = []
     new_wire = False
     x = 0
@@ -200,7 +221,7 @@ def make_blueprint(blueprint, video_path, frame_count, max_combinators):
                 x = 0
                 y -= 2
                 new_wire = True
-            if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+            if column_count > substation_range: # Checks if a gap needs to be made to power combinators
                 column_count = 1
                 y -= 2
 
@@ -212,21 +233,26 @@ def make_blueprint(blueprint, video_path, frame_count, max_combinators):
     print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
 if __name__ == "__main__":
-    if len(sys.argv) <3:
-        print("Usage: generate_memory_cells.py <json_path> <video_path> <max_combinators_per_column>?")
+    if len(sys.argv) <2:
+        print("Usage: generate_memory_cells.py <video_path>")
     else:
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
-        json_path = str(sys.argv[1])
-        video_data_path = str(sys.argv[2])
+        json_path = R"Generated_Files\video_player\signals\signals.json"
+        video_path = str(sys.argv[1])
         frame_count = 100
-        frame_count = int(cv2.VideoCapture(video_data_path).get(cv2.CAP_PROP_FRAME_COUNT))-2
-        max_combinators = 225 if len(sys.argv) < 4 else int(sys.argv[3])
-        with open(json_path, 'r') as file:
-            raw_signals = json.load(file)
+        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
+        max_combinators = 100 if len(sys.argv) < 4 else int(sys.argv[3])
+        try: 
+            with open(json_path, 'r') as file:
+                raw_signals = json.load(file)
+        except:
+            sys.exit("No signals have been defined! Run generate_signals.py to continue.")
         for z in range(number_of_splits):
             signals.append(raw_signals["signals"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_type.append(raw_signals["signals-type"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
-        make_blueprint(blueprint,video_data_path,frame_count,max_combinators)
+        os.system(R"ffmpeg -i "+video_path+R" -vf palettegen Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
+        os.system(R"ffmpeg -i "+video_path+R" -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.gif -hide_banner -loglevel error")
+        make_blueprint(blueprint,frame_count,max_combinators)

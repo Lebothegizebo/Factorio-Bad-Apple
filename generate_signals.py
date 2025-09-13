@@ -1,23 +1,42 @@
 import sys
-import base64
 import json
-import zlib
-import pyperclip
 import os
+from configparser import ConfigParser
+
+def load_config():
+    config = ConfigParser()
+    config.read("config.ini")
+    if config.getboolean("VIDEO_PLAYER","use_default_settings") == True: #Load Default Settings
+        globals()["use_vanilla_signals"] = config.getboolean("DEFAULT","use_vanilla_signals")
+        globals()["use_custom_signals"] = config.getboolean("DEFAULT","use_custom_signals")
+        globals()["use_space_age"] = config.getboolean("DEFAULT","use_space_age")
+        globals()["use_quality"] = config.getboolean("DEFAULT","use_quality")
+        globals()["bypass_custom_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_signal_warning")
+        globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_and_vanilla_signal_warning")
+        globals()["custom_signal_json_path"] = config["DEFAULT"]["custom_signal_json_path"]
+        globals()["colour_mode"] = config.read_string("DEFAULT","colour_mode")
+        globals()["video_height"] = config.getint("DEFAULT", "video_height")
+        globals()["video_width"] = config.getint("DEFAULT", "video_width")
+        globals()["use_data_cache"] = config.getboolean("DEFAULT","use_data_cache")
+        globals()["substation_range"]  = config.getint("DEFAULT","substation_range")
+    else: #Load Custom Settings
+        globals()["use_vanilla_signals"] = config.getboolean("VIDEO_PLAYER","use_vanilla_signals")
+        globals()["use_custom_signals"] = config.getboolean("VIDEO_PLAYER","use_custom_signals")
+        globals()["use_space_age"] = config.getboolean("VIDEO_PLAYER","use_space_age")
+        globals()["use_quality"] = config.getboolean("VIDEO_PLAYER","use_quality")
+        globals()["bypass_custom_signal_warning"] = config.getboolean("VIDEO_PLAYER","bypass_custom_signal_warning")
+        globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("VIDEO_PLAYER","bypass_custom_and_vanilla_signal_warning")
+        globals()["custom_signal_json_path"] = config["VIDEO_PLAYER"]["custom_signal_json_path"]
+        globals()["colour_mode"] = config["VIDEO_PLAYER"]["colour_mode"]
+        globals()["video_height"] = config.getint("VIDEO_PLAYER", "video_height")
+        globals()["video_width"] = config.getint("VIDEO_PLAYER", "video_width")
+        globals()["use_data_cache"] = config.getboolean("VIDEO_PLAYER","use_data_cache")
+        globals()["substation_range"]  = config.getint("VIDEO_PLAYER","substation_range")
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-use_vanilla_signals = True #Default True
-use_custom_signals = False #Default False
-use_space_age = True #Default False
-use_quality = True #Default False #NOT IMPLEMENTED
-bypass_custom_signal_warning = False #Default False
-bypass_custom_and_vanilla_signal_warning = False #Default False #REMOVE WHEN DUPLICATE SIGNAL CHECKS HAVE BEEN MADE
-custom_signal_json_path = R"Custom Signals\custom_example.json" #Default: "Custom Signals\custom_example.json" # Use a decoded base64 json file of a constant combinator of all the signals you want. This uses the textplates mod as an example.
-colour_mode = "256 bit" # "256 bit", "2 bit"
-video_height = 96 # Needs to be a divisor of 8 in 256 bit colour mode, or 32 in 2 bit colour mode
-video_width = 128 # Can be any width, but generally keep to video ratios
+load_config()
 
 generated_signals = {"decoder": {}, "decoder-type": {}, "decoder-quality": {}, "signals": {}, "signals-type": {}, "signals-quality": {}} #Signal list that the program uses to generate memory and the decoder
 
@@ -134,12 +153,11 @@ def factorio_signals_as_json():
 
 
 
-    with open('signalsHD.json', 'w+') as f:
+    with open('Generated_Files\signals.json', 'w+') as f:
         json.dump(generated_signals, f, indent=4)
 
 
 if __name__ == "__main__":
-        
         raw_data = generate_signal_lists_and_type()
         signal = raw_data[0]
         signal_type = raw_data[1]
