@@ -68,8 +68,8 @@ def make_blueprint():
     for i, key in enumerate(list(raw_signals["decoder-quality"].keys())):
         decoder_quality.extend(raw_signals["decoder-quality"][key])
     for i in range(len(decoder)):
-        print(decoder_type[i])
-        if decoder_type != None: 
+        if decoder_type[i] != None: 
+            print(i, decoder_type[i])
             blueprint["blueprint"]["entities"].append({
                 "entity_number": entity_number,
                 "name": "small-lamp",
