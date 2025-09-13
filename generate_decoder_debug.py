@@ -71,7 +71,6 @@ def make_blueprint():
     y = 0
     bit = 0
     bit_step = round(bit_max/bit_size)
-    print(bit_step)
     and_constant = 1 if bit_size != 1 else round((bit_max*bit_step)-1)
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
