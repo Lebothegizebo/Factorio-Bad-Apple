@@ -68,7 +68,34 @@ def make_blueprint():
     for i, key in enumerate(list(raw_signals["decoder-quality"].keys())):
         decoder_quality.extend(raw_signals["decoder-quality"][key])
     for i in range(len(decoder)):
-        blueprint["blueprint"]["entities"].append({
+        print(decoder_type[i])
+        if decoder_type != None: 
+            blueprint["blueprint"]["entities"].append({
+                "entity_number": entity_number,
+                "name": "small-lamp",
+                "position": {
+                "x": x,
+                "y": y
+                },
+                "control_behavior": {
+                "use_colors": True,
+                "rgb_signal": {
+                    "type": decoder_type[i],
+                    "name": decoder[i],
+                    "quality": decoder_quality[i]
+                },
+                "color_mode": 2
+                },
+                "color": {
+                "r": 1,
+                "g": 1,
+                "b": 1,
+                "a": 1
+                },
+                "always_on": True
+            })
+        else:
+            blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,
             "name": "small-lamp",
             "position": {
@@ -78,7 +105,6 @@ def make_blueprint():
             "control_behavior": {
             "use_colors": True,
             "rgb_signal": {
-                "type": decoder_type[i],
                 "name": decoder[i],
                 "quality": decoder_quality[i]
             },
@@ -91,8 +117,7 @@ def make_blueprint():
             "a": 1
             },
             "always_on": True
-
-        })
+            })
         blueprint["blueprint"]["wires"].append([
             entity_number,
             wire_green,
