@@ -149,7 +149,7 @@ def process(cap, frame_number): #Processes video for each frame, where
         return factorio_signal_data
     
 def make_blueprint(blueprint, frame_count, max_combinators):
-    cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\video_output.gif")
+    cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\out.mp4")
     entity_number = 1
     combinator_count = 1
     column_count = 1 # Keeps track of how many combinators in each chunk of column for POWER
@@ -240,7 +240,7 @@ if __name__ == "__main__":
         json_path = R"Generated_Files\video_player\signals\signals.json"
         video_path = str(sys.argv[1])
         frame_count = 100
-        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
+        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT)) - 1
         max_combinators = 100 if len(sys.argv) < 4 else int(sys.argv[3])
         try: 
             with open(json_path, 'r') as file:
@@ -254,5 +254,5 @@ if __name__ == "__main__":
         for z in range(number_of_splits):
             signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
         os.system(R"ffmpeg -i "+video_path+R" -vf palettegen Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
-        os.system(R"ffmpeg -i "+video_path+R" -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.gif -hide_banner -loglevel error")
+        os.system(R"ffmpeg -i "+video_path+R" -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.mp4 -hide_banner -loglevel error")
         make_blueprint(blueprint,frame_count,max_combinators)
