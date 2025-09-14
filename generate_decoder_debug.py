@@ -3,6 +3,7 @@ import base64
 import json
 import zlib
 import pyperclip
+import math
 from configparser import ConfigParser
 
 def load_config():
@@ -49,7 +50,7 @@ if colour_mode == "256 bit":
     bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit":
     bit_size = 32 # 2 bit colour
-number_of_splits = round(video_height/bit_size)# Number of Horizontal splits to split the video into to fit all binary signals
+number_of_splits = int(math.ceil(video_height/bit_size))# Number of Horizontal splits to split the video into to fit all binary signals
 if number_of_splits <1:
     number_of_splits = 1
 
@@ -71,7 +72,8 @@ def make_blueprint():
     y = 0
     bit = 0
     bit_step = round(bit_max/bit_size)
-    and_constant = 1 if bit_size != 1 else round((bit_max*bit_step)-1)
+    dynamic_bit_max = round(video_height/number_of_splits)
+    and_constant = 1 if bit_size == 32 else round((bit_max*bit_step)-1)
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
     for i, key in enumerate(list(raw_signals["signals-type"].keys())):
@@ -211,7 +213,7 @@ def make_blueprint():
             ])
             entity_number += 1
             bit += bit_step
-            if bit == bit_max:
+            if bit == dynamic_bit_max:
                 bit = 0
             y += 2
             signal_id_offset_tracker += 1 

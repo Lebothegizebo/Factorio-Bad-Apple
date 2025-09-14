@@ -1,6 +1,7 @@
 import sys
 import json
 import os
+import math
 from configparser import ConfigParser
 
 def load_config():
@@ -45,7 +46,7 @@ if colour_mode == "256 bit":
 elif colour_mode == "2 bit":
     bit_size = 32 # 2 bit colour
 
-number_of_splits = round(video_height/bit_size)# Number of Horizontal splits to split the video into to fit all binary signals
+number_of_splits = int(math.ceil(video_height/bit_size))# Number of Horizontal splits to split the video into to fit all binary signals
 if number_of_splits <1:
     number_of_splits = 1
 
