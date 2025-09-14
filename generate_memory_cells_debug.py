@@ -7,12 +7,33 @@ import cv2 # type: ignore
 import os
 import math
 from configparser import ConfigParser
+import numpy as np
+from PIL import Image
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def rgb_to_hex(r, g, b):
     return '#{0:02x}{1:02x}{2:02x}'.format(r, g, b)
+
+def palette_to_hex_list(index):
+    im = Image.open(R'Generated_Files\ffmpeg\palette.png')
+    rgb_palette_data = []
+    rgb_im = im.convert('RGB')
+    for y in range(16):
+        for x in range(16):
+            rgb_palette_data.append(rgb_im.getpixel((x, y)))
+    r = rgb_palette_data[index][0]
+    g = rgb_palette_data[index][1]
+    b = rgb_palette_data[index][2]
+    return r, g, b
+
+def hex_compare(hex_string):
+    for hex_index in range(255):
+        if hex_string == rgb_to_hex((palette_to_hex_list(hex_index)[0]),palette_to_hex_list(hex_index)[1],palette_to_hex_list(hex_index)[2]):
+            print("HEX:", hex_string)
+            return hex_index
+
 
 def load_config():
     config = ConfigParser()
@@ -45,7 +66,7 @@ def load_config():
         globals()["substation_range"]  = config.getint("VIDEO_PLAYER","substation_range")
 
 load_config()
-
+hex_compare("#000000")
 wire_copper = 1
 wire_red = 2
 wire_green = 3
@@ -84,9 +105,7 @@ def process(cap, frame_number): #Processes video for each frame, where
     # Thanks @artucuno for teaching me OpenCV2
     factorio_signal_data = [] # Represents all the data created by this function and returns it as a list of signals with vaules
     l = [] # List of pixel data for each frame
-    l_raw_color_data = []
-    raw_color_data = []
-    cap.set(cv2.CAP_PROP_POS_FRAMES, 1)#frame_number) 
+    cap.set(cv2.CAP_PROP_POS_FRAMES, 100)#frame_number) 
     ret, frame = cap.read()
     if ret:
         #initilizes video processing enviroment
@@ -105,11 +124,12 @@ def process(cap, frame_number): #Processes video for each frame, where
             pixels = raw_frame_data.reshape(-1, 3)
             pixel_hex_data = []
             for pixels_index in range(len(pixels)):
-                pixel_hex_data[pixels_index] = rgb_to_hex(pixels[0][0],pixels[0][1],pixels[0][2])
-            print(pixel_hex_data)
+                print(pixels_index)
+                pixel_hex_data.append(rgb_to_hex(pixels[0][0],pixels[0][1],pixels[0][2]))
+            
             print(pixels)
             for row in raw_frame_data:
-                l.append([pixels for pixels in row])
+                l.append([hex_compare(pixel_hex_data[i]) for i in row ])
                 # l_raw_color_data.append([pixel for pixel in row])
                 # print(l_raw_color_data)
 
