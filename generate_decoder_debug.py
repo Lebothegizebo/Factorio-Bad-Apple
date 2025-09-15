@@ -72,7 +72,8 @@ def make_blueprint():
     y = 0
     bit = 0
     bit_step = round(bit_max/bit_size)
-    dynamic_bit_max = round(video_height/number_of_splits)
+    dynamic_bit_max = 32
+
     and_constant = 1 if bit_size == 32 else round((bit_max*bit_step)-1)
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
@@ -255,7 +256,6 @@ def make_blueprint():
                     4,
                     each_combinator_track[i],
                     2,
-
         ])
     for i in range(len(raw_signals["signals"]["split-0"])-1):
         blueprint["blueprint"]["wires"].append([

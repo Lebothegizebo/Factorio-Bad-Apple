@@ -8,7 +8,7 @@ import os
 import math
 from configparser import ConfigParser
 import numpy as np
-from PIL import Image
+from PIL import Image # type: ignore
 
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -16,26 +16,51 @@ def cls():
 def rgb_to_hex(r, g, b):
     return '#{0:02x}{1:02x}{2:02x}'.format(r, g, b)
 
-def palette_to_hex_list(index):
+def hex_to_rgb(hex_string):
+    hex_code = hex_string.lstrip('#')
+    return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
+
+def hex_to_encoded_rgb(hex_string):
+    encoded_rgb = int(hex_string, 16)
+    print("encoded_rgb:", encoded_rgb)
+    input()
+
+def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules, used for encoding and decoding
     im = Image.open(R'Generated_Files\ffmpeg\palette.png')
     rgb_palette_data = []
+    rgb_hex_list = []
     rgb_im = im.convert('RGB')
     for y in range(16):
         for x in range(16):
             rgb_palette_data.append(rgb_im.getpixel((x, y)))
-    r = rgb_palette_data[index][0]
-    g = rgb_palette_data[index][1]
-    b = rgb_palette_data[index][2]
-    return r, g, b
+    for index in range(256):
+        r = rgb_palette_data[index][0]
+        g = rgb_palette_data[index][1]
+        b = rgb_palette_data[index][2]
+        rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
+    return rgb_hex_list
 
-def hex_compare(hex_string):
-    for hex_index in range(255):
-        if hex_string == rgb_to_hex((palette_to_hex_list(hex_index)[0]),palette_to_hex_list(hex_index)[1],palette_to_hex_list(hex_index)[2]):
-            print("HEX:", hex_string)
+def get_rbg_data(frame_data): # Returns RGB vaules from framedata
+    r, g, b = frame_data
+    hex = rgb_to_hex(r,g,b)
+    return hex
+
+def hex_compare(hex_string): # Returns a vaule from 0-255 for the colour data of each frame depending on pallete.png
+    for hex_index in range(256):
+        if hex_string == hex_list[hex_index]:
             return hex_index
+    lowest_distance = math.sqrt(pow(255,2)+pow(255,2)+pow(255,2))
+    r2, b2, g2 = hex_to_rgb(hex_string)
+    lowest_distance_index = 0
+    for i in range(256): # If inputted hex does not match, finds the closet matching colour and uses that instead
+        r1, b1, g1 = hex_to_rgb(hex_list[i])
+        compare_vaule = math.sqrt(pow(r2 - r1,2)+pow(b2 - b1,2)+pow(g2 - g1,2))
+        if compare_vaule < lowest_distance:
+            lowest_distance = compare_vaule
+            lowest_distance_index = i
+    return lowest_distance_index
 
-
-def load_config():
+def load_config(): # Loads all config
     config = ConfigParser()
     config.read("config.ini")
     if config.getboolean("VIDEO_PLAYER","use_default_settings") == True: #Load Default Settings
@@ -65,8 +90,24 @@ def load_config():
         globals()["use_data_cache"] = config.getboolean("VIDEO_PLAYER","use_data_cache")
         globals()["substation_range"]  = config.getint("VIDEO_PLAYER","substation_range")
 
+def blueprint_to_json(string): #Thx Doshdoshington
+    data = zlib.decompress(base64.b64decode(string[1:]))
+    return json.loads(data)
+
+def json_to_blueprint(json_data): #Thx Doshdoshington
+    compressed = zlib.compress(json.dumps(json_data).encode('utf-8'), level=9)
+    return '0' + base64.b64encode(compressed).decode('utf-8')
+
+def list_to_32bit_int(lst): #Thanks @artucuno for this function
+    result = 0
+    for bit in lst:
+        result = (result << bit_step) | bit
+    if result >= 0x80000000:  # If the sign bit is set
+        result -= 0x100000000  # Convert to negative value
+    return result
+
 load_config()
-hex_compare("#000000")
+
 wire_copper = 1
 wire_red = 2
 wire_green = 3
@@ -84,77 +125,24 @@ if number_of_splits <1:
     number_of_splits = 1
 splits_height = round(video_height/number_of_splits) # type: ignore #Vertical Height of each split, used for generating video
 
-def blueprint_to_json(string): #Thx Doshdoshington
-    data = zlib.decompress(base64.b64decode(string[1:]))
-    return json.loads(data)
-
-def json_to_blueprint(json_data): #Thx Doshdoshington
-    compressed = zlib.compress(json.dumps(json_data).encode('utf-8'), level=9)
-    return '0' + base64.b64encode(compressed).decode('utf-8')
-
-# Convert into signed 32 bit integers adding 8 trailing zeros
-def list_to_32bit_int(lst): #Thanks @artucuno for this function
-    result = 0
-    for bit in lst:
-        result = (result << bit_step) | bit
-    if result >= 0x80000000:  # If the sign bit is set
-        result -= 0x100000000  # Convert to negative value
-    return result
-
-def process(cap, frame_number): #Processes video for each frame, where
-    # Thanks @artucuno for teaching me OpenCV2
+def process(cap, frame_number): # Thanks @artucuno for teaching me OpenCV2
     factorio_signal_data = [] # Represents all the data created by this function and returns it as a list of signals with vaules
     l = [] # List of pixel data for each frame
-    cap.set(cv2.CAP_PROP_POS_FRAMES, 100)#frame_number) 
+    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number) 
     ret, frame = cap.read()
     if ret:
-        #initilizes video processing enviroment
-        frame = cv2.resize(frame, (video_width, video_height), interpolation=cv2.INTER_AREA) # type: ignore
+        # frame = cv2.resize(frame, (video_width, video_height), interpolation=cv2.INTER_AREA) # type: ignore
         height, width, _ = frame.shape
+
         if colour_mode == "2 bit": # type: ignore #Black or White Colour
             raw_frame_data = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             for row in raw_frame_data:
                 l.append([0 if pixel < 128 else 1 for pixel in row])
-                print(l)
-                input()
-                sys.exit("debug")
 
         else: # 256 colour from colour pallete
             raw_frame_data = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-            pixels = raw_frame_data.reshape(-1, 3)
-            pixel_hex_data = []
-            for pixels_index in range(len(pixels)):
-                print(pixels_index)
-                pixel_hex_data.append(rgb_to_hex(pixels[0][0],pixels[0][1],pixels[0][2]))
-            
-            print(pixels)
             for row in raw_frame_data:
-                l.append([hex_compare(pixel_hex_data[i]) for i in row ])
-                # l_raw_color_data.append([pixel for pixel in row])
-                # print(l_raw_color_data)
-
-                # l.append([rgb_colour_data for pixel in row])
-            print(l)
-            input()
-            sys.exit("debug")
-
-
-
-        # Left in for debugging purposes, does nothing on its own (to see frame before processing is done)
-
-        #DEBUG FRAME DATA
-        # cv2.imshow("frame", frame)
-        # cv2.imshow("converted frame", raw_frame_data)
-        # cv2.waitKey(0)
-
-        # DEBUG: SPLITS
-        # split_pixel_count = 0
-        # for z in range(number_of_splits):
-        #     globals()["split_framedata_"+str(z)] = frame[split_pixel_count:(height*(z+1))//number_of_splits, 0:width] #Frame Data
-        #     split_pixel_count += splits_height
-        # for z in range(number_of_splits):
-        #     cv2.imshow("split-"+str(z)+":", globals()["split_framedata_"+str(z)])
-        #     cv2.waitKey(0)
+                l.append([hex_compare(get_rbg_data(pixel)) for pixel in row])
         
         #Turns framedata into a list
         split_pixel_count = 0
@@ -198,8 +186,11 @@ def process(cap, frame_number): #Processes video for each frame, where
         cv2.destroyAllWindows()
         return factorio_signal_data
     
-def make_blueprint(blueprint, frame_count, max_combinators):
-    cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\out.mp4")
+def make_blueprint(blueprint, frame_count, max_combinators,video_path):
+    if colour_mode == "256 bit":
+        cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\out.mp4")
+    else:
+        cap = cv2.VideoCapture(video_path)
     entity_number = 1
     combinator_count = 1
     column_count = 1 # Keeps track of how many combinators in each chunk of column for POWER
@@ -291,11 +282,9 @@ if __name__ == "__main__":
     else:
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
         json_path = R"Generated_Files\video_player\signals\signals.json"
-        video_path = "test.gif"
         video_path = str(sys.argv[1])
-        frame_count = 1
-        #frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
-        max_combinators = 200 if len(sys.argv) < 4 else int(sys.argv[3])
+        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT)) - 1
+        max_combinators = 100 if len(sys.argv) < 4 else int(sys.argv[3])
         try: 
             with open(json_path, 'r') as file:
                 raw_signals = json.load(file)
@@ -307,14 +296,16 @@ if __name__ == "__main__":
             signals_type.append(raw_signals["signals-type"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
-        # if colour_mode == "256 bit": # type: ignore
-        #     cls()
-        #     print("Generating ffmpeg pallette.png")
-        #     os.system(R"ffmpeg -y -i "+video_path+R" -vf palettegen Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
-        # cls()
-        # print("Generating ffmpeg encoded video (out.mp4)") 
-        # print("This may take a while.")
-        # os.system(R"ffmpeg -y -i "+video_path+R" -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.mp4 -hide_banner -loglevel error")
-        # cls()
+        if colour_mode == "256 bit": # type: ignore
+            cls()
+            print("Generating ffmpeg pallette.png")
+            os.system(R"ffmpeg -y -i "+video_path+R" -vf palettegen=reserve_transparent=0 Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
+            cls()
+            print("Generating ffmpeg encoded video (out.mp4)") 
+            print("This may take a while.")
+            os.system(R'ffmpeg -i '+video_path+R' -vf "scale='+str(video_width+R':-1" Generated_Files\\ffmpeg\\small.mp4')
+            os.system(R"ffmpeg -y -i Generated_Files\ffmpeg\small.mp4 -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.mp4 -hide_banner -loglevel error")
+        cls()
         print("Generating Combinators. This may take a while.")
-        make_blueprint(blueprint,frame_count,max_combinators)
+        hex_list = palette_to_hex_list()
+        make_blueprint(blueprint,frame_count,max_combinators,video_path)
