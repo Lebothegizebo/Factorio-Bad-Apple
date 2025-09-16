@@ -20,11 +20,6 @@ def hex_to_rgb(hex_string):
     hex_code = hex_string.lstrip('#')
     return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
 
-def hex_to_encoded_rgb(hex_string):
-    encoded_rgb = int(hex_string, 16)
-    print("encoded_rgb:", encoded_rgb)
-    input()
-
 def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules, used for encoding and decoding
     im = Image.open(R'Generated_Files\ffmpeg\palette.png')
     rgb_palette_data = []
@@ -299,11 +294,12 @@ if __name__ == "__main__":
         if colour_mode == "256 bit": # type: ignore
             cls()
             print("Generating ffmpeg pallette.png")
-            os.system(R"ffmpeg -y -i "+video_path+R" -vf palettegen=reserve_transparent=0 Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
+            os.system(R'ffmpeg -i '+video_path+R' -vf "scale='+str(video_width)+R':-1" Generated_Files\\ffmpeg\\small.mp4')
+            os.system(R"ffmpeg -y -i Generated_Files\\ffmpeg\\small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
             cls()
             print("Generating ffmpeg encoded video (out.mp4)") 
             print("This may take a while.")
-            os.system(R'ffmpeg -i '+video_path+R' -vf "scale='+str(video_width+R':-1" Generated_Files\\ffmpeg\\small.mp4')
+
             os.system(R"ffmpeg -y -i Generated_Files\ffmpeg\small.mp4 -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.mp4 -hide_banner -loglevel error")
         cls()
         print("Generating Combinators. This may take a while.")
