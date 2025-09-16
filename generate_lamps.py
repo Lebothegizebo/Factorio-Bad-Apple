@@ -128,6 +128,8 @@ def make_blueprint():
     else:
         new_blueprint = json_to_blueprint(blueprint)
         pyperclip.copy(new_blueprint)
+        with open("blueprint.txt", "w+") as file:
+            file.write(new_blueprint)
         print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
 if __name__ == "__main__":

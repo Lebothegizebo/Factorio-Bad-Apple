@@ -266,6 +266,8 @@ def make_blueprint(blueprint, frame_count, max_combinators,video_path):
     cls()
     print("Encoding Data to a Factorio Blueprint String. This may take a while.")
     new_blueprint = json_to_blueprint(blueprint)
+    with open("blueprint.txt", "w+") as file:
+        file.write(new_blueprint)
     pyperclip.copy(new_blueprint)
     cap.release()
     cls()

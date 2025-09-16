@@ -154,7 +154,7 @@ def factorio_signals_as_json():
 
 
 
-    with open(R'Generated_Files\video_player\signals\signals.json', 'w+') as f:
+    with open(R'Generated_Files/video_player/signals/signals.json', 'w+') as f:
         json.dump(generated_signals, f, indent=4)
 
 
