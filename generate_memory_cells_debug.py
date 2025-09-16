@@ -21,7 +21,7 @@ def hex_to_rgb(hex_string):
     return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
 
 def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules, used for encoding and decoding
-    im = Image.open(R'Generated_Files\ffmpeg\palette.png')
+    im = Image.open(R'Generated_Files/ffmpeg/palette.png')
     rgb_palette_data = []
     rgb_hex_list = []
     rgb_im = im.convert('RGB')
@@ -183,7 +183,7 @@ def process(cap, frame_number): # Thanks @artucuno for teaching me OpenCV2
     
 def make_blueprint(blueprint, frame_count, max_combinators,video_path):
     if colour_mode == "256 bit":
-        cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\out.mp4")
+        cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/out.mp4")
     else:
         cap = cv2.VideoCapture(video_path)
     entity_number = 1
@@ -278,7 +278,7 @@ if __name__ == "__main__":
         print("Usage: generate_memory_cells.py <video_path>")
     else:
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
-        json_path = R"Generated_Files\video_player\signals\signals.json"
+        json_path = R"Generated_Files/video_player/signals/signals.json"
         video_path = str(sys.argv[1])
         frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT)) - 1
         max_combinators = 100 if len(sys.argv) < 4 else int(sys.argv[3])
@@ -296,13 +296,12 @@ if __name__ == "__main__":
         if colour_mode == "256 bit": # type: ignore
             cls()
             print("Generating ffmpeg pallette.png")
-            os.system(R'ffmpeg -i '+video_path+R' -vf "scale='+str(video_width)+R':-1" Generated_Files\\ffmpeg\\small.mp4')
-            os.system(R"ffmpeg -y -i Generated_Files\\ffmpeg\\small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
+            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':-1" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             cls()
             print("Generating ffmpeg encoded video (out.mp4)") 
             print("This may take a while.")
-
-            os.system(R"ffmpeg -y -i Generated_Files\ffmpeg\small.mp4 -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.mp4 -hide_banner -loglevel error")
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex 'paletteuse' Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error")
         cls()
         print("Generating Combinators. This may take a while.")
         hex_list = palette_to_hex_list()
