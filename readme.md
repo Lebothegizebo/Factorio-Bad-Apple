@@ -33,4 +33,6 @@ Beta Instructions:
 Config.ini:
     Ensure that the target resolution is a multiple of 2 (NOT ODD, MUST BE EVEN.), FFMPEG does not play well with odd resolutions.
 
+IF YOU CHANGE VIDEOS YOU MUST START FROM STEP ONE AGAIN!! OR THE DISPLAY WILL NOT WORK PROPERLY.
+
 Feel free to contact me for any help at discord.gg/FKmACzfZxP (MY DISCORD SERVER)

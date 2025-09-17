@@ -82,6 +82,9 @@ def load_config(): # Loads all config
         globals()["substation_range"]  = config.getint("DEFAULT","substation_range")
         globals()["chunk_size"] = config.getint("DEFAULT","chunk_size")
         globals()["combinator_width"]  = config.getint("DEFAULT","combinator_width")
+        globals()["use_artifical_video_length"] = config.getboolean("DEFAULT", "use_artifical_video_length")
+        globals()["frame_limit"] = config.getint("DEFAULT","frame_limit")
+
     else: #Load Custom Settings
         globals()["use_vanilla_signals"] = config.getboolean("VIDEO_PLAYER","use_vanilla_signals")
         globals()["use_custom_signals"] = config.getboolean("VIDEO_PLAYER","use_custom_signals")
@@ -97,6 +100,8 @@ def load_config(): # Loads all config
         globals()["substation_range"]  = config.getint("VIDEO_PLAYER","substation_range")
         globals()["chunk_size"] = config.getint("VIDEO_PLAYER","chunk_size")
         globals()["combinator_width"]  = config.getint("VIDEO_PLAYER","combinator_width")
+        globals()["use_artifical_video_length"] = config.getboolean("VIDEO_PLAYER", "use_artifical_video_length")
+        globals()["frame_limit"] = config.getint("VIDEO_PLAYER","frame_limit")
 
 def blueprint_to_json(string): #Thx Doshdoshington
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -200,7 +205,7 @@ def make_blueprint(frame_count, max_combinators):
     y = 0
     frame_number = 0
     chunk_number = 1
-    chunk_max = round(frame_count/chunk_size) # type: ignore
+    chunk_max = math.ceil(frame_count/chunk_size) # type: ignore
     chunk_track = 0
     base_blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
     blueprint = base_blueprint
@@ -213,7 +218,7 @@ def make_blueprint(frame_count, max_combinators):
             with open("blueprint.txt", "w+") as file:
                 file.write(new_blueprint)
             cls()
-            print("Chunk succesfulyl generated! Chunk Number: ",chunk_number)
+            print("Chunk succesfulyl generated! Chunk Number:",chunk_number)
             print("Encoded Factorio Blueprint String has been copied to your clipboard!")
             print("Please paste this in Factorio, and then press Enter to continue.")
             blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
@@ -272,7 +277,7 @@ def make_blueprint(frame_count, max_combinators):
             ])
 
         sys.stdout.write(
-            f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max} | DEBUG: Colour correction used: {colour_correction}"
+            f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max}"
         )
         sys.stdout.flush()
         # Iterating key vars
@@ -324,6 +329,11 @@ if __name__ == "__main__":
         if colour_mode == "256 bit": # type: ignore
             cls()
             print("Generating ffmpeg pallette.png")
+            modulus = video_height % 4
+            if modulus != 0:
+                while modulus != 0:
+                    video_height += 1
+                    modulus = video_height % 4   
             os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error') # type: ignore
             os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             cls()
@@ -334,11 +344,13 @@ if __name__ == "__main__":
         else:
             os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error') # type: ignore
         cls()
-        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
+        if use_artifical_video_length == True:
+            frame_count = frame_limit
+        else:
+            frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
         if colour_mode == "2 bit": # type: ignore
             cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/out.mp4")
         else: 
             hex_list = palette_to_hex_list()
         print("Generating Combinators. This may take a while.")
-        colour_correction = False
         make_blueprint(frame_count,max_combinators)
