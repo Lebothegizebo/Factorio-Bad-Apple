@@ -48,6 +48,7 @@ def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of
     for hex_index in range(256):
         if hex_string == hex_list[hex_index]:
             return hex_index
+    globals()["colour_correction"] = True
     lowest_distance = math.sqrt(pow(255,2)+pow(255,2)+pow(255,2))
     r2, b2, g2 = hex_to_rgb(hex_string)
     lowest_distance_index = 0
@@ -57,6 +58,8 @@ def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of
         if compare_value < lowest_distance:
             lowest_distance = compare_value
             lowest_distance_index = i
+    print("hex:", hex_string)
+    print("HEX REAL:", hex_list[lowest_distance_index])
     return lowest_distance_index
 
 def load_config(): # Loads all config
@@ -249,7 +252,7 @@ def make_blueprint(blueprint, frame_count, max_combinators,video_path):
                 ])
 
             sys.stdout.write(
-                f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})"
+                f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y}) | DEBUG: Colour correction used: {colour_correction}"
             )
             sys.stdout.flush()
             # Iterating key vars
@@ -270,9 +273,9 @@ def make_blueprint(blueprint, frame_count, max_combinators,video_path):
     cls()
     print("Encoding Data to a Factorio Blueprint String. This may take a while.")
     new_blueprint = json_to_blueprint(blueprint)
+    #pyperclip.copy(new_blueprint)
     with open("blueprint.txt", "w+") as file:
         file.write(new_blueprint)
-    pyperclip.copy(new_blueprint)
     cap.release()
     cls()
     print("Encoded Factorio Blueprint String has been copied to your clipboard!")
@@ -314,4 +317,5 @@ if __name__ == "__main__":
         cls()
         print("Generating Combinators. This may take a while.")
         hex_list = palette_to_hex_list()
+        colour_correction = False
         make_blueprint(blueprint,frame_count,max_combinators,video_path)
