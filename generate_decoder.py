@@ -284,60 +284,59 @@ def make_blueprint():
         color_decoder_track.append(entity_number)
         column_count = 1
         if colour_mode == "256 bit": # type: ignore
-            j
-            # for k in range(256):
-            #     if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
-            #         column_count = 1
-            #         y += 2          
-            #     column_count += 1
-            #     blueprint["blueprint"]["entities"].append({
-            #         "entity_number": entity_number,
-            #         "name": "decider-combinator",
-            #         "position": {
-            #         "x": x,
-            #         "y": y
-            #         },
-            #         "direction": 8,
-            #         "control_behavior": {
-            #             "decider_conditions": {
-            #                 "conditions": [
-            #                 {
-            #                     "first_signal": {
-            #                     "type": "virtual",
-            #                     "name": "signal-each"
-            #                     },
-            #                     "constant": k,
-            #                     "comparator": "="
-            #                 }
-            #                 ],
-            #                 "outputs": [
-            #                 {
-            #                     "signal": {
-            #                     "type": "virtual",
-            #                     "name": "signal-each"
-            #                     },
-            #                     "copy_count_from_input": False,
-            #                     "constant": hex_to_encoded_rgb(hex_list[k])
-            #                 }
-            #                 ]
-            #             }
-            #         }
-            #     }
-            #     )
-            #     blueprint["blueprint"]["wires"].append([
-            #         entity_number,
-            #         wire_green,
-            #         entity_number+1,
-            #         wire_green
-            #     ])
-            #     blueprint["blueprint"]["wires"].append([
-            #         entity_number,
-            #         2,
-            #         entity_number+1,
-            #         2
-            #     ])
-            #     entity_number += 1
-            #     y += 2
+            for k in range(256):
+                if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+                    column_count = 1
+                    y += 2          
+                column_count += 1
+                blueprint["blueprint"]["entities"].append({
+                    "entity_number": entity_number,
+                    "name": "decider-combinator",
+                    "position": {
+                    "x": x,
+                    "y": y
+                    },
+                    "direction": 8,
+                    "control_behavior": {
+                        "decider_conditions": {
+                            "conditions": [
+                            {
+                                "first_signal": {
+                                "type": "virtual",
+                                "name": "signal-each"
+                                },
+                                "constant": k,
+                                "comparator": "="
+                            }
+                            ],
+                            "outputs": [
+                            {
+                                "signal": {
+                                "type": "virtual",
+                                "name": "signal-each"
+                                },
+                                "copy_count_from_input": False,
+                                "constant": hex_to_encoded_rgb(hex_list[k])
+                            }
+                            ]
+                        }
+                    }
+                }
+                )
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    wire_green,
+                    entity_number+1,
+                    wire_green
+                ])
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    2,
+                    entity_number+1,
+                    2
+                ])
+                entity_number += 1
+                y += 2
         else:
             globals()["hex_list"] = ["#000000","#ffffff"]
             for k in range(2):
