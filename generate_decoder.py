@@ -8,6 +8,7 @@ import math
 from configparser import ConfigParser
 from PIL import Image
 
+
 def load_config():
     config = ConfigParser()
     config.read("config.ini")
