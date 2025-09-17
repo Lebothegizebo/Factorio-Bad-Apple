@@ -93,11 +93,11 @@ def generate_signal_lists_and_type():
         if globals()["use_space_age"]:
             print("INFO: Using Signals from Space Age DLC.")
             print("INFO: The video player now requires Space Age DLC.")
-            globals()["vanilla_json_path"] = R"Factorio Signals\space_age.json"
+            globals()["vanilla_json_path"] = R"Factorio Signals/space_age.json"
         else:
             print("INFO: Using Basegame Factorio Signals.")
             print("INFO: Set use_space_age to True to use Space Age DLC")
-            globals()["vanilla_json_path"] = R"Factorio Signals\basegame_factorio.json"
+            globals()["vanilla_json_path"] = R"Factorio Signals/basegame_factorio.json"
         with open(globals()["vanilla_json_path"], 'r') as file:
             raw_signal_list = json.load(file)
 
@@ -154,7 +154,7 @@ def factorio_signals_as_json():
 
 
 
-    with open(R'Generated_Files\video_player\signals\signals.json', 'w+') as f:
+    with open(R'Generated_Files/video_player/signals/signals.json', 'w+') as f:
         json.dump(generated_signals, f, indent=4)
 
 

@@ -20,13 +20,8 @@ def hex_to_rgb(hex_string):
     hex_code = hex_string.lstrip('#')
     return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
 
-def hex_to_encoded_rgb(hex_string):
-    encoded_rgb = int(hex_string, 16)
-    print("encoded_rgb:", encoded_rgb)
-    input()
-
 def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules, used for encoding and decoding
-    im = Image.open(R'Generated_Files\ffmpeg\palette.png')
+    im = Image.open(R'Generated_Files/ffmpeg/palette.png')
     rgb_palette_data = []
     rgb_hex_list = []
     rgb_im = im.convert('RGB')
@@ -49,6 +44,7 @@ def hex_compare(hex_string): # Returns a vaule from 0-255 for the colour data of
     for hex_index in range(256):
         if hex_string == hex_list[hex_index]:
             return hex_index
+    globals()["colour_correction"] = True
     lowest_distance = math.sqrt(pow(255,2)+pow(255,2)+pow(255,2))
     r2, b2, g2 = hex_to_rgb(hex_string)
     lowest_distance_index = 0
@@ -58,6 +54,8 @@ def hex_compare(hex_string): # Returns a vaule from 0-255 for the colour data of
         if compare_vaule < lowest_distance:
             lowest_distance = compare_vaule
             lowest_distance_index = i
+    print("hex:", hex_string)
+    print("HEX REAL:", hex_list[lowest_distance_index])
     return lowest_distance_index
 
 def load_config(): # Loads all config
@@ -128,7 +126,7 @@ splits_height = round(video_height/number_of_splits) # type: ignore #Vertical He
 def process(cap, frame_number): # Thanks @artucuno for teaching me OpenCV2
     factorio_signal_data = [] # Represents all the data created by this function and returns it as a list of signals with vaules
     l = [] # List of pixel data for each frame
-    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number) 
+    cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number+ 100) 
     ret, frame = cap.read()
     if ret:
         # frame = cv2.resize(frame, (video_width, video_height), interpolation=cv2.INTER_AREA) # type: ignore
@@ -188,7 +186,7 @@ def process(cap, frame_number): # Thanks @artucuno for teaching me OpenCV2
     
 def make_blueprint(blueprint, frame_count, max_combinators,video_path):
     if colour_mode == "256 bit":
-        cap = cv2.VideoCapture(R"Generated_Files\ffmpeg\out.mp4")
+        cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/out.mp4")
     else:
         cap = cv2.VideoCapture(video_path)
     entity_number = 1
@@ -250,7 +248,7 @@ def make_blueprint(blueprint, frame_count, max_combinators,video_path):
                 ])
 
             sys.stdout.write(
-                f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})"
+                f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y}) | DEBUG: Colour correction used: {colour_correction}"
             )
             sys.stdout.flush()
             # Iterating key vars
@@ -271,7 +269,9 @@ def make_blueprint(blueprint, frame_count, max_combinators,video_path):
     cls()
     print("Encoding Data to a Factorio Blueprint String. This may take a while.")
     new_blueprint = json_to_blueprint(blueprint)
-    pyperclip.copy(new_blueprint)
+    #pyperclip.copy(new_blueprint)
+    with open("blueprint.txt", "w+") as file:
+        file.write(new_blueprint)
     cap.release()
     cls()
     print("Encoded Factorio Blueprint String has been copied to your clipboard!")
@@ -281,9 +281,10 @@ if __name__ == "__main__":
         print("Usage: generate_memory_cells.py <video_path>")
     else:
         blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
-        json_path = R"Generated_Files\video_player\signals\signals.json"
+        json_path = R"Generated_Files/video_player/signals/signals.json"
         video_path = str(sys.argv[1])
-        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT)) - 1
+        frame_count = 10
+        #frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT)) - 1
         max_combinators = 100 if len(sys.argv) < 4 else int(sys.argv[3])
         try: 
             with open(json_path, 'r') as file:
@@ -296,16 +297,17 @@ if __name__ == "__main__":
             signals_type.append(raw_signals["signals-type"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
-        if colour_mode == "256 bit": # type: ignore
-            cls()
-            print("Generating ffmpeg pallette.png")
-            os.system(R"ffmpeg -y -i "+video_path+R" -vf palettegen=reserve_transparent=0 Generated_Files\ffmpeg\palette.png -hide_banner -loglevel error")
-            cls()
-            print("Generating ffmpeg encoded video (out.mp4)") 
-            print("This may take a while.")
-            os.system(R'ffmpeg -i '+video_path+R' -vf "scale='+str(video_width+R':-1" Generated_Files\\ffmpeg\\small.mp4')
-            os.system(R"ffmpeg -y -i Generated_Files\ffmpeg\small.mp4 -i Generated_Files\ffmpeg\palette.png -filter_complex 'paletteuse' Generated_Files\ffmpeg\out.mp4 -hide_banner -loglevel error")
+        # if colour_mode == "256 bit": # type: ignore
+        #     cls()
+        #     print("Generating ffmpeg pallette.png")
+        #     os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':-1" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+        #     os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+        #     cls()
+        #     print("Generating ffmpeg encoded video (out.mp4)") 
+        #     print("This may take a while.")
+        #     os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex 'paletteuse' Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error")
         cls()
         print("Generating Combinators. This may take a while.")
         hex_list = palette_to_hex_list()
+        colour_correction = False
         make_blueprint(blueprint,frame_count,max_combinators,video_path)

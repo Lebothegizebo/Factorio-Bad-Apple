@@ -128,10 +128,12 @@ def make_blueprint():
     else:
         new_blueprint = json_to_blueprint(blueprint)
         pyperclip.copy(new_blueprint)
+        with open("blueprint.txt", "w+") as file:
+            file.write(new_blueprint)
         print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
 if __name__ == "__main__":
-    json_path = R"Generated_Files\video_player\signals\signals.json"
+    json_path = R"Generated_Files/video_player/signals/signals.json"
     try: 
         with open(json_path, 'r') as file:
             raw_signals = json.load(file)
