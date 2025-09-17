@@ -281,7 +281,7 @@ def make_blueprint():
     for i in range(len(raw_signals["signals"]["split-0"])):
         color_decoder_track.append(entity_number)
         column_count = 1
-        if colour_mode = "256 bit": # type: ignore
+        if colour_mode == "256 bit": # type: ignore
             for k in range(256):
                 if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
                     column_count = 1
@@ -336,7 +336,7 @@ def make_blueprint():
                 entity_number += 1
                 y += 2
         else:
-            hex_list = ["#000000","#ffffff"]
+            globals()["hex_list"] = ["#000000","#ffffff"]
             for k in range(2):
                 if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
                     column_count = 1
@@ -394,50 +394,16 @@ def make_blueprint():
                 column_count = 1
                 y += 2          
             column_count += 1
-            blueprint["blueprint"]["entities"].append({
-                "entity_number": entity_number,
-                "name": "decider-combinator",
-                "position": {
-                "x": x,
-                "y": y
-                },
-                "direction": 8,
-                "control_behavior": {
-                    "decider_conditions": {
-                        "conditions": [
-                        {
-                            "first_signal": {
-                            "type": "virtual",
-                            "name": "signal-each"
-                            },
-                            "constant": k,
-                            "comparator": "="
-                        }
-                        ],
-                        "outputs": [
-                        {
-                            "signal": {
-                            "type": "virtual",
-                            "name": "signal-each"
-                            },
-                            "copy_count_from_input": False,
-                            "constant": hex_to_encoded_rgb(hex_list[k])
-                        }
-                        ]
-                    }
-                }
-            }
-            )
             blueprint["blueprint"]["wires"].append([
                 entity_number,
                 wire_green,
-                entity_number+1,
+                entity_number-1,
                 wire_green
             ])
             blueprint["blueprint"]["wires"].append([
                 entity_number,
                 2,
-                entity_number+1,
+                entity_number-1,
                 2
             ])
             entity_number += 1
@@ -475,7 +441,7 @@ def make_blueprint():
 if __name__ == "__main__":
     json_path = R"Generated_Files/video_player/signals/signals.json"
     if len(sys.argv) <2:
-        print("Usage: generate_memory_cells.py <video_path>")
+        print("Usage: generate_decoder.py <video_path>")
     else:
         try: 
             with open(json_path, 'r') as file:
@@ -485,6 +451,7 @@ if __name__ == "__main__":
         video_path = str(sys.argv[1])
         os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':-1" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error') # type: ignore
         os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
-        hex_list = palette_to_hex_list()
+        # hex_list = palette_to_hex_list()
+        globals()["hex_list"] = palette_to_hex_list()
         splits = number_of_splits
         make_blueprint()

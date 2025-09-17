@@ -305,7 +305,7 @@ def make_blueprint(frame_count, max_combinators):
 
 if __name__ == "__main__":
     if len(sys.argv) <2:
-        print("Usage: generate_memory_cells.py <video_path>")
+        print("Usage: generate_memory.py <video_path>")
     else:
         json_path = R"Generated_Files/video_player/signals/signals.json"
         video_path = str(sys.argv[1])
@@ -337,7 +337,8 @@ if __name__ == "__main__":
         frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
         if colour_mode == "2 bit": # type: ignore
             cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/out.mp4")
+        else: 
+            hex_list = palette_to_hex_list()
         print("Generating Combinators. This may take a while.")
-        hex_list = palette_to_hex_list()
         colour_correction = False
         make_blueprint(frame_count,max_combinators)

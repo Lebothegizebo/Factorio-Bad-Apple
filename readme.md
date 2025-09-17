@@ -21,6 +21,8 @@ Beta Instructions:
 
 
 2: Run generate_decoder.py <video_path>, place blueprint in world.
+    THEN RUN generate_lamps.py and connect the first lamp to the individual ends of the decoder (With a green wire, each column should be connected individually)
+    
 3: Run generate_memory.py <video_path>, place blueprint next to decoder.
     IF MULTIPLE CHUNKS ARE USED:
         For each chunk, ensure that Chunk 1's Combinators (Back, Green Wire, Front, Red Wire) is connected to Chunk 2 (Back, Green wire, Front, Red Wire)

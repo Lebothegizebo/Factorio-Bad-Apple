@@ -41,16 +41,16 @@ load_config()
 
 generated_signals = {"decoder": {}, "decoder-type": {}, "decoder-quality": {}, "signals": {}, "signals-type": {}, "signals-quality": {}} #Signal list that the program uses to generate memory and the decoder
 
-if colour_mode == "256 bit":
+if colour_mode == "256 bit": # type: ignore
     bit_size = 4 # 256 bit colour
-elif colour_mode == "2 bit":
+elif colour_mode == "2 bit": # type: ignore
     bit_size = 32 # 2 bit colour
 
-number_of_splits = int(math.ceil(video_height/bit_size))# Number of Horizontal splits to split the video into to fit all binary signals
+number_of_splits = int(math.ceil(video_height/bit_size))# type: ignore # Number of Horizontal splits to split the video into to fit all binary signals
 if number_of_splits <1:
     number_of_splits = 1
 
-splits_height = round(video_height/number_of_splits) #Vertical Height of each split, used for generating signals
+splits_height = round(video_height/number_of_splits) # type: ignore #Vertical Height of each split, used for generating signals
 
 def generate_signal_lists_and_type():
     signals = []
@@ -72,7 +72,7 @@ def generate_signal_lists_and_type():
                 print("To continue, press Enter.")
                 input()
                 cls()
-                with open(custom_signal_json_path, 'r') as file:
+                with open(custom_signal_json_path, 'r') as file: # type: ignore
                     raw_custom_signal_list = json.load(file)
 
     if globals()["use_custom_signals"] and globals()["use_vanilla_signals"]: #TEMPORARY, disables vanilla signals if custom signals are being used since the checks that duplicate signals are not being used have not been implemented yet.
@@ -145,7 +145,7 @@ def factorio_signals_as_json():
         globals()["generated_signals"]["signals"]["split-"+str(z)] = []
         globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
         globals()["generated_signals"]["signals-quality"]["split-"+str(z)] = []
-        for i in range(video_width):
+        for i in range(video_width): # type: ignore
             globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[k])
             globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[k])
             globals()["generated_signals"]["signals-quality"]["split-"+str(z)].append(signal_quality[k])
