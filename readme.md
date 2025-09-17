@@ -1,2 +1,2 @@
 Requires:
-ffmpeg
+ffmpeg, pyperclip, opencv-python, pillow

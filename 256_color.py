@@ -43,7 +43,7 @@ def hex_to_encoded_rgb(hex_string):
     encoded_rgb = int(hex_code, 16)
     return encoded_rgb
 
-def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules, used for encoding and decoding
+def palette_to_hex_list(): # turns palette.png into a indexed list of HEX values, used for encoding and decoding
     im = Image.open(R'Generated_Files/ffmpeg/palette.png')
     rgb_palette_data = []
     rgb_hex_list = []
@@ -374,7 +374,7 @@ if __name__ == "__main__":
         except:
             sys.exit("No signals have been defined! Run generate_signals.py to continue.")
         video_path = str(sys.argv[1])
-        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':-1" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
         os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
         hex_list = palette_to_hex_list()
         splits = number_of_splits
