@@ -1,6 +1,6 @@
 debug.json
-old
-Generated_Files/ffmpeg/out.mp4
-Generated_Files/ffmpeg/small.mp4
+Video_Files/
+Generated_Files/ffmpeg/
+Generated_Files/video_player/signals/
 blueprint.txt
 Generated_Files/ffmpeg/out.gif

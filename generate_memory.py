@@ -27,7 +27,7 @@ def hex_to_rgb(hex_string):
     hex_code = hex_string.lstrip('#')
     return tuple(int(hex_code[i:i+2], 16) for i in (0, 2, 4))
 
-def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules, used for encoding and decoding
+def palette_to_hex_list(): # turns palette.png into a indexed list of HEX values, used for encoding and decoding
     im = Image.open(R'Generated_Files/ffmpeg/palette.png')
     rgb_palette_data = []
     rgb_hex_list = []
@@ -42,27 +42,26 @@ def palette_to_hex_list(): # turns pallete.png into a indexed list of HEX vaules
         rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
     return rgb_hex_list
 
-def get_rbg_data(frame_data): # Returns RGB vaules from framedata
+def get_rbg_data(frame_data): # Returns RGB values from framedata
     r, g, b = frame_data
     hex = rgb_to_hex(r,g,b)
     return hex
 
-def hex_compare(hex_string): # Returns a vaule from 0-255 for the colour data of each frame depending on pallete.png
+def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of each frame depending on pallete.png
     for hex_index in range(256):
         if hex_string == hex_list[hex_index]:
             return hex_index
-    globals()["colour_correction"] = True
     lowest_distance = math.sqrt(pow(255,2)+pow(255,2)+pow(255,2))
     r2, b2, g2 = hex_to_rgb(hex_string)
     lowest_distance_index = 0
     for i in range(256): # If inputted hex does not match, finds the closet matching colour and uses that instead
         r1, b1, g1 = hex_to_rgb(hex_list[i])
-        compare_vaule = math.sqrt(pow(r2 - r1,2)+pow(b2 - b1,2)+pow(g2 - g1,2))
-        if compare_vaule < lowest_distance:
-            lowest_distance = compare_vaule
+        compare_value = math.sqrt(pow(r2 - r1,2)+pow(b2 - b1,2)+pow(g2 - g1,2))
+        if compare_value < lowest_distance:
+            lowest_distance = compare_value
             lowest_distance_index = i
-        if compare_vaule > lowest_distance:
-            print("DISTANCE: ", lowest_distance)
+        if compare_value > lowest_distance:
+            return lowest_distance_index
     return lowest_distance_index
 
 def load_config(): # Loads all config
@@ -81,6 +80,8 @@ def load_config(): # Loads all config
         globals()["video_width"] = config.getint("DEFAULT", "video_width")
         globals()["use_data_cache"] = config.getboolean("DEFAULT","use_data_cache")
         globals()["substation_range"]  = config.getint("DEFAULT","substation_range")
+        globals()["chunk_size"] = config.getint("DEFAULT","chunk_size")
+        globals()["combinator_width"]  = config.getint("DEFAULT","combinator_width")
     else: #Load Custom Settings
         globals()["use_vanilla_signals"] = config.getboolean("VIDEO_PLAYER","use_vanilla_signals")
         globals()["use_custom_signals"] = config.getboolean("VIDEO_PLAYER","use_custom_signals")
@@ -94,6 +95,8 @@ def load_config(): # Loads all config
         globals()["video_width"] = config.getint("VIDEO_PLAYER", "video_width")
         globals()["use_data_cache"] = config.getboolean("VIDEO_PLAYER","use_data_cache")
         globals()["substation_range"]  = config.getint("VIDEO_PLAYER","substation_range")
+        globals()["chunk_size"] = config.getint("VIDEO_PLAYER","chunk_size")
+        globals()["combinator_width"]  = config.getint("VIDEO_PLAYER","combinator_width")
 
 def blueprint_to_json(string): #Thx Doshdoshington
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -133,7 +136,7 @@ splits_height = round(video_height/number_of_splits) # type: ignore #Vertical He
 def process(frame_number): # Thanks @artucuno for teaching me OpenCV2
     factorio_signal_data = []
     l = []
-    if colour_mode == "2 bit": # Get Frame Data
+    if colour_mode == "2 bit": # type: ignore # Get Frame Data
         cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number) 
         ret, frame = cap.read()
         if ret:
@@ -149,12 +152,12 @@ def process(frame_number): # Thanks @artucuno for teaching me OpenCV2
     #Turns framedata into a list
     split_pixel_count = 0
     for z in range(number_of_splits):
-        globals()["split_framedata_"+str(z)] = l[split_pixel_count:(video_height*(z+1))//number_of_splits]
+        globals()["split_framedata_"+str(z)] = l[split_pixel_count:(video_height*(z+1))//number_of_splits] # type: ignore
         split_pixel_count += splits_height
 
     # Split the lists vertically for each pixel column
     for z in range(number_of_splits):
-        globals()["split_"+str(z)] = [[row[i] for row in (globals()["split_framedata_"+str(z)])] for i in range(video_width)]
+        globals()["split_"+str(z)] = [[row[i] for row in (globals()["split_framedata_"+str(z)])] for i in range(video_width)] # type: ignore
 
     # Flip all video lists
     for z in range(number_of_splits):
@@ -196,14 +199,13 @@ def make_blueprint(frame_count, max_combinators):
     x = 0
     y = 0
     frame_number = 0
-    chunk_size = 100
     chunk_number = 1
-    chunk_max = round(frame_count/chunk_size)
+    chunk_max = round(frame_count/chunk_size) # type: ignore
     chunk_track = 0
     base_blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
     blueprint = base_blueprint
     for j in range(frame_count): #Frame Number
-        if chunk_track >= chunk_size:
+        if chunk_track >= chunk_size: # type: ignore
             cls()
             print("Encoding Data to a Factorio Blueprint String. This may take a while.")
             new_blueprint = json_to_blueprint(blueprint)
@@ -238,9 +240,9 @@ def make_blueprint(frame_count, max_combinators):
                 }
             }
         })
-        chunk_track += 1
         factorio_signal_data = process(frame_number)
-        blueprint["blueprint"]["entities"][j]["control_behavior"]["decider_conditions"]["outputs"] = factorio_signal_data
+        blueprint["blueprint"]["entities"][chunk_track]["control_behavior"]["decider_conditions"]["outputs"] = factorio_signal_data
+        chunk_track += 1
         if entity_number != 1:
             blueprint["blueprint"]["wires"].append([
                 entity_number-1,
@@ -294,7 +296,10 @@ def make_blueprint(frame_count, max_combinators):
     pyperclip.copy(new_blueprint)
     with open("blueprint.txt", "w+") as file:
         file.write(new_blueprint)
-    cap.release()
+    try:
+        cap.release()
+    except:
+        pass
     cls()
     print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
@@ -304,7 +309,7 @@ if __name__ == "__main__":
     else:
         json_path = R"Generated_Files/video_player/signals/signals.json"
         video_path = str(sys.argv[1])
-        max_combinators = 100 if len(sys.argv) < 4 else int(sys.argv[3])
+        max_combinators = combinator_width # type: ignore
         try: 
             with open(json_path, 'r') as file:
                 raw_signals = json.load(file)
@@ -319,19 +324,18 @@ if __name__ == "__main__":
         if colour_mode == "256 bit": # type: ignore
             cls()
             print("Generating ffmpeg pallette.png")
-            # os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
-            # os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error') # type: ignore
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             cls()
             print("Generating ffmpeg encoded video (out.mp4)") 
             print("This may take a while.")
-            # os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex 'paletteuse' Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
-            # os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/out.gif -vf Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error')
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex 'paletteuse' Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
+            os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/out.gif -vf Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error')
         else:
-            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error')
+            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error') # type: ignore
         cls()
-        frame_count = 100
-        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT)) - 1
-        if colour_mode == "2 bit":
+        frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
+        if colour_mode == "2 bit": # type: ignore
             cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/out.mp4")
         print("Generating Combinators. This may take a while.")
         hex_list = palette_to_hex_list()

@@ -1,11 +1,11 @@
 Requires:
+
 OS INSTALL:
     https://ffmpeg.org/ (ffmpeg)
+
 Python3:  (Run program first, it will tell you what modules you are missing)
     pyperclip
-    configparser
-    Pillow (PIL)
-    numpy
+    pillow
     opencv-python 
 
 Beta Instructions:
