@@ -10,11 +10,13 @@ def load_config():
     if config.getboolean("VIDEO_PLAYER","use_default_settings") == True: #Load Default Settings
         globals()["use_vanilla_signals"] = config.getboolean("DEFAULT","use_vanilla_signals")
         globals()["use_custom_signals"] = config.getboolean("DEFAULT","use_custom_signals")
+        globals()["use_custom_quality"] = config.getboolean("DEFAULT","use_custom_quality")
         globals()["use_space_age"] = config.getboolean("DEFAULT","use_space_age")
         globals()["use_quality"] = config.getboolean("DEFAULT","use_quality")
         globals()["bypass_custom_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_signal_warning")
         globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_and_vanilla_signal_warning")
         globals()["custom_signal_json_path"] = config["DEFAULT"]["custom_signal_json_path"]
+        globals()["custom_quality_json_path"] = config["DEFAULT"]["custom_quality_json_path"]
         globals()["colour_mode"] = config.read_string("DEFAULT","colour_mode")
         globals()["video_height"] = config.getint("DEFAULT", "video_height")
         globals()["video_width"] = config.getint("DEFAULT", "video_width")
@@ -23,11 +25,13 @@ def load_config():
     else: #Load Custom Settings
         globals()["use_vanilla_signals"] = config.getboolean("VIDEO_PLAYER","use_vanilla_signals")
         globals()["use_custom_signals"] = config.getboolean("VIDEO_PLAYER","use_custom_signals")
+        globals()["use_custom_quality"] = config.getboolean("VIDEO_PLAYER","use_custom_quality")
         globals()["use_space_age"] = config.getboolean("VIDEO_PLAYER","use_space_age")
         globals()["use_quality"] = config.getboolean("VIDEO_PLAYER","use_quality")
         globals()["bypass_custom_signal_warning"] = config.getboolean("VIDEO_PLAYER","bypass_custom_signal_warning")
         globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("VIDEO_PLAYER","bypass_custom_and_vanilla_signal_warning")
         globals()["custom_signal_json_path"] = config["VIDEO_PLAYER"]["custom_signal_json_path"]
+        globals()["custom_quality_json_path"] = config["VIDEO_PLAYER"]["custom_quality_json_path"]
         globals()["colour_mode"] = config["VIDEO_PLAYER"]["colour_mode"]
         globals()["video_height"] = config.getint("VIDEO_PLAYER", "video_height")
         globals()["video_width"] = config.getint("VIDEO_PLAYER", "video_width")
@@ -58,6 +62,13 @@ def generate_signal_lists_and_type():
     signals_quality = []
     if globals()["use_quality"] == True:
         quality_list = [{"normal"},{"uncommon"},{"rare"},{"epic"},{"legendary"}]
+        if globals()["use_custom_quality"] == True:
+            with open(custom_quality_json_path, 'r') as file:
+                raw_quality = json.load(file)
+            for i in range(len(raw_quality["quality"])):
+                quality_list.append({
+                    raw_quality["quality"][i]
+                })
     else:
         quality_list = [{"normal"}]
     if globals()["use_vanilla_signals"] == False and globals()["use_custom_signals"] == False:

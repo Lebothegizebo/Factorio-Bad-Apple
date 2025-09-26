@@ -10,6 +10,8 @@ from configparser import ConfigParser
 from PIL import Image
 import numpy as np
 
+correction = False
+
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -32,14 +34,38 @@ def palette_to_hex_list(): # turns palette.png into a indexed list of HEX values
     rgb_palette_data = []
     rgb_hex_list = []
     rgb_im = im.convert('RGB')
-    for y in range(16):
-        for x in range(16):
-            rgb_palette_data.append(rgb_im.getpixel((x, y)))
-    for index in range(256):
-        r = rgb_palette_data[index][0]
-        g = rgb_palette_data[index][1]
-        b = rgb_palette_data[index][2]
+    x = 0
+    y = 0
+    for index in range(255):
+        print(x,y)
+        rgb_palette_data.append(rgb_im.getpixel((x, y)))
+        x += 1
+        if x == 16:
+            x = 0
+            y += 1 
+    # for y in range(16):
+    #     for x in range(16):
+    #         print(x,y)
+    # #         rgb_palette_data.append(rgb_im.getpixel((x, y)))
+    # for index in range(255):
+    #     r = rgb_palette_data[index][0]
+    #     g = rgb_palette_data[index][1]
+    #     b = rgb_palette_data[index][2]
+    #     rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
+
+    for index in range(255):
+        print(x,y)
+        r, g, b = rgb_im.getpixel((x, y))
         rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
+        x += 1
+        if x == 16:
+            x = 0
+            y += 1 
+
+    print("HEX DATA:")
+    print(rgb_hex_list)
+    print(len(rgb_hex_list))
+    sys.exit()
     return rgb_hex_list
 
 def get_rbg_data(frame_data): # Returns RGB values from framedata
@@ -51,6 +77,7 @@ def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of
     for hex_index in range(256):
         if hex_string == hex_list[hex_index]:
             return hex_index
+    correction = True
     lowest_distance = math.sqrt(pow(255,2)+pow(255,2)+pow(255,2))
     r2, b2, g2 = hex_to_rgb(hex_string)
     lowest_distance_index = 0
@@ -277,7 +304,7 @@ def make_blueprint(frame_count, max_combinators):
             ])
 
         sys.stdout.write(
-            f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max}"
+            f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max} | {correction}"
         )
         sys.stdout.flush()
         # Iterating key vars
@@ -333,14 +360,22 @@ if __name__ == "__main__":
             if modulus != 0:
                 while modulus != 0:
                     video_height += 1
-                    modulus = video_height % 4   
-            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error') # type: ignore
-            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+                    modulus = video_height % 4
+            modulus = video_width % 2
+            if modulus != 0:
+                while modulus != 0:
+                    video_width += 1
+                    modulus = video_width % 2                                                                                                                                                                                  
+            
+            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos" -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
+            os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=3.5" -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             cls()
             print("Generating ffmpeg encoded video (out.mp4)") 
             print("This may take a while.")
-            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex 'paletteuse' Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
-            os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/out.gif -vf Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error')
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex paletteuse=dither=bayer:bayer_scale=4 -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
+            # os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/out.gif -vf Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error')
+            # sys.exit("DONE")
         else:
             os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error') # type: ignore
         cls()
