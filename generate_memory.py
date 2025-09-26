@@ -54,7 +54,7 @@ def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of
     for hex_index in range(256):
         if hex_string == hex_list[hex_index]:
             return hex_index
-    correction = True
+    # correction = True
     lowest_distance = math.sqrt(pow(255,2)+pow(255,2)+pow(255,2))
     r2, b2, g2 = hex_to_rgb(hex_string)
     lowest_distance_index = 0
@@ -281,7 +281,7 @@ def make_blueprint(frame_count, max_combinators):
             ])
 
         sys.stdout.write(
-            f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max} | {correction}"
+            f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max}"
         )
         sys.stdout.flush()
         # Iterating key vars
