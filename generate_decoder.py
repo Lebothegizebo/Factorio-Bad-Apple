@@ -8,6 +8,8 @@ import math
 from configparser import ConfigParser
 from PIL import Image
 
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def load_config():
     config = ConfigParser()
@@ -451,9 +453,22 @@ if __name__ == "__main__":
         except:
             sys.exit("No signals have been defined! Run generate_signals.py to continue.")
         video_path = str(sys.argv[1])
+        cls()
+        print("Generating ffmpeg pallette.png")
+        modulus = video_height % 4
+        if modulus != 0:
+            while modulus != 0:
+                video_height += 1
+                modulus = video_height % 4
+        modulus = video_width % 2
+        if modulus != 0:
+            while modulus != 0:
+                video_width += 1
+                modulus = video_width % 2     
         os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
         os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
         os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+        os.remove("Generated_Files/ffmpeg/1.mp4")
         globals()["hex_list"] = palette_to_hex_list()
         splits = number_of_splits
         make_blueprint()
