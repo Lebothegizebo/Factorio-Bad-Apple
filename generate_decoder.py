@@ -46,17 +46,17 @@ def hex_to_encoded_rgb(hex_string):
 
 def palette_to_hex_list(): # turns palette.png into a indexed list of HEX values, used for encoding and decoding
     im = Image.open(R'Generated_Files/ffmpeg/palette.png')
-    rgb_palette_data = []
-    rgb_hex_list = []
     rgb_im = im.convert('RGB')
-    for y in range(16):
-        for x in range(16):
-            rgb_palette_data.append(rgb_im.getpixel((x, y)))
-    for index in range(256):
-        r = rgb_palette_data[index][0]
-        g = rgb_palette_data[index][1]
-        b = rgb_palette_data[index][2]
+    rgb_hex_list = []
+    x = 0
+    y = 0
+    for index in range(255):
+        r, g, b = rgb_im.getpixel((x, y))
         rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
+        x += 1
+        if x == 16:
+            x = 0
+            y += 1 
     return rgb_hex_list
 
 load_config()
@@ -284,7 +284,7 @@ def make_blueprint():
         color_decoder_track.append(entity_number)
         column_count = 1
         if colour_mode == "256 bit": # type: ignore
-            for k in range(256):
+            for k in range(255):
                 if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
                     column_count = 1
                     y += 2          
@@ -305,7 +305,7 @@ def make_blueprint():
                                 "type": "virtual",
                                 "name": "signal-each"
                                 },
-                                "constant": k,
+                                "constant": k+1,
                                 "comparator": "="
                             }
                             ],
@@ -451,8 +451,9 @@ if __name__ == "__main__":
         except:
             sys.exit("No signals have been defined! Run generate_signals.py to continue.")
         video_path = str(sys.argv[1])
-        # os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error') # type: ignore
-        # os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=reserve_transparent=0:stats_mode=full Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
+        os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+        os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
         globals()["hex_list"] = palette_to_hex_list()
         splits = number_of_splits
         make_blueprint()

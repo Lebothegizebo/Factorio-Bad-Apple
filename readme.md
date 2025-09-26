@@ -30,9 +30,6 @@ Beta Instructions:
 4: Connect memory to a clock by connecting: Clock Output (Green wire) (Output must be as F) -> Back of memory decider combinator (Green Wire) 
 5: Connect memory to the decoder by connecting: Front of any memory decider combinator (Red Wire) -> Back of any arthimitic combinator (Red Wire)
 
-Config.ini:
-    Ensure that the target resolution is a multiple of 2 (NOT ODD, MUST BE EVEN.), FFMPEG does not play well with odd resolutions.
-
 IF YOU CHANGE VIDEOS YOU MUST START FROM STEP ONE AGAIN!! OR THE DISPLAY WILL NOT WORK PROPERLY.
 
 Feel free to contact me for any help at discord.gg/FKmACzfZxP (MY DISCORD SERVER)

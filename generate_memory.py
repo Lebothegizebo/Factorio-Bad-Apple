@@ -31,41 +31,18 @@ def hex_to_rgb(hex_string):
 
 def palette_to_hex_list(): # turns palette.png into a indexed list of HEX values, used for encoding and decoding
     im = Image.open(R'Generated_Files/ffmpeg/palette.png')
-    rgb_palette_data = []
-    rgb_hex_list = []
     rgb_im = im.convert('RGB')
+    rgb_hex_list = []
     x = 0
     y = 0
+    rgb_hex_list.append("#000000")
     for index in range(255):
-        print(x,y)
-        rgb_palette_data.append(rgb_im.getpixel((x, y)))
-        x += 1
-        if x == 16:
-            x = 0
-            y += 1 
-    # for y in range(16):
-    #     for x in range(16):
-    #         print(x,y)
-    # #         rgb_palette_data.append(rgb_im.getpixel((x, y)))
-    # for index in range(255):
-    #     r = rgb_palette_data[index][0]
-    #     g = rgb_palette_data[index][1]
-    #     b = rgb_palette_data[index][2]
-    #     rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
-
-    for index in range(255):
-        print(x,y)
         r, g, b = rgb_im.getpixel((x, y))
         rgb_hex_list.append('#{0:02x}{1:02x}{2:02x}'.format(r, g, b))
         x += 1
         if x == 16:
             x = 0
             y += 1 
-
-    print("HEX DATA:")
-    print(rgb_hex_list)
-    print(len(rgb_hex_list))
-    sys.exit()
     return rgb_hex_list
 
 def get_rbg_data(frame_data): # Returns RGB values from framedata
@@ -365,17 +342,17 @@ if __name__ == "__main__":
             if modulus != 0:
                 while modulus != 0:
                     video_width += 1
-                    modulus = video_width % 2                                                                                                                                                                                  
-            
-            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos" -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
-            os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=3.5" -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
-            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+                    modulus = video_width % 2     
+                                                                                                                                                                                                 
+            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
+            os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             cls()
-            print("Generating ffmpeg encoded video (out.mp4)") 
+            print("Generating ffmpeg encoded GIF (out.gif)") 
             print("This may take a while.")
-            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex paletteuse=dither=bayer:bayer_scale=4 -color_trc smpte2084 -color_primaries bt2020 Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
-            # os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/out.gif -vf Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error')
-            # sys.exit("DONE")
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex paletteuse=dither=bayer:bayer_scale=4  Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
+            os.remove("Generated_Files/ffmpeg/1.mp4")
+            os.remove("Generated_Files/ffmpeg/small.mp4")
         else:
             os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error') # type: ignore
         cls()
