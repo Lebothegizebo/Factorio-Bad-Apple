@@ -44,8 +44,9 @@ def cls():
 load_config()
 
 generated_signals = {"decoder": {}, "decoder-type": {}, "decoder-quality": {}, "signals": {}, "signals-type": {}, "signals-quality": {}} #Signal list that the program uses to generate memory and the decoder
-
-if colour_mode == "256 bit": # type: ignore
+if colour_mode == "full colour":
+    bit_size  = 1
+elif colour_mode == "256 bit": # type: ignore
     bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit": # type: ignore
     bit_size = 32 # 2 bit colour
@@ -143,24 +144,34 @@ def generate_signal_lists_and_type():
 def factorio_signals_as_json():
     k = 0
     for z in range(number_of_splits):
-        globals()["generated_signals"]["decoder"]["split-"+str(z)] = []
-        globals()["generated_signals"]["decoder-type"]["split-"+str(z)] = []
-        globals()["generated_signals"]["decoder-quality"]["split-"+str(z)] = []
-        for i in range(splits_height):
-            globals()["generated_signals"]["decoder"]["split-"+str(z)].append(signal[k])
-            globals()["generated_signals"]["decoder-type"]["split-"+str(z)].append(signal_type[k])
-            globals()["generated_signals"]["decoder-quality"]["split-"+str(z)].append(signal_quality[k])
-            k += 1
+        try:
+            globals()["generated_signals"]["decoder"]["split-"+str(z)] = []
+            globals()["generated_signals"]["decoder-type"]["split-"+str(z)] = []
+            globals()["generated_signals"]["decoder-quality"]["split-"+str(z)] = []
+            for i in range(splits_height):
+                globals()["generated_signals"]["decoder"]["split-"+str(z)].append(signal[k])
+                globals()["generated_signals"]["decoder-type"]["split-"+str(z)].append(signal_type[k])
+                globals()["generated_signals"]["decoder-quality"]["split-"+str(z)].append(signal_quality[k])
+                k += 1
+        except:
+            cls()
+            print("ERROR:")
+            sys.exit("The program ran out of signals to use. Either: Decrease the target resolution, or add new signals via modded quality (or Space Age DLC)")
     k = 0
     for z in range(number_of_splits):
-        globals()["generated_signals"]["signals"]["split-"+str(z)] = []
-        globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
-        globals()["generated_signals"]["signals-quality"]["split-"+str(z)] = []
-        for i in range(video_width): # type: ignore
-            globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[k])
-            globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[k])
-            globals()["generated_signals"]["signals-quality"]["split-"+str(z)].append(signal_quality[k])
-            k += 1
+        try:
+            globals()["generated_signals"]["signals"]["split-"+str(z)] = []
+            globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
+            globals()["generated_signals"]["signals-quality"]["split-"+str(z)] = []
+            for i in range(video_width): # type: ignore
+                globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[k])
+                globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[k])
+                globals()["generated_signals"]["signals-quality"]["split-"+str(z)].append(signal_quality[k])
+                k += 1
+        except:
+            cls()
+            print("ERROR:")
+            sys.exit("The program ran out of signals to use. Either: Decrease the target resolution, or add new signals via modded quality (or Space Age DLC)")
         
 
 

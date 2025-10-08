@@ -71,7 +71,9 @@ signals_quality = []
 decoder = []
 decoder_type = []
 decoder_quality = []
-if colour_mode == "256 bit": # type: ignore
+if colour_mode == "full colour":
+    bit_size  = 1
+elif colour_mode == "256 bit": # type: ignore
     bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit": # type: ignore
     bit_size = 32 # 2 bit colour
@@ -100,7 +102,6 @@ def make_blueprint():
     dynamic_bit_max = 32
     if dynamic_bit_max >= 32:
         dynamic_bit_max = 32
-
     and_constant = 1 if bit_size == 32 else round((bit_max*bit_step)-1)
     for i, key in enumerate(list(raw_signals["signals"].keys())):
         signals.extend(raw_signals["signals"][key])
@@ -121,6 +122,7 @@ def make_blueprint():
     entity_number_track_bottom = []
     x=0
     signal_id = 0
+    
     for i in range(round(video_width)): # type: ignore
         entity_number_track_top.append(entity_number)
         y = y_start
@@ -253,6 +255,7 @@ def make_blueprint():
     x = 0
     y +=2
     x = 0
+    
     for i in range(len(raw_signals["signals"]["split-0"])):
         blueprint["blueprint"]["entities"].append({
             "entity_number": entity_number,
@@ -282,6 +285,7 @@ def make_blueprint():
     color_decoder_track = []
     column_count = 1
     y_start  = y
+    
     for i in range(len(raw_signals["signals"]["split-0"])):
         color_decoder_track.append(entity_number)
         column_count = 1
@@ -339,7 +343,7 @@ def make_blueprint():
                 ])
                 entity_number += 1
                 y += 2
-        else:
+        elif colour_mode == "2 bit":
             globals()["hex_list"] = ["#000000","#ffffff"]
             for k in range(2):
                 if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
@@ -414,6 +418,10 @@ def make_blueprint():
             y += 2
         x +=1
         y = y_start
+    
+    y += 4
+    x = 0
+
     for i in range(len(color_decoder_track)):
         blueprint["blueprint"]["wires"].append([
                     each_combinator_track[i],
@@ -435,12 +443,12 @@ def make_blueprint():
             entity_number_track_top[i+1],
             wire_red
         ])
-    else:
-        new_blueprint = json_to_blueprint(blueprint)
-        pyperclip.copy(new_blueprint)
-        with open("blueprint.txt", "w+") as file:
-            file.write(new_blueprint)
-        print("Encoded Factorio Blueprint String has been copied to your clipboard!")
+
+    new_blueprint = json_to_blueprint(blueprint)
+    pyperclip.copy(new_blueprint)
+    with open("blueprint.txt", "w+") as file:
+        file.write(new_blueprint)
+    print("Encoded Factorio Blueprint String has been copied to your clipboard!")
 
 if __name__ == "__main__":
     json_path = R"Generated_Files/video_player/signals/signals.json"
@@ -454,7 +462,6 @@ if __name__ == "__main__":
             sys.exit("No signals have been defined! Run generate_signals.py to continue.")
         video_path = str(sys.argv[1])
         cls()
-        print("Generating ffmpeg pallette.png")
         modulus = video_height % 4
         if modulus != 0:
             while modulus != 0:
@@ -464,11 +471,13 @@ if __name__ == "__main__":
         if modulus != 0:
             while modulus != 0:
                 video_width += 1
-                modulus = video_width % 2     
-        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
-        os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
-        os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
-        os.remove("Generated_Files/ffmpeg/1.mp4")
-        globals()["hex_list"] = palette_to_hex_list()
+                modulus = video_width % 2  
+
+        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore]
+        if colour_mode != "full colour":
+            os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
+            os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
+            os.remove("Generated_Files/ffmpeg/1.mp4")
+            globals()["hex_list"] = palette_to_hex_list()
         splits = number_of_splits
         make_blueprint()

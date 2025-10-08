@@ -10,8 +10,6 @@ from configparser import ConfigParser
 from PIL import Image
 import numpy as np
 
-correction = False
-
 def cls():
     os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -45,10 +43,16 @@ def palette_to_hex_list(): # turns palette.png into a indexed list of HEX values
             y += 1 
     return rgb_hex_list
 
-def get_rbg_data(frame_data): # Returns RGB values from framedata
+def get_rbg_data(frame_data, type): # Returns RGB values from framedata
     r, g, b = frame_data
-    hex = rgb_to_hex(r,g,b)
-    return hex
+    if type == "hex":
+        hex = rgb_to_hex(r,g,b)
+        return hex
+    elif type == "encoded rgb":
+        hex = rgb_to_hex(r,g,b).lstrip("#")
+        encoded_rgb = int(hex, 16)
+        return encoded_rgb
+
 
 def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of each frame depending on pallete.png
     for hex_index in range(256):
@@ -132,7 +136,9 @@ signals = []
 signals_type = []
 signals_quality = []
 bit_max = 32
-if colour_mode == "256 bit": # type: ignore
+if colour_mode == "full colour":
+    bit_size  = 1
+elif colour_mode == "256 bit": # type: ignore
     bit_size = 4 # 256 bit colour
 elif colour_mode == "2 bit": # type: ignore
     bit_size = 32 # 2 bit colour
@@ -145,18 +151,23 @@ splits_height = round(video_height/number_of_splits) # type: ignore #Vertical He
 def process(frame_number): # Thanks @artucuno for teaching me OpenCV2
     factorio_signal_data = []
     l = []
-    if colour_mode == "2 bit": # type: ignore # Get Frame Data
+    if colour_mode != "256 bit": # type: ignore # Get Frame Data
         cap.set(cv2.CAP_PROP_POS_FRAMES, frame_number) 
         ret, frame = cap.read()
         if ret:
-            height, width, _ = frame.shape
-            raw_frame_data = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-            for row in raw_frame_data:
-                l.append([0 if pixel < 128 else 1 for pixel in row])
+            # height, width, _ = frame.shape
+            if colour_mode == "2 bit":
+                raw_frame_data = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+                for row in raw_frame_data:
+                    l.append([0 if pixel < 128 else 1 for pixel in row])
+            else:
+                raw_frame_data = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+                for row in raw_frame_data:
+                    l.append([get_rbg_data(pixel,"encoded rgb") for pixel in row])
     else:
         raw_frame_data = read_gif(R"Generated_Files\ffmpeg\out.gif", frame_number)
         for row in raw_frame_data:
-            l.append([hex_compare(get_rbg_data(pixel)) for pixel in row])
+            l.append([hex_compare(get_rbg_data(pixel,"hex")) for pixel in row])
     
     #Turns framedata into a list
     split_pixel_count = 0
@@ -222,7 +233,7 @@ def make_blueprint(frame_count, max_combinators):
             with open("blueprint.txt", "w+") as file:
                 file.write(new_blueprint)
             cls()
-            print("Chunk succesfulyl generated! Chunk Number:",chunk_number)
+            print("Chunk succesfulyl generated! Chunk Number:",chunk_number,"|",chunk_max)
             print("Encoded Factorio Blueprint String has been copied to your clipboard!")
             print("Please paste this in Factorio, and then press Enter to continue.")
             blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
@@ -324,45 +335,49 @@ if __name__ == "__main__":
                 raw_signals = json.load(file)
         except:
             sys.exit("No signals have been defined! Run generate_signals.py to continue.")
+
         for z in range(number_of_splits):
             signals.append(raw_signals["signals"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_type.append(raw_signals["signals-type"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
+        modulus = video_height % 4 # Adjusts Video Height into increments of 4 for ffmpeg
+        if modulus != 0:
+            while modulus != 0:
+                video_height += 1
+                modulus = video_height % 4
+        modulus = video_width % 2 # Adjusts Video Width into increments of 2 for ffmpeg
+        if modulus != 0:
+            while modulus != 0:
+                video_width += 1
+                modulus = video_width % 2  
+        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error')
         if colour_mode == "256 bit": # type: ignore
             cls()
-            print("Generating ffmpeg pallette.png")
-            modulus = video_height % 4
-            if modulus != 0:
-                while modulus != 0:
-                    video_height += 1
-                    modulus = video_height % 4
-            modulus = video_width % 2
-            if modulus != 0:
-                while modulus != 0:
-                    video_width += 1
-                    modulus = video_width % 2     
-                                                                                                                                                                                                 
-            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore
+            print("Generating ffmpeg pallette.png")                                                                                                                                                                                  
             os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
             os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             cls()
             print("Generating ffmpeg encoded GIF (out.gif)") 
             print("This may take a while.")
             os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex paletteuse=dither=bayer:bayer_scale=4  Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
-            os.remove("Generated_Files/ffmpeg/1.mp4")
-            os.remove("Generated_Files/ffmpeg/small.mp4")
-        else:
-            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R'" Generated_Files/ffmpeg/out.mp4 -hide_banner -loglevel error') # type: ignore
         cls()
         if use_artifical_video_length == True:
             frame_count = frame_limit
         else:
             frame_count = int(cv2.VideoCapture(video_path).get(cv2.CAP_PROP_FRAME_COUNT))
-        if colour_mode == "2 bit": # type: ignore
-            cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/out.mp4")
-        else: 
+        if colour_mode == "256 bit":
             hex_list = palette_to_hex_list()
+        else:
+            cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/1.mp4")  
         print("Generating Combinators. This may take a while.")
         make_blueprint(frame_count,max_combinators)
+        # try:
+        #     os.remove("Generated_Files/ffmpeg/1.mp4")
+        # except:
+        #     pass
+        try:
+            os.remove("Generated_Files/ffmpeg/small.mp4")
+        except:
+            pass
