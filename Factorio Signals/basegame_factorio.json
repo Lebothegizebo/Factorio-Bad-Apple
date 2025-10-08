@@ -709,13 +709,6 @@
                     "count": 1
                   },
                   {
-                    "index": 99,
-                    "name": "satellite",
-                    "quality": "normal",
-                    "comparator": "=",
-                    "count": 1
-                  },
-                  {
                     "index": 100,
                     "type": "recipe",
                     "name": "basic-oil-processing",

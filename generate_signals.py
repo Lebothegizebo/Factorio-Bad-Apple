@@ -17,7 +17,7 @@ def load_config():
         globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_and_vanilla_signal_warning")
         globals()["custom_signal_json_path"] = config["DEFAULT"]["custom_signal_json_path"]
         globals()["custom_quality_json_path"] = config["DEFAULT"]["custom_quality_json_path"]
-        globals()["colour_mode"] = config.read_string("DEFAULT","colour_mode")
+        globals()["colour_mode"] = config["DEFAULT"]["colour_mode"]
         globals()["video_height"] = config.getint("DEFAULT", "video_height")
         globals()["video_width"] = config.getint("DEFAULT", "video_width")
         globals()["use_data_cache"] = config.getboolean("DEFAULT","use_data_cache")

@@ -21,7 +21,6 @@ Beta Instructions:
 
 
 2: Run generate_decoder.py <video_path>, place blueprint in world.
-    THEN RUN generate_lamps.py and connect the first lamp to the individual ends of the decoder (With a green wire, each column should be connected individually)
     
 3: Run generate_memory.py <video_path>, place blueprint next to decoder.
     IF MULTIPLE CHUNKS ARE USED:
@@ -29,6 +28,8 @@ Beta Instructions:
 
 4: Connect memory to a clock by connecting: Clock Output (Green wire) (Output must be as F) -> Back of memory decider combinator (Green Wire) 
 5: Connect memory to the decoder by connecting: Front of any memory decider combinator (Red Wire) -> Back of any arthimitic combinator (Red Wire)
+    IF USING FULL COLOUR MODE: 
+        Connect memory to the lamps directly instead using a Red Wire
 
 IF YOU CHANGE VIDEOS YOU MUST START FROM STEP ONE AGAIN!! OR THE DISPLAY WILL NOT WORK PROPERLY.
 

@@ -22,7 +22,7 @@ def load_config():
         globals()["bypass_custom_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_signal_warning")
         globals()["bypass_custom_and_vanilla_signal_warning"] = config.getboolean("DEFAULT","bypass_custom_and_vanilla_signal_warning")
         globals()["custom_signal_json_path"] = config["DEFAULT"]["custom_signal_json_path"]
-        globals()["colour_mode"] = config.read_string("DEFAULT","colour_mode")
+        globals()["colour_mode"] = config["DEFAULT"]["colour_mode"]
         globals()["video_height"] = config.getint("DEFAULT", "video_height")
         globals()["video_width"] = config.getint("DEFAULT", "video_width")
         globals()["use_data_cache"] = config.getboolean("DEFAULT","use_data_cache")
@@ -68,6 +68,9 @@ bit_max = 32
 signals = []
 signals_type = []
 signals_quality = []
+signals_lamp = []
+signals_type_lamp = []
+signals_quality_lamp = []
 decoder = []
 decoder_type = []
 decoder_quality = []
@@ -116,333 +119,502 @@ def make_blueprint():
         decoder_type.extend(raw_signals["decoder-type"][key])
     for i, key in enumerate(list(raw_signals["decoder-quality"].keys())):
         decoder_quality.extend(raw_signals["decoder-quality"][key])
+
+    for z in range(number_of_splits):
+        signals_lamp.append(raw_signals["signals"]["split-"+str(z)])
+    for z in range(number_of_splits):
+        signals_type_lamp.append(raw_signals["signals-type"]["split-"+str(z)])
+    for z in range(number_of_splits):
+        signals_quality_lamp.append(raw_signals["signals-quality"]["split-"+str(z)])
+
     y_start = 0
     each_combinator_track = []
+    color_decoder_track = []
+    color_decoder_track_bottom = []
+    lamp_track = []
+    lamp_track_top = []
     entity_number_track_top = []
     entity_number_track_bottom = []
     x=0
     signal_id = 0
-    
-    for i in range(round(video_width)): # type: ignore
-        entity_number_track_top.append(entity_number)
-        y = y_start
-        column_count = 1
-        signal_id_offset = 0
-        signal_id_offset_tracker = 0
-        for j in range(round(len(decoder))):
-            if signal_id_offset_tracker >= round(len(decoder)/splits):
-                signal_id_offset += round(len(signals)/splits)
-                signal_id_offset_tracker = 0
-            if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
-                column_count = 1
-                y += 2          
-            column_count += 1
-            if signals_type[(signal_id+signal_id_offset)] != None:
-                if decoder_type[j] != None:
-                    blueprint["blueprint"]["entities"].append({
-                        "entity_number": entity_number,
-                        "name": "arithmetic-combinator",
-                        "position": {"x": x, "y": y},
-                        "direction": 8,
-                        "control_behavior": {
-                            "arithmetic_conditions": {
-                                        "first_signal": {
-                                            "type" : signals_type[(signal_id+signal_id_offset)],
-                                            "name": signals[(signal_id+signal_id_offset)],
-                                            "quality": signals_quality[(signal_id+signal_id_offset)]
-                                        },
-                                        "second_constant": bit,
-                                        "operation": ">>",
-                                        "output_signal": {
-                                            "type": decoder_type[j],
-                                            "name": decoder[j],
-                                            "quality": decoder_quality[j]
+    if colour_mode != "full colour":
+        for i in range(len(raw_signals["signals"]["split-0"])): # type: ignore
+            entity_number_track_top.append(entity_number)
+            y = y_start
+            column_count = 1
+            signal_id_offset = 0
+            signal_id_offset_tracker = 0
+            for j in range(round(len(decoder))):
+                if signal_id_offset_tracker >= round(len(decoder)/splits):
+                    signal_id_offset += round(len(signals)/splits)
+                    signal_id_offset_tracker = 0
+                if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+                    column_count = 1
+                    y += 2          
+                column_count += 1
+                if signals_type[(signal_id+signal_id_offset)] != None:
+                    if decoder_type[j] != None:
+                        blueprint["blueprint"]["entities"].append({
+                            "entity_number": entity_number,
+                            "name": "arithmetic-combinator",
+                            "position": {"x": x, "y": y},
+                            "direction": 8,
+                            "control_behavior": {
+                                "arithmetic_conditions": {
+                                            "first_signal": {
+                                                "type" : signals_type[(signal_id+signal_id_offset)],
+                                                "name": signals[(signal_id+signal_id_offset)],
+                                                "quality": signals_quality[(signal_id+signal_id_offset)]
+                                            },
+                                            "second_constant": bit,
+                                            "operation": ">>",
+                                            "output_signal": {
+                                                "type": decoder_type[j],
+                                                "name": decoder[j],
+                                                "quality": decoder_quality[j]
+                                    }
                                 }
                             }
-                        }
-                    })
+                        })
+                    else:
+                        blueprint["blueprint"]["entities"].append({
+                            "entity_number": entity_number,
+                            "name": "arithmetic-combinator",
+                            "position": {"x": x, "y": y},
+                            "direction": 8,
+                            "control_behavior": {
+                                "arithmetic_conditions": {
+                                            "first_signal": {
+                                                "type" : signals_type[(signal_id+signal_id_offset)],
+                                                "name": signals[(signal_id+signal_id_offset)],
+                                                "quality": signals_quality[(signal_id+signal_id_offset)]
+                                            },
+                                            "second_constant": bit,
+                                            "operation": ">>",
+                                            "output_signal": {
+                                                "name": decoder[j],
+                                                "quality": decoder_quality[j]
+                                    }
+                                }
+                            }
+                        })
                 else:
-                    blueprint["blueprint"]["entities"].append({
-                        "entity_number": entity_number,
-                        "name": "arithmetic-combinator",
-                        "position": {"x": x, "y": y},
-                        "direction": 8,
-                        "control_behavior": {
-                            "arithmetic_conditions": {
-                                        "first_signal": {
-                                            "type" : signals_type[(signal_id+signal_id_offset)],
-                                            "name": signals[(signal_id+signal_id_offset)],
-                                            "quality": signals_quality[(signal_id+signal_id_offset)]
-                                        },
-                                        "second_constant": bit,
-                                        "operation": ">>",
-                                        "output_signal": {
-                                            "name": decoder[j],
-                                            "quality": decoder_quality[j]
+                    if decoder_type[j] != None:
+                        blueprint["blueprint"]["entities"].append({
+                            "entity_number": entity_number,
+                            "name": "arithmetic-combinator",
+                            "position": {"x": x, "y": y},
+                            "direction": 8,
+                            "control_behavior": {
+                                "arithmetic_conditions": {
+                                            "first_signal": {
+                                                "name": signals[(signal_id+signal_id_offset)],
+                                                "quality": signals_quality[(signal_id+signal_id_offset)]
+                                            },
+                                            "second_constant": bit,
+                                            "operation": ">>",
+                                            "output_signal": {
+                                                "type": decoder_type[j],
+                                                "name": decoder[j],
+                                                "quality": decoder_quality[j]
+                                    }
                                 }
                             }
-                        }
-                    })
-            else:
-                if decoder_type[j] != None:
-                    blueprint["blueprint"]["entities"].append({
-                        "entity_number": entity_number,
-                        "name": "arithmetic-combinator",
-                        "position": {"x": x, "y": y},
-                        "direction": 8,
-                        "control_behavior": {
-                            "arithmetic_conditions": {
-                                        "first_signal": {
-                                            "name": signals[(signal_id+signal_id_offset)],
-                                            "quality": signals_quality[(signal_id+signal_id_offset)]
-                                        },
-                                        "second_constant": bit,
-                                        "operation": ">>",
-                                        "output_signal": {
-                                            "type": decoder_type[j],
-                                            "name": decoder[j],
-                                            "quality": decoder_quality[j]
+                        })
+                    else:
+                        blueprint["blueprint"]["entities"].append({
+                            "entity_number": entity_number,
+                            "name": "arithmetic-combinator",
+                            "position": {"x": x, "y": y},
+                            "direction": 8,
+                            "control_behavior": {
+                                "arithmetic_conditions": {
+                                            "first_signal": {
+                                                "name": signals[(signal_id+signal_id_offset)],
+                                                "quality": signals_quality[(signal_id+signal_id_offset)]
+                                            },
+                                            "second_constant": bit,
+                                            "operation": ">>",
+                                            "output_signal": {
+                                                "name": decoder[j],
+                                                "quality": decoder_quality[j]
+                                    }
                                 }
                             }
-                        }
-                    })
-                else:
-                    blueprint["blueprint"]["entities"].append({
-                        "entity_number": entity_number,
-                        "name": "arithmetic-combinator",
-                        "position": {"x": x, "y": y},
-                        "direction": 8,
-                        "control_behavior": {
-                            "arithmetic_conditions": {
-                                        "first_signal": {
-                                            "name": signals[(signal_id+signal_id_offset)],
-                                            "quality": signals_quality[(signal_id+signal_id_offset)]
-                                        },
-                                        "second_constant": bit,
-                                        "operation": ">>",
-                                        "output_signal": {
-                                            "name": decoder[j],
-                                            "quality": decoder_quality[j]
-                                }
-                            }
-                        }
-                    })
-        
+                        })
+            
 
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    wire_green,
+                    entity_number+1,
+                    wire_green
+                ])
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    wire_red,
+                    entity_number+1,
+                    wire_red
+                ])
+                entity_number += 1
+                bit += bit_step
+                if bit >= dynamic_bit_max:
+                    bit = 0
+                y += 2
+                signal_id_offset_tracker += 1 
+            
+            x += 1
+            signal_id += 1
+            entity_number_track_bottom.append(entity_number-1)
+        y_start = len(decoder)
+        x = 0
+        y +=2
+        x = 0
+        
+        for i in range(len(raw_signals["signals"]["split-0"])):
+            blueprint["blueprint"]["entities"].append({
+                "entity_number": entity_number,
+                "name": "arithmetic-combinator",
+                "position": {"x": x, "y": y},
+                "direction": 8,
+                "control_behavior": {
+                    "arithmetic_conditions": {
+                                "first_signal": {
+                                    "type": "virtual",
+                                    "name": "signal-each"
+                                },
+                                "second_constant": and_constant,
+                                "operation": "AND",
+                                "output_signal": {
+                                    "type": "virtual",
+                                    "name": "signal-each"
+                        }
+                    }
+                }
+            })
+            each_combinator_track.append(entity_number)
+            entity_number += 1
+            x += 1
+        
+        if colour_mode == "256 bit" or colour_mode == "2 bit":
+            y += 4
+            x = 0
+            y_start  = y
+            for i in range(len(raw_signals["signals"]["split-0"])):
+                color_decoder_track.append(entity_number)
+                column_count = 1
+                if colour_mode == "256 bit": # type: ignore
+                    for k in range(255):
+                        if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+                            column_count = 1
+                            y += 2          
+                        column_count += 1
+                        blueprint["blueprint"]["entities"].append({
+                            "entity_number": entity_number,
+                            "name": "decider-combinator",
+                            "position": {
+                            "x": x,
+                            "y": y
+                            },
+                            "direction": 8,
+                            "control_behavior": {
+                                "decider_conditions": {
+                                    "conditions": [
+                                    {
+                                        "first_signal": {
+                                        "type": "virtual",
+                                        "name": "signal-each"
+                                        },
+                                        "constant": k+1,
+                                        "comparator": "="
+                                    }
+                                    ],
+                                    "outputs": [
+                                    {
+                                        "signal": {
+                                        "type": "virtual",
+                                        "name": "signal-each"
+                                        },
+                                        "copy_count_from_input": False,
+                                        "constant": hex_to_encoded_rgb(hex_list[k])
+                                    }
+                                    ]
+                                }
+                            }
+                        }
+                        )
+                        blueprint["blueprint"]["wires"].append([
+                            entity_number,
+                            wire_green,
+                            entity_number+1,
+                            wire_green
+                        ])
+                        blueprint["blueprint"]["wires"].append([
+                            entity_number,
+                            2,
+                            entity_number+1,
+                            2
+                        ])
+                        entity_number += 1
+                        y += 2
+                        new_y_start = y
+                elif colour_mode == "2 bit":
+                    globals()["hex_list"] = ["#000000","#ffffff"]
+                    for k in range(2):
+                        if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+                            column_count = 1
+                            y += 2          
+                        column_count += 1
+                        blueprint["blueprint"]["entities"].append({
+                            "entity_number": entity_number,
+                            "name": "decider-combinator",
+                            "position": {
+                            "x": x,
+                            "y": y
+                            },
+                            "direction": 8,
+                            "control_behavior": {
+                                "decider_conditions": {
+                                    "conditions": [
+                                    {
+                                        "first_signal": {
+                                        "type": "virtual",
+                                        "name": "signal-each"
+                                        },
+                                        "constant": k,
+                                        "comparator": "="
+                                    }
+                                    ],
+                                    "outputs": [
+                                    {
+                                        "signal": {
+                                        "type": "virtual",
+                                        "name": "signal-each"
+                                        },
+                                        "copy_count_from_input": False,
+                                        "constant": hex_to_encoded_rgb(hex_list[k])
+                                    }
+                                    ]
+                                }
+                            }
+                        }
+                        )
+                        blueprint["blueprint"]["wires"].append([
+                            entity_number,
+                            wire_green,
+                            entity_number+1,
+                            wire_green
+                        ])
+                        blueprint["blueprint"]["wires"].append([
+                            entity_number,
+                            2,
+                            entity_number+1,
+                            2
+                        ])
+                        entity_number += 1
+                        y += 2                
+                    if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
+                        column_count = 1
+                        y += 2          
+                    column_count += 1
+                    blueprint["blueprint"]["wires"].append([
+                        entity_number,
+                        wire_green,
+                        entity_number-1,
+                        wire_green
+                    ])
+                    blueprint["blueprint"]["wires"].append([
+                        entity_number,
+                        2,
+                        entity_number-1,
+                        2
+                    ])
+                    entity_number += 1
+                    y += 2
+                    new_y_start = y
+                color_decoder_track_bottom.append(entity_number)
+                x +=1
+                y = y_start
+        if colour_mode == "256 bit":
+            y = new_y_start
+            y +=3
+        elif colour_mode == "2 bit":
+            y = new_y_start
+            y +=1
+        else:
+            y +=5
+        y_start = y
+        x = 0
+
+        for z in range(len(raw_signals["signals"]["split-0"])): # type: ignore
+            lamp_track.append(entity_number)
+            for i in range(len(decoder)):
+                if decoder_type[i] != None: 
+                    blueprint["blueprint"]["entities"].append({
+                        "entity_number": entity_number,
+                        "name": "small-lamp",
+                        "position": {
+                        "x": x,
+                        "y": y
+                        },
+                        "control_behavior": {
+                        "use_colors": True,
+                        "rgb_signal": {
+                            "type": decoder_type[i],
+                            "name": decoder[i],
+                            "quality": decoder_quality[i]
+                        },
+                        "color_mode": 2
+                        },
+                        "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                        },
+                        "always_on": True
+                    })
+                else:
+                    blueprint["blueprint"]["entities"].append({
+                    "entity_number": entity_number,
+                    "name": "small-lamp",
+                    "position": {
+                    "x": x,
+                    "y": y
+                    },
+                    "control_behavior": {
+                    "use_colors": True,
+                    "rgb_signal": {
+                        "name": decoder[i],
+                        "quality": decoder_quality[i]
+                    },
+                    "color_mode": 2
+                    },
+                    "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                    },
+                    "always_on": True
+                    })
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    2,
+                    entity_number - 1,
+                    2
+                ])
+                entity_number += 1
+                y += 1
+            x += 1
+            y = y_start
+    else:
+        z = 0
+        for i in range(len(raw_signals["signals"]["split-0"])): # type: ignore
+            lamp_track_top.append(entity_number)
+            for z in range(len(decoder)):
+                if signals_type_lamp[z][i] != None: 
+                    blueprint["blueprint"]["entities"].append({
+                        "entity_number": entity_number,
+                        "name": "small-lamp",
+                        "position": {
+                        "x": x,
+                        "y": y
+                        },
+                        "control_behavior": {
+                        "use_colors": True,
+                        "rgb_signal": {
+                            "type": signals_type_lamp[z][i],
+                            "name": signals_lamp[z][i],
+                            "quality": signals_quality_lamp[z][i]
+                        },
+                        "color_mode": 2
+                        },
+                        "color": {
+                        "r": 1,
+                        "g": 1,
+                        "b": 1,
+                        "a": 1
+                        },
+                        "always_on": True
+                    })
+                else:
+                    blueprint["blueprint"]["entities"].append({
+                    "entity_number": entity_number,
+                    "name": "small-lamp",
+                    "position": {
+                    "x": x,
+                    "y": y
+                    },
+                    "control_behavior": {
+                    "use_colors": True,
+                    "rgb_signal": {
+                        "name": signals_lamp[z][i],
+                        "quality": signals_quality_lamp[z][i]
+                    },
+                    "color_mode": 2
+                    },
+                    "color": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1,
+                    "a": 1
+                    },
+                    "always_on": True
+                    })
+                blueprint["blueprint"]["wires"].append([
+                    entity_number,
+                    1,
+                    entity_number - 1,
+                    1
+                ])
+                entity_number += 1
+                y += 1
+            x += 1
+            y = y_start
+        for i in range(len(raw_signals["signals"]["split-0"])-1):
             blueprint["blueprint"]["wires"].append([
-                entity_number,
-                wire_green,
-                entity_number+1,
-                wire_green
+                lamp_track_top[i],
+                1,
+                lamp_track_top[i+1],
+                1
             ])
+    if colour_mode != "full colour":
+        for i in range(len(color_decoder_track)):
             blueprint["blueprint"]["wires"].append([
-                entity_number,
+                        each_combinator_track[i],
+                        4,
+                        color_decoder_track[i],
+                        2,
+            ])
+        for i in range(len(each_combinator_track)):
+            blueprint["blueprint"]["wires"].append([
+                        entity_number_track_bottom[i],
+                        4,
+                        each_combinator_track[i],
+                        2,
+            ])
+        for i in range(len(lamp_track)): # Remove
+            blueprint["blueprint"]["wires"].append([
+                each_combinator_track[i],
+                wire_green,
+                lamp_track[i],
+                2,
+            ])
+        for i in range(len(lamp_track)):
+            blueprint["blueprint"]["wires"].append([
+                color_decoder_track_bottom[i]-1,
+                wire_green,
+                lamp_track[i],
+                2,
+            ])
+        for i in range(len(raw_signals["signals"]["split-0"])-1):
+            blueprint["blueprint"]["wires"].append([
+                entity_number_track_top[i],
                 wire_red,
-                entity_number+1,
+                entity_number_track_top[i+1],
                 wire_red
             ])
-            entity_number += 1
-            bit += bit_step
-            if bit >= dynamic_bit_max:
-                bit = 0
-            y += 2
-            signal_id_offset_tracker += 1 
-         
-        x += 1
-        signal_id += 1
-        entity_number_track_bottom.append(entity_number-1)
-    y_start = len(decoder)
-    x = 0
-    y +=2
-    x = 0
-    
-    for i in range(len(raw_signals["signals"]["split-0"])):
-        blueprint["blueprint"]["entities"].append({
-            "entity_number": entity_number,
-            "name": "arithmetic-combinator",
-            "position": {"x": x, "y": y},
-            "direction": 8,
-            "control_behavior": {
-                "arithmetic_conditions": {
-                            "first_signal": {
-                                "type": "virtual",
-                                "name": "signal-each"
-                            },
-                            "second_constant": and_constant,
-                            "operation": "AND",
-                            "output_signal": {
-                                "type": "virtual",
-                                "name": "signal-each"
-                    }
-                }
-            }
-        })
-        each_combinator_track.append(entity_number)
-        entity_number += 1
-        x += 1
-    y += 4
-    x = 0
-    color_decoder_track = []
-    column_count = 1
-    y_start  = y
-    
-    for i in range(len(raw_signals["signals"]["split-0"])):
-        color_decoder_track.append(entity_number)
-        column_count = 1
-        if colour_mode == "256 bit": # type: ignore
-            for k in range(255):
-                if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
-                    column_count = 1
-                    y += 2          
-                column_count += 1
-                blueprint["blueprint"]["entities"].append({
-                    "entity_number": entity_number,
-                    "name": "decider-combinator",
-                    "position": {
-                    "x": x,
-                    "y": y
-                    },
-                    "direction": 8,
-                    "control_behavior": {
-                        "decider_conditions": {
-                            "conditions": [
-                            {
-                                "first_signal": {
-                                "type": "virtual",
-                                "name": "signal-each"
-                                },
-                                "constant": k+1,
-                                "comparator": "="
-                            }
-                            ],
-                            "outputs": [
-                            {
-                                "signal": {
-                                "type": "virtual",
-                                "name": "signal-each"
-                                },
-                                "copy_count_from_input": False,
-                                "constant": hex_to_encoded_rgb(hex_list[k])
-                            }
-                            ]
-                        }
-                    }
-                }
-                )
-                blueprint["blueprint"]["wires"].append([
-                    entity_number,
-                    wire_green,
-                    entity_number+1,
-                    wire_green
-                ])
-                blueprint["blueprint"]["wires"].append([
-                    entity_number,
-                    2,
-                    entity_number+1,
-                    2
-                ])
-                entity_number += 1
-                y += 2
-        elif colour_mode == "2 bit":
-            globals()["hex_list"] = ["#000000","#ffffff"]
-            for k in range(2):
-                if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
-                    column_count = 1
-                    y += 2          
-                column_count += 1
-                blueprint["blueprint"]["entities"].append({
-                    "entity_number": entity_number,
-                    "name": "decider-combinator",
-                    "position": {
-                    "x": x,
-                    "y": y
-                    },
-                    "direction": 8,
-                    "control_behavior": {
-                        "decider_conditions": {
-                            "conditions": [
-                            {
-                                "first_signal": {
-                                "type": "virtual",
-                                "name": "signal-each"
-                                },
-                                "constant": k,
-                                "comparator": "="
-                            }
-                            ],
-                            "outputs": [
-                            {
-                                "signal": {
-                                "type": "virtual",
-                                "name": "signal-each"
-                                },
-                                "copy_count_from_input": False,
-                                "constant": hex_to_encoded_rgb(hex_list[k])
-                            }
-                            ]
-                        }
-                    }
-                }
-                )
-                blueprint["blueprint"]["wires"].append([
-                    entity_number,
-                    wire_green,
-                    entity_number+1,
-                    wire_green
-                ])
-                blueprint["blueprint"]["wires"].append([
-                    entity_number,
-                    2,
-                    entity_number+1,
-                    2
-                ])
-                entity_number += 1
-                y += 2                
-            if column_count > max_combinators_per_column_chunk: # Checks if a gap needs to be made to power combinators
-                column_count = 1
-                y += 2          
-            column_count += 1
-            blueprint["blueprint"]["wires"].append([
-                entity_number,
-                wire_green,
-                entity_number-1,
-                wire_green
-            ])
-            blueprint["blueprint"]["wires"].append([
-                entity_number,
-                2,
-                entity_number-1,
-                2
-            ])
-            entity_number += 1
-            y += 2
-        x +=1
-        y = y_start
-    
-    y += 4
-    x = 0
-
-    for i in range(len(color_decoder_track)):
-        blueprint["blueprint"]["wires"].append([
-                    each_combinator_track[i],
-                    4,
-                    color_decoder_track[i],
-                    2,
-        ])
-    for i in range(len(each_combinator_track)):
-        blueprint["blueprint"]["wires"].append([
-                    entity_number_track_bottom[i],
-                    4,
-                    each_combinator_track[i],
-                    2,
-        ])
-    for i in range(len(raw_signals["signals"]["split-0"])-1):
-        blueprint["blueprint"]["wires"].append([
-            entity_number_track_top[i],
-            wire_red,
-            entity_number_track_top[i+1],
-            wire_red
-        ])
 
     new_blueprint = json_to_blueprint(blueprint)
     pyperclip.copy(new_blueprint)
@@ -465,16 +637,15 @@ if __name__ == "__main__":
         modulus = video_height % 4
         if modulus != 0:
             while modulus != 0:
-                video_height += 1
+                video_height -= 1
                 modulus = video_height % 4
         modulus = video_width % 2
         if modulus != 0:
             while modulus != 0:
-                video_width += 1
+                video_width -= 1
                 modulus = video_width % 2  
-
-        os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore]
-        if colour_mode != "full colour":
+        if colour_mode =="256 bit":
+            os.system(R'ffmpeg -y -i '+video_path+R' -vf "scale='+str(video_width)+R':'+str(video_height)+R':flags=lanczos"  Generated_Files/ffmpeg/1.mp4 -hide_banner -loglevel error') # type: ignore]
             os.system(R'ffmpeg -y -i Generated_Files/ffmpeg/1.mp4 -vf "eq=brightness=0.2:saturation=5" Generated_Files/ffmpeg/small.mp4 -hide_banner -loglevel error')
             os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -vf palettegen=max_colors=255:reserve_transparent=0:stats_mode=full  Generated_Files/ffmpeg/palette.png -hide_banner -loglevel error")
             os.remove("Generated_Files/ffmpeg/1.mp4")
