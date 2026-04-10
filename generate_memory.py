@@ -120,7 +120,8 @@ def load_config(): # Loads all config
     globals()["specific_frame"] = config.getint("DEBUG", "specific_frame")
     globals()["use_artifical_video_length"] = config.getboolean("DEBUG", "use_artifical_video_length")
     globals()["frame_limit"] = config.getint("DEBUG","frame_limit")
-
+    globals()["start_frame"] = config.getint("DEBUG","start_frame")
+    globals()["use_debug_frame_count"] = config.getboolean("DEBUG","use_debug_frame_count")
 
 def blueprint_to_json(string): #Thx Doshdoshington
     data = zlib.decompress(base64.b64decode(string[1:]))
@@ -234,6 +235,10 @@ def make_blueprint(frame_count, max_combinators,frame_number):
     chunk_track = 0
     base_blueprint = {"blueprint":{"entities":[], "wires":[], "item": "blueprint", "version":562949957353472} }
     blueprint = base_blueprint
+    frame_number = start_frame
+    virtual_frame_number = start_frame
+    if use_debug_frame_count == True: # Represents Frame number inside Combinators
+        virtual_frame_number = frame_number - start_frame
     for j in range(frame_count): #Frame Number
         if use_chunking == True:
             if chunk_track >= chunk_size: # type: ignore
@@ -264,7 +269,7 @@ def make_blueprint(frame_count, max_combinators,frame_number):
                                 "type": "virtual",
                                 "name": "signal-F"
                             },
-                            "constant": frame_number+1,
+                            "constant": virtual_frame_number+1,
                             "comparator": "="
                         }
                     ]
@@ -306,15 +311,16 @@ def make_blueprint(frame_count, max_combinators,frame_number):
             ])
         if use_chunking == True:
             sys.stdout.write(
-                f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max}"
+                f"\rFrame: {frame_number-start_frame}/{frame_count} | Pos: (x={x}, y={y})| Chunk: {chunk_number}/{chunk_max}"
             )
         else:
             sys.stdout.write(
-                f"\rFrame: {frame_number}/{frame_count} | Pos: (x={x}, y={y})"
+                f"\rFrame: {frame_number-start_frame}/{frame_count} | Pos: (x={x}, y={y})"
             )            
         sys.stdout.flush()
         # Iterating key vars
         frame_number += 1
+        virtual_frame_number +=1
         entity_number += 1
         combinator_count += 1
         x -= 1
@@ -380,7 +386,7 @@ if __name__ == "__main__":
             print("Generating ffmpeg encoded GIF (out.gif)") 
             print("This may take a while.")
             os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex paletteuse=dither=bayer:bayer_scale=4  Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
-        cls()
+        # cls()
         if set_specific_frame == True:
             frame_count = 1
             frame_number = specific_frame - 1
