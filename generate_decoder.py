@@ -84,7 +84,6 @@ number_of_splits = int(math.ceil(video_height/bit_size))# type: ignore # Number 
 if number_of_splits <1:
     number_of_splits = 1
 
-
 def blueprint_to_json(string):
     data = zlib.decompress(base64.b64decode(string[1:]))
     return json.loads(data)

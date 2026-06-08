@@ -53,7 +53,6 @@ def get_rbg_data(frame_data, type): # Returns RGB values from framedata
         encoded_rgb = int(hex, 16)
         return encoded_rgb
 
-
 def hex_compare(hex_string): # Returns a value from 0-255 for the colour data of each frame depending on pallete.png
     for hex_index in range(256):
         if hex_string == hex_list[hex_index]:
@@ -138,6 +137,18 @@ def list_to_32bit_int(lst): #Thanks @artucuno for this function
     if result >= 0x80000000:  # If the sign bit is set
         result -= 0x100000000  # Convert to negative value
     return result
+
+def auto_resize_aspect_ratio(video_path):
+    cap = cv2.VideoCapture(video_path) 
+    # Get height using CAP_PROP_FRAME_HEIGHT
+    V_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    
+    # Get width using CAP_PROP_FRAME_WIDTH
+    V_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    
+    print(f"Resolution: {V_width}x{V_height}")
+    input()
+
 
 load_config()
 
@@ -360,12 +371,16 @@ if __name__ == "__main__":
         except:
             sys.exit("No signals have been defined! Run generate_signals.py to continue.")
 
+        auto_resize = True
+        if auto_resize == True:
+            auto_resize_aspect_ratio(video_path) 
+
         for z in range(number_of_splits):
             signals.append(raw_signals["signals"]["split-"+str(z)])
         for z in range(number_of_splits):
             signals_type.append(raw_signals["signals-type"]["split-"+str(z)])
         for z in range(number_of_splits):
-            signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])
+            signals_quality.append(raw_signals["signals-quality"]["split-"+str(z)])    
         modulus = video_height % 4 # Adjusts Video Height into increments of 4 for ffmpeg
         if modulus != 0:
             while modulus != 0:
@@ -386,7 +401,6 @@ if __name__ == "__main__":
             print("Generating ffmpeg encoded GIF (out.gif)") 
             print("This may take a while.")
             os.system(R"ffmpeg -y -i Generated_Files/ffmpeg/small.mp4 -i Generated_Files/ffmpeg/palette.png -filter_complex paletteuse=dither=bayer:bayer_scale=4  Generated_Files/ffmpeg/out.gif -hide_banner -loglevel error")
-        # cls()
         if set_specific_frame == True:
             frame_count = 1
             frame_number = specific_frame - 1
@@ -399,7 +413,7 @@ if __name__ == "__main__":
         if colour_mode == "256 bit":
             hex_list = palette_to_hex_list()
         else:
-            cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/1.mp4")  
+            cap = cv2.VideoCapture(R"Generated_Files/ffmpeg/1.mp4") 
         print("Generating Combinators. This may take a while.")
         make_blueprint(frame_count,max_combinators,frame_number)
         try:
