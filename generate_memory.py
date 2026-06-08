@@ -138,6 +138,25 @@ def list_to_32bit_int(lst): #Thanks @artucuno for this function
         result -= 0x100000000  # Convert to negative value
     return result
 
+def get_closest_aspect_ratio(width, height):
+    # Standard aspect ratios represented as decimals
+    aspect_ratios = {
+        "16:9": 16 / 9,     # 1.777...
+        "16:10": 16 / 10,   # 1.6
+        "3:2": 3 / 2,       # 1.5
+        "4:3": 4 / 3,       # 1.333...
+        "1:1": 1 / 1,       # 1.0
+        "9:16": 9 / 16,     # 0.5625
+        "10:16": 10 / 16,   # 0.625
+        "2:3": 2 / 3,       # 0.666...
+        "3:4": 3 / 4        # 0.75
+    }
+    target_ratio = float(width) / float(height)
+    closest_match = min(aspect_ratios.items(), key=lambda x: abs(x[1] - target_ratio))
+    print(target_ratio, closest_match[0])
+
+    return closest_match[0],
+
 def auto_resize_aspect_ratio(video_path):
     cap = cv2.VideoCapture(video_path) 
     # Get height using CAP_PROP_FRAME_HEIGHT
@@ -146,6 +165,29 @@ def auto_resize_aspect_ratio(video_path):
     # Get width using CAP_PROP_FRAME_WIDTH
     V_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     
+    detected_ratio = get_closest_aspect_ratio(V_width,V_height)
+    
+    ratio_decimal = 
+    number_of_splits = int(math.ceil(V_height/bit_size))# type: ignore # Number of Horizontal splits to split the video into to fit all binary signals
+    if number_of_splits <1:
+        number_of_splits = 1
+    splits_height = round(video_height/number_of_splits)
+    k = 0
+    for z in range(number_of_splits):
+        try:
+            globals()["generated_signals"]["signals"]["split-"+str(z)] = []
+            globals()["generated_signals"]["signals-type"]["split-"+str(z)] = []
+            globals()["generated_signals"]["signals-quality"]["split-"+str(z)] = []
+            for i in range(video_width): # type: ignore
+                globals()["generated_signals"]["signals"]["split-"+str(z)].append(signal[k])
+                globals()["generated_signals"]["signals-type"]["split-"+str(z)].append(signal_type[k])
+                globals()["generated_signals"]["signals-quality"]["split-"+str(z)].append(signal_quality[k])
+                k += 1
+        except:
+            cls()
+            print("ERROR:")
+            sys.exit("The program ran out of signals to use. Either: Decrease the target resolution, or add new signals via modded quality (or Space Age DLC)")    
+
     print(f"Resolution: {V_width}x{V_height}")
     input()
 
